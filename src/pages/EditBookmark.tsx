@@ -54,7 +54,7 @@ const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
   return (
     <>
       <div className='flex items-center justify-between'>
-        <h2 className='px-4 py-6 sm:p-8  sm:pb-4 text-xl font-semibold leading-7 text-text flex items-center gap-3 text-white'>
+        <h2 className='px-4 py-6 sm:p-8  sm:pb-4 text-xl font-semibold leading-7  flex items-center gap-3 text-text'>
           <Edit className='h-5 w-5' />
           Edit Bookmark
         </h2>
