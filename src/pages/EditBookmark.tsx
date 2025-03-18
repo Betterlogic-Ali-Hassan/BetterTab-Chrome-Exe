@@ -61,7 +61,7 @@ const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
       </div>
       <PasteLinkInput
         actionBtns
-        className='sm:px-8 sm:pb-0 pt-4'
+        className='sm:px-8 sm:pb-0 sm:pt-2 '
         notAllowTitle
       />
       <TextBoxInputs

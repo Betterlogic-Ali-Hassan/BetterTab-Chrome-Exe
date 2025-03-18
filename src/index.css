@@ -28,6 +28,8 @@
     --success-color: #4ade80;
     --sidebar-hover: #e5e5e5;
     --home-sidebar-hover: #f2f2f2;
+    --cancel-btn: white;
+    --input-color: white;
   }
   .dark {
     --home-sidebar-hover: #27272a;
@@ -45,6 +47,8 @@
     --warn-text: #fde047;
     --success-color: #86efac;
     --sidebar-hover: #1b1b1b;
+    --cancel-btn: #ffffff1a;
+    --input-color: #ffffff0d;
   }
 }
 
@@ -59,16 +63,16 @@
     @apply text-sm font-semibold;
   }
   .btn {
-    @apply rounded-r dark:bg-[#ffffff0d] flex items-center text-sm dark:text-white input-shadow dark:hover:bg-[#fff3]  font-medium border-0 outline-none ml-[1px] h-[36px] py-2 px-3 gap-1.5 text-[#171717] bg-white hover:bg-[#fafafa];
+    @apply rounded-r  flex items-center text-sm  input-shadow   font-medium border-0 outline-none ml-[1px] h-[36px] py-2 px-3 gap-1.5 text-text bg-input hover:bg-hover;
   }
   .input {
-    @apply block w-full rounded-none rounded-l bg-[#ffffff0d] focus:ring-[#60a5fa] focus:ring-2 text-sm text-black dark:text-white font-medium border-0  input-shadow py-1.5 px-3 outline-none h-[36px] placeholder:text-[#777];
+    @apply block w-full rounded-none rounded-l bg-input focus:ring-brand focus:ring-2 text-sm text-text dark:text-white font-medium border-0  input-shadow py-1.5 px-3 outline-none h-[36px] placeholder:text-[#777];
   }
   .cancel-btn {
-    @apply sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center dark:bg-[#ffffff1a] border-transparent dark:text-white dark:hover:bg-[#fff3] dark:hover:text-white text-[#171717] bg-white hover:bg-[#fafafa] hover:text-[#171717] input-shadow px-3 py-2 h-[36px];
+    @apply sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center  border-transparent    text-text bg-cancel-btn hover:bg-hover  input-shadow px-3 py-2 h-[36px];
   }
   .done-btn {
-    @apply sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center bg-[#60a5fa] border-transparent text-white hover:bg-[#93c5fd] hover:text-white px-3 py-2 h-[36px];
+    @apply sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center bg-brand border-transparent text-white hover:bg-brand-hover hover:text-white px-3 py-2 h-[36px];
   }
 }
 .no-scrollbar {
@@ -141,4 +145,24 @@ body {
 div[role="dialog"] {
   /* padding: 0 !important; */
   box-shadow: none;
+}
+.tox-tinymce {
+  border-radius: 0 !important;
+  background-color: var(--background-color) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+.tox-editor-header {
+  background-color: var(--background-color) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+.tox .tox-toolbar__primary {
+  background-color: var(--background-color) !important;
+}
+.tox .tox-tbtn {
+  background-color: transparent !important;
+  cursor: pointer;
+}
+.tox .tox-tbtn:hover {
+  background-color: var(--card-color) !important;
 }

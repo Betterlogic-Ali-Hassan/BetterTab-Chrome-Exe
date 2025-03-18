@@ -21,6 +21,7 @@ module.exports = {
 			hover: 'var(--hover-color)',
 			error: 'var(--error-color)',
 			success: 'var(--success-color)',
+			input: 'var(--input-color)',
 			'btn-hover':'var( --btn-hover)',
 			'sidebar-hover':'var( --sidebar-hover)',
 			'brand-hover':'var( --brand-hover)',
@@ -31,6 +32,7 @@ module.exports = {
 			'warn-color':'var( --warn-color)',
 			'warn-text':'var( --warn-text)',
 			'home-sidebar-hover':'var( --home-sidebar-hover)',
+			'cancel-btn':'var( --cancel-btn)',
 
 			
 		  },

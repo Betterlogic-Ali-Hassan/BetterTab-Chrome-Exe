@@ -1,7 +1,12 @@
+import TextEditor from "@/components/TextEditor";
 import NotesPageLayout from "./layout/NotesPageLayout";
 
 const Notes = () => {
-  return <NotesPageLayout>hello</NotesPageLayout>;
+  return (
+    <NotesPageLayout>
+      <TextEditor />
+    </NotesPageLayout>
+  );
 };
 
 export default Notes;
