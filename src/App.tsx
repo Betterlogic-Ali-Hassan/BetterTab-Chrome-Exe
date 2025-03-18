@@ -8,8 +8,9 @@ import ExtensionPage from "./pages/ExtensionPage";
 import { FormProvider } from "./context/from-Context";
 import Downloads from "./pages/Downloads";
 import Notes from "./pages/Notes";
+
 const App = () => {
-  const { page } = usePageContext();
+  const { page, dialogOpen } = usePageContext();
   return (
     <BookmarkProvider>
       <FormProvider>
@@ -19,6 +20,7 @@ const App = () => {
         {page === "extensions" && <ExtensionPage />}
         {page === "downloads" && <Downloads />}
         {page === "notes" && <Notes />}
+        {dialogOpen && <div className='fixed inset-0 bg-black/50 z-40 '></div>}
       </FormProvider>
     </BookmarkProvider>
   );

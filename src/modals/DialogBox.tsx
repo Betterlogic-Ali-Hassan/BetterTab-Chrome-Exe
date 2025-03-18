@@ -5,6 +5,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { usePageContext } from "@/context/PageContext";
 import { useState } from "react";
 
 interface Props {
@@ -14,10 +15,15 @@ interface Props {
 }
 const DialogBox = ({ trigger, children, className }: Props) => {
   const [open, setOpen] = useState(false);
+  const { setDialogOpen } = usePageContext();
+
+  const handleOpenChange = (isOpen: boolean) => {
+    setOpen(isOpen);
+    setDialogOpen(isOpen);
+  };
   return (
     <>
-      {open && <div className='fixed inset-0 bg-black/50 z-40'></div>}
-      <Dialog open={open} onOpenChange={setOpen} modal={false}>
+      <Dialog open={open} onOpenChange={handleOpenChange} modal={false}>
         <DialogTrigger className='text-sm text-foreground hover:text-text transition-colors max-lg:self-baseline'>
           {trigger}
         </DialogTrigger>

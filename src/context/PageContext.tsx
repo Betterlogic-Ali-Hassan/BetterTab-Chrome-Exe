@@ -1,8 +1,14 @@
+"use client";
+
+import type React from "react";
+
 import { createContext, useContext, useState } from "react";
 
 type PageContextProps = {
   page: string;
   setPage: (page: string) => void;
+  dialogOpen: boolean;
+  setDialogOpen: (isOpen: boolean) => void;
 };
 
 const PageContext = createContext<PageContextProps | undefined>(undefined);
@@ -13,8 +19,10 @@ export const PageContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [page, setPage] = useState<string>("home");
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+
   return (
-    <PageContext.Provider value={{ page, setPage }}>
+    <PageContext.Provider value={{ page, setPage, dialogOpen, setDialogOpen }}>
       {children}
     </PageContext.Provider>
   );

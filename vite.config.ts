@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+         "swiper/css/navigation": "swiper/modules/navigation/navigation.min.css"
     },
   },
 })

@@ -4,6 +4,7 @@ import DocumentationIcon from "@/components/svgs/DocumentationIcon";
 import ExistIcon from "@/components/svgs/ExistIcon";
 import { BsBookmarks } from "react-icons/bs";
 import { GoHistory } from "react-icons/go";
+import { CgNotes } from "react-icons/cg";
 
 export const sidebarData = [
   {
@@ -26,12 +27,17 @@ export const sidebarData = [
     tooltip: "Downloads",
     link: "downloads",
   },
+  {
+    icon: <CgNotes size={24} />,
+    tooltip: "Notes",
+    link: "notes",
+  },
 ];
 export const sidebarDataBottom = [
   {
     icon: <DocumentationIcon />,
     tooltip: "Documentation",
-    link: "notes",
+    link: "documentation",
   },
   {
     icon: <ExistIcon />,
