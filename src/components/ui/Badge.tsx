@@ -1,6 +1,13 @@
-const Badge = ({ text }: { text: string }) => {
+interface Props {
+  text: string;
+  onClick?: () => void;
+}
+const Badge = ({ text, onClick }: Props) => {
   return (
-    <button className='inline-block px-2 py-1 text-xs font-semibold bg-neutral-700 rounded-full hover:text-white '>
+    <button
+      onClick={onClick}
+      className='inline-block px-3 py-1.5 text-xs font-semibold bg-badge rounded-full text-text opacity-80 hover:opacity-100'
+    >
       {text}
     </button>
   );

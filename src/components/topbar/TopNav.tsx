@@ -1,39 +1,104 @@
-import { categoriesData } from "@/constant/categoriesData";
+"use client";
 
-const TopNav = () => {
+import type React from "react";
+
+import { useBookmarks } from "@/context/BookmarkContext";
+import { cn } from "@/lib/utils";
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SliderBtn from "../SliderBtn";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+
+import ResetFilter from "./ResetFilter";
+import Button from "../my-button";
+
+type CategoryWithCount = { name: string; count: number; id: string };
+type CategoryWithoutCount = { name: string; id: string };
+
+interface Props {
+  className?: string;
+  categoriesData: Array<CategoryWithCount | CategoryWithoutCount>;
+}
+const TopNav = ({ className, categoriesData }: Props) => {
+  const {
+    setSelectedCategories,
+    toggleCategory,
+    selectedCategories,
+    pinCategories,
+  } = useBookmarks();
+
+  const handleToggleCategory = (categoryId: string) => {
+    toggleCategory(categoryId);
+  };
+
+  const handleRemoveCategory = (categoryId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const updatedCategories = selectedCategories.filter(
+      (id) => id !== categoryId
+    );
+    setSelectedCategories(updatedCategories);
+  };
+
   return (
     <div className='lg:h-[3.25rem]'>
-      <div className='relative w-full px-2 lg:px-0 py-2 border-b lg:border-none border-neutral-800 bg-neutral-900 lg:bg-black'>
+      <div className='relative w-full px-2 lg:px-0 py-2 border-b lg:border-none border-border max-lg:pl-[100px] max-sm:pl-[80px]'>
         <div className='flex overflow-hidden items-center'>
-          <div className='flex overflow-x-auto no-scrollbar'>
-            <button
-              className='focus:outline-none focus-visible:ring-1 ring-inset ring-neutral-300 rounded h-9 text-neutral-300 hover:text-white inline-flex items-center text-sm font-semibold pr-2 mr-2'
-              title='Clear filters'
+          <div className='flex overflow-x-auto no-scrollbar relative'>
+            <Swiper
+              modules={[Navigation]}
+              slidesPerView='auto'
+              navigation={{ nextEl: "#next1", prevEl: "#prev1" }}
+              className='mySwiper w-[768px] relative flex'
             >
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke-width='1.5'
-                stroke='currentColor'
-                className='w-6 h-6'
-              >
-                <path
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  d='M15.75 19.5 8.25 12l7.5-7.5'
-                ></path>
-              </svg>{" "}
-              <span>All</span>
-            </button>
-            {categoriesData.slice(6, 10).map((category, i) => (
-              <button
-                className='mr-2 focus:outline-none ring-neutral-300 focus-visible:ring-1 ring-inset rounded h-9 ring-0 flex-none px-3 py-2 text-sm font-normal inline-block whitespace-nowrap truncate max-w-36  text-neutral-300 hover:text-white bg-transparent'
-                key={i}
-              >
-                {category.name}
-              </button>
-            ))}
+              <SliderBtn
+                icon={<ChevronRight size={18} className='text-text ' />}
+                id='next1'
+                className='right-0 h-7 w-7'
+              />
+              <ResetFilter />
+              {selectedCategories.map((categoryId, i) => {
+                const category = categoriesData.find(
+                  (cat) => cat.id === categoryId
+                );
+                return (
+                  <SwiperSlide className='max-w-fit' key={i}>
+                    <Button
+                      className='h-8 px-4 py-0.5 mr-2 rounded-[20px] bg-brand text-white hover:bg-brand-hover ring-0 relative group'
+                      key={i}
+                      onClick={() => handleToggleCategory(categoryId)}
+                    >
+                      {category?.name}
+                      <span
+                        className='ml-2 inline-flex items-center justify-center rounded-full hover:bg-brand-hover/80'
+                        onClick={(e) => handleRemoveCategory(categoryId, e)}
+                      >
+                        <X size={16} className='text-white' />
+                      </span>
+                    </Button>
+                  </SwiperSlide>
+                );
+              })}
+              {selectedCategories.length === 0 &&
+                pinCategories.map((category, i) => (
+                  <SwiperSlide className='max-w-fit' key={i}>
+                    <button
+                      className={cn(
+                        "focus:outline-none focus-visible:ring-1 ring-inset ring-border rounded h-9 text-foreground hover:text-text inline-flex items-center text-sm font-semibold px-2 mr-2",
+                        className
+                      )}
+                      onClick={() => handleToggleCategory(category)}
+                      key={i}
+                    >
+                      {category}
+                    </button>
+                  </SwiperSlide>
+                ))}
+              <SliderBtn
+                icon={<ChevronLeft size={18} className='text-text ' />}
+                id='prev1'
+                className='left-0 h-7 w-7'
+              />
+            </Swiper>
           </div>
         </div>
       </div>

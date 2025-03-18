@@ -1,8 +1,11 @@
 export type Card = {
   id: number;
-  icon: string;
+  icon?: string;
   title: string;
   path: string;
-  tags: string[];
+  tags: {
+    id: string;
+    name: string;
+  }[];
   des: string;
 };
