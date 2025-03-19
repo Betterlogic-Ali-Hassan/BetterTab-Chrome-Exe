@@ -48,14 +48,21 @@ table {
 .tiptap h1 {
   font-size: 2rem;
   font-weight: 700;
+  color: var(--text-color);
 }
 .tiptap h2 {
   font-size: 1.5rem;
   font-weight: 600;
+  color: var(--text-color);
 }
 .tiptap h3 {
   font-size: 1.2rem;
   font-weight: 600;
+  color: var(--text-color);
+}
+p {
+  color: var(--text-color);
+  font-size: 0.9rem;
 }
 .tiptap blockquote {
   font-weight: 500;
