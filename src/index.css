@@ -146,23 +146,6 @@ div[role="dialog"] {
   /* padding: 0 !important; */
   box-shadow: none;
 }
-.tox-tinymce {
-  border-radius: 0 !important;
-  background-color: var(--background-color) !important;
-  border: 1px solid var(--border-color) !important;
-  color: var(--text-color) !important;
-}
-.tox-editor-header {
-  background-color: var(--background-color) !important;
-  border-bottom: 1px solid var(--border-color) !important;
-}
-.tox .tox-toolbar__primary {
-  background-color: var(--background-color) !important;
-}
-.tox .tox-tbtn {
-  background-color: transparent !important;
-  cursor: pointer;
-}
-.tox .tox-tbtn:hover {
-  background-color: var(--card-color) !important;
+.ProseMirror {
+  outline: none !important;
 }
