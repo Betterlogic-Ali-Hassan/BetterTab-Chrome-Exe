@@ -24,19 +24,23 @@ export function Sorting() {
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent className='w-[183px] p-2 '>
-        <DropdownMenuLabel className='text-[10px] uppercase'>
+        <DropdownMenuLabel className='text-[10px] uppercase text-text'>
           Sort by
         </DropdownMenuLabel>
         <DropdownMenuGroup>
           <DropdownMenuItem className='flex items-center justify-between w-full text-sm'>
-            <span className='text-sm'>Title</span>
+            <span className='text-sm text-text'>Title</span>
             <div className='flex'>
               <IoIosArrowRoundUp size={16} className='-mr-2' />
               <IoIosArrowRoundDown size={16} />
             </div>
           </DropdownMenuItem>
-          <DropdownMenuItem>Date Updated</DropdownMenuItem>
-          <DropdownMenuItem>Date Created</DropdownMenuItem>
+          <DropdownMenuItem className='text-text'>
+            Date Updated
+          </DropdownMenuItem>
+          <DropdownMenuItem className='text-text'>
+            Date Created
+          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator className='bg-home-sidebar-hover mt-2' />
         <DropdownMenuGroup>

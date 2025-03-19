@@ -9,8 +9,16 @@ import {
 import SidebarItem from "../homeSidebar/SidebarItem";
 import ViewIcon from "../svgs/ViewIcon";
 import { GalleryThumbnails, List } from "lucide-react";
-
-export function View() {
+interface Props {
+  setCardView: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export function View({ setCardView }: Props) {
+  const setCardViewHandler = () => {
+    setCardView(true);
+  };
+  const setListViewHandler = () => {
+    setCardView(false);
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -23,17 +31,23 @@ export function View() {
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent className='w-[183px] p-2 '>
-        <DropdownMenuLabel className='text-[10px]'>
+        <DropdownMenuLabel className='text-[10px] text-text'>
           NOTE LIST VIEW
         </DropdownMenuLabel>
 
         <DropdownMenuGroup>
-          <DropdownMenuItem className='flex items-center gap-3 w-full text-base'>
-            <GalleryThumbnails size={22} />
+          <DropdownMenuItem
+            className='flex items-center gap-3 w-full text-text'
+            onClick={setCardViewHandler}
+          >
+            <GalleryThumbnails size={20} />
             Cards
           </DropdownMenuItem>
-          <DropdownMenuItem className='flex items-center gap-3 w-full text-base'>
-            <List size={22} />
+          <DropdownMenuItem
+            className='flex items-center gap-3 w-full text-text'
+            onClick={setListViewHandler}
+          >
+            <List size={20} />
             Snippets
           </DropdownMenuItem>
         </DropdownMenuGroup>
