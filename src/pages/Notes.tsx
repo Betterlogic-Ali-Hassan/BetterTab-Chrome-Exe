@@ -1,4 +1,4 @@
-import TextEditor from "@/components/TextEditor";
+import TextEditor from "@/components/textEditor/TextEditor";
 import NotesPageLayout from "./layout/NotesPageLayout";
 
 const Notes = () => {

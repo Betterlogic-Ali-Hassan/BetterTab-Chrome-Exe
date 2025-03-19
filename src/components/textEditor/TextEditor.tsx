@@ -1,5 +1,7 @@
 "use client";
 
+import type React from "react";
+
 import {
   useEditor,
   EditorContent,
@@ -17,7 +19,8 @@ import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
-import { useState, useCallback } from "react";
+import Heading from "@tiptap/extension-heading";
+import { useState, useCallback, useRef } from "react";
 import {
   Bold,
   Italic,
@@ -41,10 +44,10 @@ import {
   TableIcon,
   Unlink,
   Palette,
+  Upload,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-
 import {
   Popover,
   PopoverContent,
@@ -52,40 +55,130 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
+import "./editor.styles.css";
+
 export default function RichTextEditor() {
   const [linkUrl, setLinkUrl] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const editor = useEditor({
     extensions: [
-      StarterKit,
-      Underline,
-      Link.configure({
-        openOnClick: false,
-        HTMLAttributes: {
-          class: "text-primary underline",
+      StarterKit.configure({
+        // Disable the built-in heading extension
+        heading: false,
+        paragraph: {
+          HTMLAttributes: {
+            class: "paragraph",
+          },
         },
+        bulletList: {
+          keepMarks: true,
+          keepAttributes: true,
+          HTMLAttributes: {
+            class: "bullet-list",
+          },
+        },
+        orderedList: {
+          keepMarks: true,
+          keepAttributes: true,
+          HTMLAttributes: {
+            class: "ordered-list",
+          },
+        },
+        listItem: {
+          HTMLAttributes: {
+            class: "list-item",
+          },
+        },
+        blockquote: {
+          HTMLAttributes: {
+            class: "blockquote",
+          },
+        },
+        codeBlock: {
+          HTMLAttributes: {
+            class: "code-block",
+          },
+        },
+        code: {
+          HTMLAttributes: {
+            class: "code",
+          },
+        },
+        horizontalRule: {
+          HTMLAttributes: {
+            class: "horizontal-rule",
+          },
+        },
+      }),
+      // Add a custom heading extension with proper class handling
+      Heading.configure({
+        levels: [1, 2, 3],
+        HTMLAttributes: {
+          class: (attributes: { level: number }) => `h${attributes.level}`,
+        },
+      }),
+      Underline.configure({
+        HTMLAttributes: {
+          class: "underline",
+        },
+      }),
+      Link.configure({
+        openOnClick: true,
+        HTMLAttributes: {
+          class: "link text-primary underline cursor-pointer",
+        },
+        validate: (href) =>
+          /^https?:\/\//.test(href) ||
+          href.startsWith("/") ||
+          href.startsWith("#"),
       }),
       Image.configure({
         HTMLAttributes: {
-          class: "rounded-md max-w-full",
+          class: "image rounded-md max-w-full",
         },
+        allowBase64: true,
       }),
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
       Table.configure({
         resizable: true,
+        HTMLAttributes: {
+          class: "rich-table",
+        },
       }),
-      TableRow,
-      TableHeader,
-      TableCell,
-      TextStyle,
+      TableRow.configure({
+        HTMLAttributes: {
+          class: "rich-table-row",
+        },
+      }),
+      TableHeader.configure({
+        HTMLAttributes: {
+          class: "rich-table-header",
+        },
+      }),
+      TableCell.configure({
+        HTMLAttributes: {
+          class: "rich-table-cell",
+        },
+      }),
+      TextStyle.configure({
+        HTMLAttributes: {
+          class: "text-style",
+        },
+      }),
       Color,
     ],
     content: `
       <h1>Welcome to the Rich Text Editor!</h1>
+      <p>Try formatting some text, adding lists, or inserting images.</p>
     `,
+    onUpdate: () => {
+      // This is optional - you can use it to save content as it changes
+      // console.log(editor.getHTML());
+    },
   });
 
   const setLink = useCallback(() => {
@@ -96,8 +189,13 @@ export default function RichTextEditor() {
       return;
     }
 
-    // Add https:// if it doesn't exist
-    const url = linkUrl.startsWith("http") ? linkUrl : `https://${linkUrl}`;
+    // Add https:// if it doesn't exist and it's not a relative URL
+    const url =
+      !linkUrl.startsWith("http") &&
+      !linkUrl.startsWith("/") &&
+      !linkUrl.startsWith("#")
+        ? `https://${linkUrl}`
+        : linkUrl;
 
     editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
     setLinkUrl("");
@@ -111,6 +209,34 @@ export default function RichTextEditor() {
       setImageUrl("");
     }
   }, [editor, imageUrl]);
+
+  const handleImageUpload = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (!editor || !event.target.files || event.target.files.length === 0)
+        return;
+
+      const file = event.target.files[0];
+      if (!file.type.startsWith("image/")) return;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (typeof e.target?.result === "string") {
+          editor.chain().focus().setImage({ src: e.target.result }).run();
+        }
+      };
+      reader.readAsDataURL(file);
+
+      // Reset the file input
+      if (event.target) {
+        event.target.value = "";
+      }
+    },
+    [editor]
+  );
+
+  const triggerImageUpload = () => {
+    fileInputRef.current?.click();
+  };
 
   const addTable = useCallback(() => {
     if (!editor) return;
@@ -127,7 +253,7 @@ export default function RichTextEditor() {
   }
 
   return (
-    <div className='border-l border-border w-full'>
+    <div className='border border-border rounded-md w-full'>
       <div className='p-2 border-b bg-muted/40 sticky top-0 z-10'>
         <div className='flex flex-wrap gap-1 mb-2'>
           <Button
@@ -308,30 +434,29 @@ export default function RichTextEditor() {
                 <LinkIcon className='h-4 w-4' />
               </Button>
             </PopoverTrigger>
-            <PopoverContent className='w-80'>
+            <PopoverContent className='w-[22rem]'>
               <div className='grid gap-4'>
                 <div className='space-y-2'>
                   <h4 className='font-medium leading-none'>Insert Link</h4>
-                  <p className='text-sm text-muted-foreground'>
-                    Add a URL to create a link
-                  </p>
                 </div>
                 <div className='grid gap-2'>
-                  <div className='grid grid-cols-3 items-center gap-4'>
-                    <label htmlFor='link-url' className='text-right'>
-                      URL
-                    </label>
+                  <div className='flex flex-col  gap-2'>
+                    <label htmlFor='link-url'>URL</label>
                     <input
                       id='link-url'
                       value={linkUrl}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setLinkUrl(e.target.value)
-                      }
+                      onChange={(e) => setLinkUrl(e.target.value)}
                       placeholder='https://example.com'
-                      className='col-span-2'
+                      className='col-span-2 input'
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          setLink();
+                        }
+                      }}
                     />
                   </div>
-                  <div className='flex justify-between'>
+                  <div className='flex justify-between mt-3'>
                     <Button
                       variant='outline'
                       onClick={() =>
@@ -347,7 +472,12 @@ export default function RichTextEditor() {
                       <Unlink className='h-4 w-4 mr-2' />
                       Remove Link
                     </Button>
-                    <Button onClick={setLink}>Apply</Button>
+                    <Button
+                      onClick={setLink}
+                      className='bg-text text-card hover:opacity-90'
+                    >
+                      Apply
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -360,30 +490,49 @@ export default function RichTextEditor() {
                 <ImageIcon className='h-4 w-4' />
               </Button>
             </PopoverTrigger>
-            <PopoverContent className='w-80 bg-card'>
+            <PopoverContent className='w-[22rem]'>
               <div className='grid gap-4'>
                 <div className='space-y-2'>
                   <h4 className='font-medium leading-none'>Insert Image</h4>
                 </div>
                 <div className='grid gap-2'>
-                  <div className='flex  flex-col  gap-4 mb-4'>
+                  <div className='flex flex-col gap-2'>
                     <label htmlFor='image-url'>Image URL</label>
                     <input
                       id='image-url'
                       value={imageUrl}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                        setImageUrl(e.target.value)
-                      }
+                      className='input'
+                      onChange={(e) => setImageUrl(e.target.value)}
                       placeholder='https://example.com/image.jpg'
-                      className='col-span-2 input rounded'
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          addImage();
+                        }
+                      }}
                     />
                   </div>
-                  <div className='flex justify-end'>
+                  <div className='flex justify-between items-center mt-2'>
+                    <Button
+                      variant='outline'
+                      onClick={triggerImageUpload}
+                      className='flex items-center gap-2'
+                    >
+                      <Upload className='h-4 w-4' />
+                      Upload from Computer
+                    </Button>
+                    <input
+                      ref={fileInputRef}
+                      type='file'
+                      accept='image/*'
+                      onChange={handleImageUpload}
+                      className='hidden input'
+                    />
                     <Button
                       onClick={addImage}
-                      className='bg-text text-card hover:opacity-80'
+                      className='bg-text text-card hover:opacity-90'
                     >
-                      Insert Image
+                      Insert URL
                     </Button>
                   </div>
                 </div>
@@ -462,7 +611,14 @@ export default function RichTextEditor() {
       </div>
 
       {editor && (
-        <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
+        <BubbleMenu
+          editor={editor}
+          tippyOptions={{ duration: 100 }}
+          shouldShow={({ from, to }) => {
+            // Only show the bubble menu for selections that are not empty
+            return from !== to;
+          }}
+        >
           <div className='flex items-center rounded-md border bg-background shadow-md'>
             <Button
               variant='ghost'
@@ -520,11 +676,15 @@ export default function RichTextEditor() {
                       <input
                         id='bubble-link-url'
                         value={linkUrl}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                          setLinkUrl(e.target.value)
-                        }
+                        onChange={(e) => setLinkUrl(e.target.value)}
                         placeholder='https://example.com'
-                        className='col-span-2'
+                        className='col-span-2 input'
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            setLink();
+                          }
+                        }}
                       />
                     </div>
                     <div className='flex justify-between'>
@@ -554,7 +714,20 @@ export default function RichTextEditor() {
       )}
 
       {editor && (
-        <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
+        <FloatingMenu
+          editor={editor}
+          tippyOptions={{ duration: 100 }}
+          shouldShow={({ state }) => {
+            // Show only when the selection is empty and at the start of a line
+            const { selection } = state;
+            const { empty, $anchor } = selection;
+            return (
+              empty &&
+              $anchor.parent.type.name === "paragraph" &&
+              $anchor.pos === $anchor.start()
+            );
+          }}
+        >
           <div className='flex items-center rounded-md border bg-background shadow-md'>
             <Button
               variant='ghost'
@@ -619,7 +792,7 @@ export default function RichTextEditor() {
         </FloatingMenu>
       )}
 
-      <div className='p-4 prose prose-sm sm:prose max-w-none'>
+      <div className='p-4 prose prose-sm sm:prose max-w-none editor-content'>
         <EditorContent editor={editor} />
       </div>
     </div>
