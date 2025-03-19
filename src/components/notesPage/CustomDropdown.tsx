@@ -71,7 +71,7 @@ export const CustomLocationDropdown = ({
           <input
             ref={inputRef}
             type='text'
-            className='h-full w-full rounded px-3 py-2 pr-8 focus:outline-none cursor-pointer placeholder:text-text'
+            className='h-full w-full rounded px-3 py-2 pr-8 focus:outline-none cursor-pointer placeholder:text-text bg-transparent'
             placeholder={selectedOption || "Select"}
             value={isOpen ? searchTerm : ""}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -88,7 +88,7 @@ export const CustomLocationDropdown = ({
         </div>
 
         {isOpen && (
-          <div className='absolute z-50 w-[220px] max-h-[300px] overflow-auto no-scrollbar bg-white border border-border rounded-md shadow-md mt-1'>
+          <div className='absolute z-50 w-[220px] max-h-[300px] overflow-auto no-scrollbar bg-card border border-border rounded-md shadow-md mt-1'>
             <div className='p-2'>
               {filteredOptions.length > 0 ? (
                 filteredOptions.map((option) => (
