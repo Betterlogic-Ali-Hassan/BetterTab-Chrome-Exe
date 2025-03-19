@@ -1,7 +1,7 @@
 import { Filtering } from "./Filtering";
-
 import { Sorting } from "./Sorting";
 import { View } from "./View";
+
 interface Props {
   setCardView: React.Dispatch<React.SetStateAction<boolean>>;
 }

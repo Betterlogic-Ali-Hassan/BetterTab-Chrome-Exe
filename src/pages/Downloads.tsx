@@ -1,10 +1,10 @@
-import Hero from "@/components/hero/Hero";
+import Bookmarks from "@/components/bookmarkPage/Bookmarks";
 import MainLayout from "./layout/MainLayout";
 
 const Downloads = () => {
   return (
     <MainLayout>
-      <Hero />
+      <Bookmarks />
     </MainLayout>
   );
 };

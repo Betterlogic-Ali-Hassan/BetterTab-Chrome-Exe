@@ -5,13 +5,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import SidebarItem from "../homeSidebar/SidebarItem";
-import FilterIcon from "../svgs/FilterIcon";
-import HomeIcon from "../svgs/HomeIcon";
-import LocationIcon from "../svgs/LocationIcon";
-import Calendar from "../svgs/Calendar";
+import SidebarItem from "../../homeSidebar/SidebarItem";
+import FilterIcon from "../../svgs/FilterIcon";
+import HomeIcon from "../../svgs/HomeIcon";
+import LocationIcon from "../../svgs/LocationIcon";
+import Calendar from "../../svgs/Calendar";
 import { FilterInput } from "./FilterInput";
-import { CustomLocationDropdown } from "./CustomDropdown";
+import { CustomLocationDropdown } from "../CustomDropdown";
 import { useState } from "react";
 import { DateRange } from "react-day-picker";
 

@@ -1,6 +1,6 @@
 import { useBookmarks } from "@/context/BookmarkContext";
-import SelectIcon from "../svgs/SelectIcon";
-import CrossIcon from "../svgs/CrossIcon";
+import SelectIcon from "../../svgs/SelectIcon";
+import CrossIcon from "../../svgs/CrossIcon";
 
 const DropDownContent = () => {
   const {

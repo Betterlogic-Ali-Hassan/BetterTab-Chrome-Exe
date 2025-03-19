@@ -6,8 +6,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import SidebarItem from "../homeSidebar/SidebarItem";
-import ViewIcon from "../svgs/ViewIcon";
+import SidebarItem from "../../homeSidebar/SidebarItem";
+import ViewIcon from "../../svgs/ViewIcon";
 import { GalleryThumbnails, List } from "lucide-react";
 interface Props {
   setCardView: React.Dispatch<React.SetStateAction<boolean>>;

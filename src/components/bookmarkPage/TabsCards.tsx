@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 import { useThumbnailToggler } from "@/context/ThumbnailTogglerContext";
 import { usePageContext } from "@/context/PageContext";
 
-import HourlyLog from "../HourlyLog";
-import CardGroup from "./CardGroup";
-import InfiniteScrollSentinel from "./InfiniteScrollSentinel";
+import HourlyLog from "../historyPage/HourlyLog";
+import CardGroup from "./thumbnails/CardGroup";
+import InfiniteScrollSentinel from "../InfiniteScrollSentinel";
 
 interface TabsCardsProps {
   cards: Card[];

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import DropDownContent from "./DropDownContent";
 import { useBookmarks } from "@/context/BookmarkContext";
-import ThumbnailToggle from "../hero/ThumbnailToggle";
+import ThumbnailToggle from "../../bookmarkPage/ThumbnailToggle";
 import { usePageContext } from "@/context/PageContext";
-import DotsIcon from "../svgs/DotsIcon";
+import DotsIcon from "../../svgs/DotsIcon";
 
 const DropDown = () => {
   const { cards } = useBookmarks();

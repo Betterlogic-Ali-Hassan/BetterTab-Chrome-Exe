@@ -1,5 +1,6 @@
 import { notes } from "@/constant/Notes";
 import NotesSidebarActionsBtn from "./NotesSidebarActionsBtn";
+
 interface Props {
   setCardView: React.Dispatch<React.SetStateAction<boolean>>;
 }

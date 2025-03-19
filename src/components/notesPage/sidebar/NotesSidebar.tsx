@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import NotesSidebarHeader from "./sidebar/NotesSidebarHeader";
-import NotesSidebarItem from "./sidebar/NotesSidebarItem";
+import NotesSidebarHeader from "./NotesSidebarHeader";
+import NotesSidebarItem from "./NotesSidebarItem";
 import { cn } from "@/lib/utils";
 import { notes } from "@/constant/Notes";
 

@@ -1,7 +1,7 @@
 import Header from "@/components/header/Header";
 import HomeSidebar from "@/components/homeSidebar/HomeSidebar";
 
-import TopBar from "@/components/topbar/TopBar";
+import TopBar from "@/components/header/topbar/TopBar";
 import { ThumbnailTogglerProvider } from "@/context/ThumbnailTogglerContext";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";

@@ -4,9 +4,10 @@ import type React from "react";
 
 import { useState } from "react";
 import type { Card } from "@/types/TabCardType";
-import CardRenderer from "./CardRenderer";
-import InfiniteScrollSentinel from "./InfiniteScrollSentinel";
+import CardRenderer from "../bookmarkPage/thumbnails/CardRenderer";
+
 import { usePageContext } from "@/context/PageContext";
+import InfiniteScrollSentinel from "../InfiniteScrollSentinel";
 
 interface ExtensionCardsGroupProps {
   cards: Card[];

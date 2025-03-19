@@ -1,7 +1,7 @@
-import Categories from "./Categories";
+import Categories from "./thumbnails/Categories";
 import TabsArea from "./TabsArea";
 
-const Hero = () => {
+const Bookmarks = () => {
   return (
     <>
       <Categories />
@@ -10,4 +10,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Bookmarks;

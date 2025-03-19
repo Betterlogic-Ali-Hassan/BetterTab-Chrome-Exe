@@ -6,8 +6,8 @@ import { usePageContext } from "@/context/PageContext";
 import { getCategoryCounts, getCategoryName } from "@/lib/category-utils";
 import { cn } from "@/lib/utils";
 import { useMemo } from "react";
-import DialogBox from "../../modals/DialogBox";
-import AddNew from "../addNewFolder/AddNew";
+import DialogBox from "../../../modals/DialogBox";
+import AddNew from "../../addNewFolder/AddNew";
 import { BsPin, BsPinFill } from "react-icons/bs";
 
 const Categories = ({ className }: { className?: string }) => {

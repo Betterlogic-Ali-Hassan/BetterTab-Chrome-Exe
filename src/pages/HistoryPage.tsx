@@ -1,5 +1,4 @@
-import TabsArea from "@/components/hero/TabsArea";
-
+import TabsArea from "@/components/bookmarkPage/TabsArea";
 import MainLayout from "./layout/MainLayout";
 
 export default function HistoryPage() {

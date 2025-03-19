@@ -1,6 +1,6 @@
 import { sidebarData, sidebarDataBottom } from "@/constant/HomeSidebarData";
 import SidebarItem from "./SidebarItem";
-import MobileCategoriesFilter from "../hero/MobileCategoriesFilter";
+import MobileCategoriesFilter from "../bookmarkPage/MobileCategoriesFilter";
 import MobileMenu from "./MobileMenu";
 import SettingIcon from "../svgs/SettingIcon";
 import Logo from "./Logo";

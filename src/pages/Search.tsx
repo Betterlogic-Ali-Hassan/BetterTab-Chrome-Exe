@@ -1,8 +1,9 @@
-import TabCardDetail from "@/components/hero/tabCardDetail/TabCardDetail";
-import TabsCards from "@/components/hero/TabsCards";
+import TabCardDetail from "@/components/bookmarkPage/tabCardDetail/TabCardDetail";
+import TabsCards from "@/components/bookmarkPage/TabsCards";
+
 import DataNotFound from "@/components/DataNotFound";
 import SearchBar from "@/components/searchPage/SearchBar";
-import TopNav from "@/components/topbar/TopNav";
+import TopNav from "@/components/header/topbar/TopNav";
 import { categoriesData } from "@/constant/categoriesData";
 import { useBookmarks } from "@/context/BookmarkContext";
 import { cn } from "@/lib/utils";

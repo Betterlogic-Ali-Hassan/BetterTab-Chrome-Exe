@@ -7,8 +7,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import SidebarItem from "../homeSidebar/SidebarItem";
-import SortIcon from "../svgs/SortIcon";
+import SidebarItem from "../../homeSidebar/SidebarItem";
+import SortIcon from "../../svgs/SortIcon";
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from "react-icons/io";
 
 export function Sorting() {

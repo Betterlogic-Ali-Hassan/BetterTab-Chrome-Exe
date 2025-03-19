@@ -1,7 +1,7 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import FilterIcon from "../svgs/FilterIcon";
-import Categories from "./Categories";
-import ResetFilter from "../topbar/ResetFilter";
+import Categories from "./thumbnails/Categories";
+import ResetFilter from "../header/topbar/ResetFilter";
 
 const MobileCategoriesFilter = () => {
   return (

@@ -2,11 +2,11 @@
 
 import type React from "react";
 import type { Card } from "@/types/TabCardType";
-import TabCard from "./TabCard";
+import TabCard from "../TabCard";
 import ThumbnailCard from "./thumbnailView/ThumbnailCard";
-import ExtensionCard from "../extensionPage/ExtensionCard";
-import ExtensionListViewCard from "../extensionPage/ExtensionListViewCard";
-import DownloadCard from "../downloadPage/DownloadCard";
+import ExtensionCard from "../../extensionPage/ExtensionCard";
+import ExtensionListViewCard from "../../extensionPage/ExtensionListViewCard";
+import DownloadCard from "../../downloadPage/DownloadCard";
 
 interface CardRendererProps {
   data: Card;

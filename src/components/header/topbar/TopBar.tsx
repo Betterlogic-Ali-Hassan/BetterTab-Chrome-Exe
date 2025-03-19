@@ -2,7 +2,7 @@ import DropDown from "./DropDown";
 import TopNav from "./TopNav";
 import { usePageContext } from "@/context/PageContext";
 import { categories } from "@/constant/categories";
-import History from "../historyPage/History";
+import History from "../../historyPage/History";
 import { useBookmarks } from "@/context/BookmarkContext";
 
 const TopBar = () => {

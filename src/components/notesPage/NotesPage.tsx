@@ -1,4 +1,4 @@
-import NotesSidebar from "./NotesSidebar";
+import NotesSidebar from "./sidebar/NotesSidebar";
 
 const NotesPage = () => {
   return <NotesSidebar />;
