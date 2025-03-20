@@ -10,7 +10,7 @@ import { useEditorContext } from "@/context/EditorContext";
 export default function RichTextEditor() {
   const { editor } = useEditorContext();
   return (
-    <div className='border border-border rounded-md w-full'>
+    <div className='border border-border rounded-md w-full max-h-screen overflow-auto '>
       <EditorToolbar />
       <EditorBubbleMenu />
       <EditorFloatingMenu />

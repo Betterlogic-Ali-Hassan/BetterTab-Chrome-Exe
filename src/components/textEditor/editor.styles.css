@@ -136,6 +136,4 @@ p {
 }
 .ProseMirror {
   outline: none !important;
-  max-height: 100vh !important;
-  overflow-y: auto !important;
 }

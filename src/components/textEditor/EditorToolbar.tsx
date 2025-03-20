@@ -99,8 +99,8 @@ export default function EditorToolbar() {
   }, [editor]);
 
   return (
-    <div className='p-2 border-b bg-muted/40 sticky top-0 z-10'>
-      <div className='flex flex-wrap gap-1 mb-2'>
+    <div className='p-2 border-b bg-muted/40 sticky  top-0 z-50 bg-background '>
+      <div className='flex flex-wrap items-center gap-1 mb-2'>
         <ToolbarButtonGroup>
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleBold().run()}

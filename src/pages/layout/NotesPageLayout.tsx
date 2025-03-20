@@ -1,5 +1,5 @@
 import HomeSidebar from "@/components/homeSidebar/HomeSidebar";
-import NotesPage from "@/components/textEditor/notesPage/NotesPage";
+import NotesPage from "@/components/textEditor/notes/NotesPage";
 import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
