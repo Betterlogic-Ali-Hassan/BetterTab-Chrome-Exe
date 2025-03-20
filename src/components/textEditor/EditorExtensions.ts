@@ -10,8 +10,47 @@ import TableHeader from "@tiptap/extension-table-header";
 import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import Heading from "@tiptap/extension-heading";
+import { Extension } from "@tiptap/core"
+
+const PreserveHeadingOnBackspace = Extension.create({
+  name: "preserveHeadingOnBackspace",
+
+  addKeyboardShortcuts() {
+    return {
+      Backspace: ({ editor }) => {
+        const { selection } = editor.state
+        const { empty, $from } = selection
+        if (!empty || $from.pos !== $from.start() || !$from.parent.type.name.startsWith("heading")) {
+          return false
+        }
+
+        return true
+      },
+    }
+  },
+})
+
+const CustomHeading = Heading.extend({
+  addKeyboardShortcuts() {
+    return {
+      ...this.parent?.(),
+      Backspace: ({ editor }) => {
+        const { selection } = editor.state
+        const { empty, $from } = selection
+
+        if (!empty || $from.pos !== $from.start()) {
+          return false
+        }
+        return true
+      },
+    }
+  },
+})
+
 
 export const editorExtensions = [
+  CustomHeading,
+  PreserveHeadingOnBackspace,
   StarterKit.configure({
     // Disable the built-in heading extension
     heading: false,

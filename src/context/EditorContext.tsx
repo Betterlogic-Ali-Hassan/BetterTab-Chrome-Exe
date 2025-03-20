@@ -17,7 +17,7 @@ type Notes = {
   title: string;
   content: string;
   updatedAt: string;
-  createdAt: string; // Added createdAt field
+  createdAt: string;
   des: string;
 }[];
 
@@ -46,15 +46,16 @@ export const EditorContextProvider = ({
   const [linkUrl, setLinkUrl] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const currentTime = new Date().toISOString();
+  const DEFAULT_TITLE = "Untitled";
 
   const [notes, setNotes] = useState([
     {
       id: 1,
-      title: "Untitled",
+      title: DEFAULT_TITLE,
       des: "",
-      content: "<h1 >Untitled</h1><p>Start writing...</p>",
+      content: `<h1>${DEFAULT_TITLE}</h1><p>Start writing...</p>`,
       updatedAt: currentTime,
-      createdAt: currentTime, // Added createdAt with the same initial value as updatedAt
+      createdAt: currentTime,
     },
   ]);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -66,20 +67,56 @@ export const EditorContextProvider = ({
       const htmlContent = editor.getHTML();
       const jsonContent = editor.getJSON().content || [];
 
-      let newTitle =
-        notes.find((note) => note.id === selectedNoteId)?.title || "Untitled";
+      // Get the current note's title or use default
+      const currentNote = notes.find((note) => note.id === selectedNoteId);
+      let newTitle = currentNote?.title || DEFAULT_TITLE;
       let newDescription = "";
       let firstHeadingFound = false;
 
+      // Extract title from first heading if it exists
       jsonContent.forEach((block) => {
         if (block.type === "heading" && !firstHeadingFound) {
-          newTitle = block.content?.[0]?.text || "Untitled";
-          firstHeadingFound = true;
+          // Only update title if the heading has actual text content
+          const headingText = block.content?.[0]?.text?.trim();
+          if (headingText) {
+            newTitle = headingText;
+            firstHeadingFound = true;
+          }
         } else if (block.content) {
           newDescription +=
             block.content.map((c) => c.text || "").join(" ") + " ";
         }
       });
+
+      // Ensure title is never empty
+      if (!newTitle || newTitle.trim() === "") {
+        newTitle = DEFAULT_TITLE;
+      }
+
+      // If no heading is found in the content, ensure there's a heading at the top
+      if (!firstHeadingFound) {
+        // Check if the first block is a paragraph that might have been a heading
+        const firstBlock = jsonContent[0];
+        if (firstBlock && firstBlock.type === "paragraph") {
+          const paragraphText = firstBlock.content?.[0]?.text?.trim();
+          if (paragraphText) {
+            newTitle = paragraphText;
+
+            // Convert the paragraph back to a heading in the editor
+            setTimeout(() => {
+              const { from, to } = editor.state.selection;
+              editor
+                .chain()
+                .focus()
+                .setNodeSelection(0)
+                .setNode("heading", { level: 1 })
+                .run();
+              // Fix the setTextSelection command to use an object with from and to properties
+              editor.commands.setTextSelection({ from, to });
+            }, 0);
+          }
+        }
+      }
 
       setNotes((prevNotes) =>
         prevNotes.map((note) =>
@@ -89,7 +126,7 @@ export const EditorContextProvider = ({
                 title: newTitle,
                 des: newDescription.trim(),
                 content: htmlContent,
-                updatedAt: new Date().toISOString(), // Only update the updatedAt timestamp
+                updatedAt: new Date().toISOString(),
               }
             : note
         )
@@ -101,9 +138,9 @@ export const EditorContextProvider = ({
     const currentTime = new Date().toISOString();
     const newNote = {
       id: Date.now(),
-      title: "Untitled",
+      title: DEFAULT_TITLE,
       des: "",
-      content: "<h1>Untitled</h1><p>Start writing...</p>",
+      content: `<h1>${DEFAULT_TITLE}</h1><p>Start writing...</p>`,
       updatedAt: currentTime,
       createdAt: currentTime,
     };
