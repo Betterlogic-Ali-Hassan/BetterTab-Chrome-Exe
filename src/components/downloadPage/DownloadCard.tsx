@@ -10,9 +10,9 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
   const { title, icon, path, id } = data;
 
   return (
-    <div className='p-6 border-border border group rounded-lg bg-card flex gap-6 mb-4 relative cursor-pointer'>
-      <div className='h-[36px] w-[36px]'>
-        <img src={icon} alt={title} className='h-[36px] w-[36px]' />
+    <div className='p-6 border-border border group rounded-lg bg-card flex gap-5 mb-4 relative cursor-pointer'>
+      <div className='h-[32px] w-[32px]'>
+        <img src={icon} alt={title} className='h-[32px] w-[32px] dark:invert' />
       </div>
       <div className='grow flex items-center justify-between'>
         <div>
