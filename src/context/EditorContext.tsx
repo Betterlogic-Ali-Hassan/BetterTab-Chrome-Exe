@@ -17,6 +17,7 @@ type Notes = {
   title: string;
   content: string;
   updatedAt: string;
+  createdAt: string; // Added createdAt field
   des: string;
 }[];
 
@@ -32,6 +33,7 @@ type EditorContextProps = {
   addNewNote: () => void;
   deleteNote: (id: number) => void;
   selectNote: (id: number) => void;
+  setNotes: (notes: Notes) => void;
 };
 
 const EditorContext = createContext<EditorContextProps | undefined>(undefined);
@@ -43,13 +45,16 @@ export const EditorContextProvider = ({
 }) => {
   const [linkUrl, setLinkUrl] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const currentTime = new Date().toISOString();
+
   const [notes, setNotes] = useState([
     {
       id: 1,
       title: "Untitled",
       des: "",
       content: "<h1 >Untitled</h1><p>Start writing...</p>",
-      updatedAt: new Date().toISOString(),
+      updatedAt: currentTime,
+      createdAt: currentTime, // Added createdAt with the same initial value as updatedAt
     },
   ]);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -84,7 +89,7 @@ export const EditorContextProvider = ({
                 title: newTitle,
                 des: newDescription.trim(),
                 content: htmlContent,
-                updatedAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString(), // Only update the updatedAt timestamp
               }
             : note
         )
@@ -93,12 +98,14 @@ export const EditorContextProvider = ({
   });
 
   const addNewNote = () => {
+    const currentTime = new Date().toISOString();
     const newNote = {
       id: Date.now(),
       title: "Untitled",
       des: "",
       content: "<h1>Untitled</h1><p>Start writing...</p>",
-      updatedAt: new Date().toISOString(),
+      updatedAt: currentTime,
+      createdAt: currentTime,
     };
     setNotes([...notes, newNote]);
     setSelectedNoteId(newNote.id);
@@ -152,6 +159,7 @@ export const EditorContextProvider = ({
         addNewNote,
         deleteNote,
         selectNote,
+        setNotes,
       }}
     >
       {children}

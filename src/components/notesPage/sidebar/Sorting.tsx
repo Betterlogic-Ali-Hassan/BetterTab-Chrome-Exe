@@ -1,17 +1,63 @@
+"use client";
+
+import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import SidebarItem from "../../homeSidebar/SidebarItem";
 import SortIcon from "../../svgs/SortIcon";
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from "react-icons/io";
+import { useEditorContext } from "@/context/EditorContext";
+
+type SortField = "title" | "dateUpdated" | "dateCreated";
+type SortDirection = "asc" | "desc";
 
 export function Sorting() {
+  const { notes, setNotes } = useEditorContext();
+  const [sortField, setSortField] = useState<SortField | null>(null);
+  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
+
+  const handleSort = (field: SortField) => {
+    let newDirection: SortDirection = "asc";
+
+    if (sortField === field) {
+      newDirection = sortDirection === "asc" ? "desc" : "asc";
+      setSortDirection(newDirection);
+    } else {
+      setSortField(field);
+      newDirection = "asc";
+      setSortDirection(newDirection);
+    }
+
+    if (!notes) return;
+
+    const sortedNotes = [...notes].sort((a, b) => {
+      if (field === "title") {
+        return newDirection === "asc"
+          ? a.title.localeCompare(b.title)
+          : b.title.localeCompare(a.title);
+      } else if (field === "dateUpdated") {
+        const dateA = new Date(a.updatedAt).getTime();
+        const dateB = new Date(b.updatedAt).getTime();
+        return newDirection === "asc" ? dateA - dateB : dateB - dateA;
+      } else if (field === "dateCreated") {
+        const dateA = new Date(a.createdAt).getTime();
+        const dateB = new Date(b.createdAt).getTime();
+        return newDirection === "asc" ? dateA - dateB : dateB - dateA;
+      }
+      return 0;
+    });
+
+    if (setNotes) {
+      setNotes(sortedNotes);
+    }
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -28,24 +74,41 @@ export function Sorting() {
           Sort by
         </DropdownMenuLabel>
         <DropdownMenuGroup>
-          <DropdownMenuItem className='flex items-center justify-between w-full text-sm'>
+          <DropdownMenuItem
+            className='flex items-center justify-between w-full text-sm'
+            onClick={() => handleSort("title")}
+          >
             <span className='text-sm text-text'>Title</span>
             <div className='flex'>
-              <IoIosArrowRoundUp size={16} className='-mr-2' />
-              <IoIosArrowRoundDown size={16} />
+              <IoIosArrowRoundUp
+                size={16}
+                className={`-mr-2 ${
+                  sortField === "title" && sortDirection === "asc"
+                    ? "text-brand"
+                    : ""
+                }`}
+              />
+              <IoIosArrowRoundDown
+                size={16}
+                className={
+                  sortField === "title" && sortDirection === "desc"
+                    ? "text-brand"
+                    : ""
+                }
+              />
             </div>
           </DropdownMenuItem>
-          <DropdownMenuItem className='text-text'>
-            Date Updated
+          <DropdownMenuItem
+            className='text-text flex items-center justify-between'
+            onClick={() => handleSort("dateUpdated")}
+          >
+            <span>Date Updated</span>
           </DropdownMenuItem>
-          <DropdownMenuItem className='text-text'>
-            Date Created
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator className='bg-home-sidebar-hover mt-2' />
-        <DropdownMenuGroup>
-          <DropdownMenuItem className='text-brand'>
-            Show notes in groups
+          <DropdownMenuItem
+            className='text-text flex items-center justify-between'
+            onClick={() => handleSort("dateCreated")}
+          >
+            <span>Date Created</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
