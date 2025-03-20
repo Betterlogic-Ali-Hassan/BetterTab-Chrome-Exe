@@ -1,10 +1,11 @@
-import { notes } from "@/constant/Notes";
+import { useEditorContext } from "@/context/EditorContext";
 import NotesSidebarActionsBtn from "./NotesSidebarActionsBtn";
 
 interface Props {
   setCardView: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const NotesSidebarHeader = ({ setCardView }: Props) => {
+  const { notes } = useEditorContext();
   const notesLength = notes.length;
   return (
     <div className='pt-8 pl-4 pb-2 pr-3'>

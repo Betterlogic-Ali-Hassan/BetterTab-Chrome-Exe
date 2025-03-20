@@ -1,11 +1,14 @@
-import TextEditor from "@/components/textEditor/TextEditor";
+import RichTextEditor from "@/components/textEditor";
 import NotesPageLayout from "./layout/NotesPageLayout";
+import { EditorContextProvider } from "@/context/EditorContext";
 
 const Notes = () => {
   return (
-    <NotesPageLayout>
-      <TextEditor />
-    </NotesPageLayout>
+    <EditorContextProvider>
+      <NotesPageLayout>
+        <RichTextEditor />
+      </NotesPageLayout>
+    </EditorContextProvider>
   );
 };
 
