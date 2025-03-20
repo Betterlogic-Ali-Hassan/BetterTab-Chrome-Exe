@@ -7,7 +7,7 @@ import Logo from "./Logo";
 
 const HomeSidebar = () => {
   return (
-    <div className='fixed left-0 top-0 h-screen '>
+    <div className='fixed left-0 top-0 h-screen z-50 '>
       <div className='relative flex h-full w-16 flex-1 flex-col items-center border-r border-border px-2 pt-8 '>
         <Logo />
         <span
