@@ -30,7 +30,10 @@ export default function ColorPopover({ editor }: ColorPopoverProps) {
   return (
     <Popover>
       <PopoverTrigger>
-        <Button title='Text Color' className='bg-transparent h-[40px] w-[40px]'>
+        <Button
+          title='Text Color'
+          className='bg-transparent h-[40px] w-[40px] shadow-none'
+        >
           <Palette className='h-4 w-4' />
         </Button>
       </PopoverTrigger>

@@ -34,7 +34,7 @@ export default function ImagePopover({
         <PopoverTrigger>
           <Button
             title='Insert Image'
-            className='bg-transparent h-[40px] w-[40px]'
+            className='bg-transparent h-[40px] w-[40px] shadow-none'
           >
             <ImageIcon className='h-4 w-4' />
           </Button>
