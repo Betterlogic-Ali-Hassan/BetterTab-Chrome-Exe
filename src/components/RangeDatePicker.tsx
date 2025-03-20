@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
   endOfMonth,
@@ -13,6 +12,7 @@ import {
 } from "date-fns";
 import { useState, useEffect } from "react";
 import type { DateRange } from "react-day-picker";
+import Button from "./ui/my-button";
 
 interface RangeDatePickerProps {
   selectedRange?: DateRange;
@@ -92,8 +92,6 @@ export default function RangeDatePicker({
             <div className='h-full sm:border-e'>
               <div className='flex flex-col px-2'>
                 <Button
-                  variant='ghost'
-                  size='sm'
                   className='w-full justify-start'
                   onClick={() => {
                     const todayRange = {
@@ -110,8 +108,6 @@ export default function RangeDatePicker({
                   Today
                 </Button>
                 <Button
-                  variant='ghost'
-                  size='sm'
                   className='w-full justify-start'
                   onClick={() => {
                     setDate(yesterday);
@@ -124,8 +120,6 @@ export default function RangeDatePicker({
                   Yesterday
                 </Button>
                 <Button
-                  variant='ghost'
-                  size='sm'
                   className='w-full justify-start'
                   onClick={() => {
                     setDate(last7Days);
@@ -138,8 +132,6 @@ export default function RangeDatePicker({
                   Last 7 days
                 </Button>
                 <Button
-                  variant='ghost'
-                  size='sm'
                   className='w-full justify-start'
                   onClick={() => {
                     setDate(last30Days);
@@ -152,8 +144,6 @@ export default function RangeDatePicker({
                   Last 30 days
                 </Button>
                 <Button
-                  variant='ghost'
-                  size='sm'
                   className='w-full justify-start'
                   onClick={() => {
                     setDate(monthToDate);
@@ -166,8 +156,6 @@ export default function RangeDatePicker({
                   Month to date
                 </Button>
                 <Button
-                  variant='ghost'
-                  size='sm'
                   className='w-full justify-start'
                   onClick={() => {
                     setDate(lastMonth);
@@ -180,8 +168,6 @@ export default function RangeDatePicker({
                   Last month
                 </Button>
                 <Button
-                  variant='ghost'
-                  size='sm'
                   className='w-full justify-start'
                   onClick={() => {
                     setDate(yearToDate);
@@ -194,8 +180,6 @@ export default function RangeDatePicker({
                   Year to date
                 </Button>
                 <Button
-                  variant='ghost'
-                  size='sm'
                   className='w-full justify-start'
                   onClick={() => {
                     setDate(lastYear);

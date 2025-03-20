@@ -6,11 +6,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
-import RangeDatePicker from "../../RangeDatePicker";
+
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import { DateRange } from "react-day-picker";
 import { formatDateRange } from "@/lib/format-date";
+import RangeDatePicker from "@/components/RangeDatePicker";
 export const FilterInput = ({
   icon,
   text,

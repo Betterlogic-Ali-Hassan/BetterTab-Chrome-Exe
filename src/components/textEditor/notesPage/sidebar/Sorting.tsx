@@ -9,10 +9,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import SidebarItem from "../../homeSidebar/SidebarItem";
-import SortIcon from "../../svgs/SortIcon";
+
 import { IoIosArrowRoundDown, IoIosArrowRoundUp } from "react-icons/io";
 import { useEditorContext } from "@/context/EditorContext";
+import SidebarItem from "@/components/homeSidebar/SidebarItem";
+import SortIcon from "@/components/svgs/SortIcon";
 
 type SortField = "title" | "dateUpdated" | "dateCreated";
 type SortDirection = "asc" | "desc";
