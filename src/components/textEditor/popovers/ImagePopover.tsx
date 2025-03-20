@@ -34,7 +34,7 @@ export default function ImagePopover({
         <PopoverTrigger>
           <Button
             title='Insert Image'
-            className='bg-transparent h-[40px] w-[40px] shadow-none'
+            className='bg-transparent h-[40px] w-[40px] shadow-none ring-0'
           >
             <ImageIcon className='h-4 w-4' />
           </Button>
@@ -71,7 +71,7 @@ export default function ImagePopover({
                 </Button>
                 <Button
                   onClick={addImage}
-                  className='bg-text text-card hover:opacity-90'
+                  className='bg-brand text-white hover:bg-brand-hover ring-0 '
                 >
                   Insert URL
                 </Button>

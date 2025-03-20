@@ -43,7 +43,7 @@ export default function EditorBubbleMenu() {
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={cn(
             editor.isActive("bold") ? "bg-hover" : "bg-transparent",
-            "rounded-none h-[40px] w-[40px] shadow-none"
+            "rounded-none h-[40px] w-[40px] shadow-none ring-0"
           )}
         >
           <Bold className='h-4 w-4' />
@@ -52,7 +52,7 @@ export default function EditorBubbleMenu() {
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={cn(
             editor.isActive("italic") ? "bg-hover" : "bg-transparent",
-            "rounded-none h-[40px] w-[40px] shadow-none"
+            "rounded-none h-[40px] w-[40px] shadow-none ring-0"
           )}
         >
           <Italic className='h-4 w-4' />
@@ -61,7 +61,7 @@ export default function EditorBubbleMenu() {
           onClick={() => editor.chain().focus().toggleUnderline().run()}
           className={cn(
             editor.isActive("underline") ? "bg-hover" : "bg-transparent",
-            "rounded-none h-[40px] w-[40px] shadow-none"
+            "rounded-none h-[40px] w-[40px] shadow-none ring-0"
           )}
         >
           <UnderlineIcon className='h-4 w-4' />
@@ -71,7 +71,7 @@ export default function EditorBubbleMenu() {
             <Button
               className={cn(
                 editor.isActive("link") ? "bg-hover" : "bg-transparent",
-                "rounded-none h-[40px] w-[40px] shadow-none"
+                "rounded-none h-[40px] w-[40px] shadow-none ring-0"
               )}
             >
               <LinkIcon className='h-4 w-4' />

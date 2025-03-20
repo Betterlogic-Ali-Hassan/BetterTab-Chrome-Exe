@@ -29,7 +29,7 @@ export default function LinkPopover({
         <Button
           className={cn(
             editor.isActive("link") ? "bg-btn-hover" : "bg-transparent ",
-            "shadow-none"
+            "shadow-none h-[40px] w-[40px] ring-0"
           )}
           title='Add Link'
         >
@@ -75,7 +75,7 @@ export default function LinkPopover({
               </Button>
               <Button
                 onClick={setLink}
-                className='bg-text text-card hover:opacity-90 hover:bg-text rounded-md  '
+                className='bg-brand text-white hover:bg-brand-hover ring-0 '
               >
                 Apply
               </Button>

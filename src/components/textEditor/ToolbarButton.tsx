@@ -24,7 +24,7 @@ export default function ToolbarButton({
       onClick={onClick}
       className={cn(
         isActive ? "bg-hover" : "bg-transparent",
-        "h-[40px] w-[40px] shadow-none"
+        "h-[40px] w-[40px] shadow-none ring-0"
       )}
       disabled={disabled}
       title={title}

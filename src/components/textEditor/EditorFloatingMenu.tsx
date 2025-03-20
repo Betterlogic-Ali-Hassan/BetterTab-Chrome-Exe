@@ -31,7 +31,7 @@ export default function EditorFloatingMenu() {
             editor.isActive("heading", { level: 1 })
               ? "bg-hover"
               : "bg-transparent",
-            "rounded-none h-[40px] w-[40px]"
+            "rounded-none h-[40px] w-[40px] ring-0"
           )}
         >
           <Heading1 className='h-4 w-4' />
@@ -44,7 +44,7 @@ export default function EditorFloatingMenu() {
             editor.isActive("heading", { level: 2 })
               ? "bg-hover"
               : "bg-transparent",
-            "rounded-none h-[40px] w-[40px]"
+            "rounded-none h-[40px] w-[40px] ring-0"
           )}
         >
           <Heading2 className='h-4 w-4' />
@@ -62,7 +62,7 @@ export default function EditorFloatingMenu() {
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={cn(
             editor.isActive("orderedList") ? "bg-hover" : "bg-transparent",
-            "rounded-none"
+            "rounded-none ring-0"
           )}
         >
           <ListOrdered className='h-4 w-4' />
@@ -71,7 +71,7 @@ export default function EditorFloatingMenu() {
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={cn(
             editor.isActive("blockquote") ? "bg-hover" : "bg-transparent",
-            "rounded-none"
+            "rounded-none ring-0"
           )}
         >
           <Quote className='h-4 w-4' />
