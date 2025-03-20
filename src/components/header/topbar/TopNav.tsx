@@ -10,7 +10,7 @@ import SliderBtn from "../../SliderBtn";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 import ResetFilter from "./ResetFilter";
-import Button from "../../my-button";
+import Button from "../../ui/my-button";
 
 type CategoryWithCount = { name: string; count: number; id: string };
 type CategoryWithoutCount = { name: string; id: string };

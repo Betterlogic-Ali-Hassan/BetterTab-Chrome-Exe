@@ -2,7 +2,7 @@
 
 import type { Editor } from "@tiptap/react";
 import { LinkIcon, Unlink } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/my-button";
 import {
   Popover,
   PopoverContent,
@@ -25,11 +25,11 @@ export default function LinkPopover({
 }: LinkPopoverProps) {
   return (
     <Popover>
-      <PopoverTrigger asChild>
+      <PopoverTrigger>
         <Button
-          variant='ghost'
-          size='icon'
-          className={cn(editor.isActive("link") ? "bg-muted" : "")}
+          className={cn(
+            editor.isActive("link") ? "bg-btn-hover" : "bg-transparent"
+          )}
           title='Add Link'
         >
           <LinkIcon className='h-4 w-4' />
@@ -59,7 +59,6 @@ export default function LinkPopover({
             </div>
             <div className='flex justify-between mt-3'>
               <Button
-                variant='outline'
                 onClick={() =>
                   editor
                     .chain()

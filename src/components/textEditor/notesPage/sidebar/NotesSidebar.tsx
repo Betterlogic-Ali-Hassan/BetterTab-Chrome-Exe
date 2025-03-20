@@ -5,9 +5,10 @@ import NotesSidebarItem from "./NotesSidebarItem";
 import { cn } from "@/lib/utils";
 
 import { useEditorContext } from "@/context/EditorContext";
+import { CgNotes } from "react-icons/cg";
 
 const NotesSidebar = () => {
-  const { notes } = useEditorContext();
+  const { filteredNotes } = useEditorContext();
   const [cardView, setCardView] = useState(false);
 
   return (
@@ -20,7 +21,7 @@ const NotesSidebar = () => {
           cardView && "grid grid-cols-2"
         )}
       >
-        {notes.map((note) => (
+        {filteredNotes.map((note) => (
           <NotesSidebarItem
             cardView={cardView}
             key={note.id}
@@ -30,6 +31,11 @@ const NotesSidebar = () => {
             timestamp={note.updatedAt}
           />
         ))}
+        {filteredNotes.length === 0 && (
+          <div className='flex justify-center items-center h-full text-text opacity-80 text-sm'>
+            <CgNotes className='mr-1' /> No notes found
+          </div>
+        )}
       </div>
     </div>
   );

@@ -50,7 +50,7 @@ const SidebarItem = ({
           side={side}
           className={cn("bg-text  text-card ", tooltipClassName)}
         >
-          <p>{tooltip}</p>
+          <p className='text-xs'>{tooltip}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

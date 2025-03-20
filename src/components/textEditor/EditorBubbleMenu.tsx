@@ -1,7 +1,7 @@
 "use client";
 
 import { BubbleMenu } from "@tiptap/react";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/my-button";
 import { cn } from "@/lib/utils";
 import { Bold, Italic, UnderlineIcon, LinkIcon, Unlink } from "lucide-react";
 import {
@@ -40,34 +40,28 @@ export default function EditorBubbleMenu() {
     >
       <div className='flex items-center rounded-md border bg-background shadow-md'>
         <Button
-          variant='ghost'
-          size='sm'
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={cn(
-            editor.isActive("bold") ? "bg-muted" : "",
-            "rounded-none"
+            editor.isActive("bold") ? "bg-hover" : "bg-transparent",
+            "rounded-none h-[40px] w-[40px]"
           )}
         >
           <Bold className='h-4 w-4' />
         </Button>
         <Button
-          variant='ghost'
-          size='sm'
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={cn(
-            editor.isActive("italic") ? "bg-muted" : "",
-            "rounded-none"
+            editor.isActive("italic") ? "bg-hover" : "bg-transparent",
+            "rounded-none h-[40px] w-[40px]"
           )}
         >
           <Italic className='h-4 w-4' />
         </Button>
         <Button
-          variant='ghost'
-          size='sm'
           onClick={() => editor.chain().focus().toggleUnderline().run()}
           className={cn(
-            editor.isActive("underline") ? "bg-muted" : "",
-            "rounded-none"
+            editor.isActive("underline") ? "bg-hover" : "bg-transparent",
+            "rounded-none h-[40px] w-[40px]"
           )}
         >
           <UnderlineIcon className='h-4 w-4' />
@@ -75,11 +69,9 @@ export default function EditorBubbleMenu() {
         <Popover>
           <PopoverTrigger asChild>
             <Button
-              variant='ghost'
-              size='sm'
               className={cn(
-                editor.isActive("link") ? "bg-muted" : "",
-                "rounded-none"
+                editor.isActive("link") ? "bg-hover" : "bg-transparent",
+                "rounded-none h-[40px] w-[40px]"
               )}
             >
               <LinkIcon className='h-4 w-4' />
@@ -108,7 +100,6 @@ export default function EditorBubbleMenu() {
                 </div>
                 <div className='flex justify-between'>
                   <Button
-                    variant='outline'
                     onClick={() =>
                       editor
                         .chain()

@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/my-button";
 import { cn } from "@/lib/utils";
 
 interface ToolbarButtonProps {
@@ -21,10 +21,11 @@ export default function ToolbarButton({
 }: ToolbarButtonProps) {
   return (
     <Button
-      variant='ghost'
-      size='icon'
       onClick={onClick}
-      className={cn(isActive ? "bg-muted" : "")}
+      className={cn(
+        isActive ? "bg-hover" : "bg-transparent",
+        "h-[40px] w-[40px]"
+      )}
       disabled={disabled}
       title={title}
     >

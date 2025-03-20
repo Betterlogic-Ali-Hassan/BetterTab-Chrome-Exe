@@ -2,7 +2,7 @@ import { SwiperSlide } from "swiper/react";
 
 import { useBookmarks } from "@/context/BookmarkContext";
 import { ChevronLeft } from "lucide-react";
-import Button from "../../my-button";
+import Button from "../../ui/my-button";
 
 const ResetFilter = () => {
   const { setSelectedCategories, selectedCategories } = useBookmarks();

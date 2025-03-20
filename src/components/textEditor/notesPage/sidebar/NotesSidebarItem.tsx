@@ -20,7 +20,8 @@ const removeHTMLTags = (html: string) => {
 };
 
 const NotesSidebarItem = ({ title, des, id, timestamp, cardView }: Props) => {
-  const { selectedNoteId, selectNote, deleteNote, notes } = useEditorContext();
+  const { selectedNoteId, selectNote, deleteNote, filteredNotes } =
+    useEditorContext();
   const selected = selectedNoteId === id;
   const handleClick = () => selectNote(id);
 
@@ -59,7 +60,7 @@ const NotesSidebarItem = ({ title, des, id, timestamp, cardView }: Props) => {
           {formatDistanceToNow(new Date(timestamp), { addSuffix: true })}
         </span>
       </div>
-      {notes.length > 1 && (
+      {filteredNotes.length > 1 && (
         <span
           className='absolute top-3 right-3 hover:text-error opacity-0 group-hover:opacity-100 duration-200 transition'
           onClick={handleDelete}

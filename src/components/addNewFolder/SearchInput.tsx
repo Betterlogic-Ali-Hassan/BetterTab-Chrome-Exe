@@ -3,21 +3,24 @@
 import type React from "react";
 
 import { Search } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface SearchInputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  className?: string;
 }
 
 export function SearchInput({
   value,
   onChange,
   placeholder = "Search folders...",
+  className,
 }: SearchInputProps) {
   return (
-    <div className='p-2 py-0 border-b'>
-      <div className='relative'>
+    <div className={cn("p-2 py-0 border-b", className)}>
+      <div className='relative w-full'>
         <Search className='absolute left-1 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground' />
         <input
           placeholder={placeholder}

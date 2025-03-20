@@ -28,12 +28,14 @@ type EditorContextProps = {
   imageUrl: string;
   setImageUrl: (url: string) => void;
   fileInputRef: RefObject<HTMLInputElement | null>;
-  notes: Notes;
+  filteredNotes: Notes;
   selectedNoteId: number;
   addNewNote: () => void;
   deleteNote: (id: number) => void;
   selectNote: (id: number) => void;
   setNotes: (notes: Notes) => void;
+  searchTerm: string;
+  setSearchTerm: (term: string) => void;
 };
 
 const EditorContext = createContext<EditorContextProps | undefined>(undefined);
@@ -46,6 +48,7 @@ export const EditorContextProvider = ({
   const [linkUrl, setLinkUrl] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const currentTime = new Date().toISOString();
+  const [searchTerm, setSearchTerm] = useState("");
   const DEFAULT_TITLE = "Untitled";
 
   const [notes, setNotes] = useState([
@@ -58,17 +61,29 @@ export const EditorContextProvider = ({
       createdAt: currentTime,
     },
   ]);
+  const filteredNotes =
+    searchTerm.trim() === ""
+      ? notes
+      : notes.filter(
+          (note) =>
+            note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            note.des.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            note.content.toLowerCase().includes(searchTerm.toLowerCase())
+        );
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [selectedNoteId, setSelectedNoteId] = useState(1);
   const editor = useEditor({
     extensions: editorExtensions,
-    content: notes.find((note) => note.id === selectedNoteId)?.content || "",
+    content:
+      filteredNotes.find((note) => note.id === selectedNoteId)?.content || "",
     onUpdate: ({ editor }) => {
       const htmlContent = editor.getHTML();
       const jsonContent = editor.getJSON().content || [];
 
       // Get the current note's title or use default
-      const currentNote = notes.find((note) => note.id === selectedNoteId);
+      const currentNote = filteredNotes.find(
+        (note) => note.id === selectedNoteId
+      );
       let newTitle = currentNote?.title || DEFAULT_TITLE;
       let newDescription = "";
       let firstHeadingFound = false;
@@ -152,9 +167,9 @@ export const EditorContextProvider = ({
   const deleteNote = (id: number) => {
     if (notes.length === 1) return;
 
-    const noteIndex = notes.findIndex((note) => note.id === id);
+    const noteIndex = filteredNotes.findIndex((note) => note.id === id);
 
-    const updatedNotes = notes.filter((note) => note.id !== id);
+    const updatedNotes = filteredNotes.filter((note) => note.id !== id);
 
     if (selectedNoteId === id) {
       let newSelectedIndex;
@@ -174,7 +189,7 @@ export const EditorContextProvider = ({
 
   const selectNote = (id: number) => {
     setSelectedNoteId(id);
-    const selectedNote = notes.find((note) => note.id === id);
+    const selectedNote = filteredNotes.find((note) => note.id === id);
     if (selectedNote) {
       editor?.commands.setContent(selectedNote.content);
     }
@@ -187,7 +202,7 @@ export const EditorContextProvider = ({
       value={{
         linkUrl,
         setLinkUrl,
-        notes,
+        filteredNotes,
         imageUrl,
         setImageUrl,
         selectedNoteId,
@@ -197,6 +212,8 @@ export const EditorContextProvider = ({
         deleteNote,
         selectNote,
         setNotes,
+        searchTerm,
+        setSearchTerm,
       }}
     >
       {children}

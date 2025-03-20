@@ -1,7 +1,7 @@
 "use client";
 
 import { FloatingMenu } from "@tiptap/react";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/my-button";
 import { cn } from "@/lib/utils";
 import { Heading1, Heading2, List, ListOrdered, Quote } from "lucide-react";
 import { useEditorContext } from "@/context/EditorContext";
@@ -13,7 +13,6 @@ export default function EditorFloatingMenu() {
       editor={editor}
       tippyOptions={{ duration: 100 }}
       shouldShow={({ state }) => {
-        // Show only when the selection is empty and at the start of a line
         const { selection } = state;
         const { empty, $anchor } = selection;
         return (
@@ -25,59 +24,53 @@ export default function EditorFloatingMenu() {
     >
       <div className='flex items-center rounded-md border bg-background shadow-md'>
         <Button
-          variant='ghost'
-          size='sm'
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 1 }).run()
           }
           className={cn(
-            editor.isActive("heading", { level: 1 }) ? "bg-muted" : "",
-            "rounded-none"
+            editor.isActive("heading", { level: 1 })
+              ? "bg-hover"
+              : "bg-transparent",
+            "rounded-none h-[40px] w-[40px]"
           )}
         >
           <Heading1 className='h-4 w-4' />
         </Button>
         <Button
-          variant='ghost'
-          size='sm'
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 2 }).run()
           }
           className={cn(
-            editor.isActive("heading", { level: 2 }) ? "bg-muted" : "",
-            "rounded-none"
+            editor.isActive("heading", { level: 2 })
+              ? "bg-hover"
+              : "bg-transparent",
+            "rounded-none h-[40px] w-[40px]"
           )}
         >
           <Heading2 className='h-4 w-4' />
         </Button>
         <Button
-          variant='ghost'
-          size='sm'
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={cn(
-            editor.isActive("bulletList") ? "bg-muted" : "",
+            editor.isActive("bulletList") ? "bg-hover" : "bg-transparent",
             "rounded-none"
           )}
         >
           <List className='h-4 w-4' />
         </Button>
         <Button
-          variant='ghost'
-          size='sm'
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={cn(
-            editor.isActive("orderedList") ? "bg-muted" : "",
+            editor.isActive("orderedList") ? "bg-hover" : "bg-transparent",
             "rounded-none"
           )}
         >
           <ListOrdered className='h-4 w-4' />
         </Button>
         <Button
-          variant='ghost'
-          size='sm'
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={cn(
-            editor.isActive("blockquote") ? "bg-muted" : "",
+            editor.isActive("blockquote") ? "bg-hover" : "bg-transparent",
             "rounded-none"
           )}
         >

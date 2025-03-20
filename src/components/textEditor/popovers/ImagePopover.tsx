@@ -4,7 +4,7 @@ import type React from "react";
 
 import type { RefObject } from "react";
 import { ImageIcon, Upload } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/my-button";
 import {
   Popover,
   PopoverContent,
@@ -31,8 +31,11 @@ export default function ImagePopover({
   return (
     <>
       <Popover>
-        <PopoverTrigger asChild>
-          <Button variant='ghost' size='icon' title='Insert Image'>
+        <PopoverTrigger>
+          <Button
+            title='Insert Image'
+            className='bg-transparent h-[40px] w-[40px]'
+          >
             <ImageIcon className='h-4 w-4' />
           </Button>
         </PopoverTrigger>
@@ -60,7 +63,6 @@ export default function ImagePopover({
               </div>
               <div className='flex justify-between items-center mt-2'>
                 <Button
-                  variant='outline'
                   onClick={triggerImageUpload}
                   className='flex items-center gap-2'
                 >

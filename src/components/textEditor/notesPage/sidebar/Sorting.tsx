@@ -18,7 +18,7 @@ type SortField = "title" | "dateUpdated" | "dateCreated";
 type SortDirection = "asc" | "desc";
 
 export function Sorting() {
-  const { notes, setNotes } = useEditorContext();
+  const { filteredNotes, setNotes } = useEditorContext();
   const [sortField, setSortField] = useState<SortField | null>(null);
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
 
@@ -34,9 +34,9 @@ export function Sorting() {
       setSortDirection(newDirection);
     }
 
-    if (!notes) return;
+    if (!filteredNotes) return;
 
-    const sortedNotes = [...notes].sort((a, b) => {
+    const sortedNotes = [...filteredNotes].sort((a, b) => {
       if (field === "title") {
         return newDirection === "asc"
           ? a.title.localeCompare(b.title)
@@ -66,7 +66,7 @@ export function Sorting() {
           tooltip='Sort options'
           className='text-text opacity-60 hover:opacity-100 !p-0 rounded h-6 w-6 '
           side='top'
-          tooltipClassName='text-xs py-[3px] px-1.5 font-medium '
+          tooltipClassName='!text-xs py-[3px] px-1.5 font-medium '
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent className='w-[183px] p-2 '>
