@@ -2,7 +2,7 @@ import AlertDialogBox from "@/modals/AlertDialogBox";
 import DialogBox from "@/modals/DialogBox";
 import Copy from "@/components/svgs/Copy";
 import Edit from "@/components/svgs/Edit";
-import Share from "@/components/svgs/Share";
+
 import { useBookmarks } from "@/context/BookmarkContext";
 
 import EditBookmark from "@/pages/EditBookmark";
@@ -41,9 +41,6 @@ const ActionsBtns = ({ activeTabData }: Props) => {
         <EditBookmark activeTabData={activeTabData} />
       </DialogBox>
 
-      <button className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center '>
-        <Share />
-      </button>
       <button
         onClick={handleCopy}
         className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center '
