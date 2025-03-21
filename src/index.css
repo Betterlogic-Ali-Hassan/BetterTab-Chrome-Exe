@@ -30,6 +30,8 @@
     --home-sidebar-hover: #f2f2f2;
     --cancel-btn: white;
     --input-color: white;
+    --progress-wrap: #043d11;
+    --progress: #21c221;
   }
   .dark {
     --home-sidebar-hover: #27272a;
@@ -49,6 +51,8 @@
     --sidebar-hover: #1b1b1b;
     --cancel-btn: #ffffff1a;
     --input-color: #ffffff0d;
+    --progress-wrap: #043d11;
+    --progress: #21c2218a;
   }
 }
 
@@ -149,4 +153,10 @@ div[role="dialog"] {
 
 .tooltip {
   color: var(--card-color) !important;
+}
+.Toastify__progress-bar--wrp {
+  background: var(--progress-wrap) !important;
+}
+.Toastify__progress-bar-theme--dark {
+  background-color: var(--progress) !important;
 }

@@ -11,7 +11,7 @@ createRoot(document.getElementById("root")!).render(
       <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
         <App />
         <ToastContainer
-          position='top-right'
+          position='bottom-center'
           autoClose={5000}
           hideProgressBar={false}
           closeOnClick={false}
