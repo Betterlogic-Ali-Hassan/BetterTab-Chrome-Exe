@@ -15,6 +15,7 @@ interface CardRendererProps {
   isDownloadPage: boolean;
   favoriteExe: Card[];
   setFavoriteExe: React.Dispatch<React.SetStateAction<Card[]>>;
+  favorite?: boolean;
 }
 
 export default function CardRenderer({
@@ -24,6 +25,7 @@ export default function CardRenderer({
   favoriteExe,
   setFavoriteExe,
   isDownloadPage,
+  favorite,
 }: CardRendererProps) {
   if (isExtensionsPage) {
     return isListView ? (
@@ -31,12 +33,14 @@ export default function CardRenderer({
         setFavoriteExe={setFavoriteExe}
         favoriteExe={favoriteExe}
         data={data}
+        favorite={favorite}
       />
     ) : (
       <ExtensionListViewCard
         setFavoriteExe={setFavoriteExe}
         favoriteExe={favoriteExe}
         data={data}
+        favorite={favorite}
       />
     );
   }

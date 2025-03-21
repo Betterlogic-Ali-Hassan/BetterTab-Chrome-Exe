@@ -72,6 +72,7 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
       {isExtensionsPage && favoriteExe.length > 0 && (
         <div className='mb-12'>
           <CardGroup
+            favorite
             cards={favoriteExe}
             isListView={isListView}
             isExtensionsPage={isExtensionsPage}

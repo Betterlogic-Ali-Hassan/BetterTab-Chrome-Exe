@@ -12,12 +12,14 @@ interface ExtensionCardProps {
   data: Card;
   setFavoriteExe: (callback: (prev: Card[]) => Card[]) => void;
   favoriteExe: Card[];
+  favorite?: boolean;
 }
 
 const ExtensionListViewCard = ({
   data,
   setFavoriteExe,
   favoriteExe,
+  favorite,
 }: ExtensionCardProps) => {
   const { handleToggle, title, icon, path, tags, des } = useBookmarkItem(data);
 
@@ -32,7 +34,12 @@ const ExtensionListViewCard = ({
 
   return (
     <div
-      className='p-6 border-border border group rounded-lg bg-card flex gap-10 mb-4 relative cursor-pointer'
+      className={cn(
+        "p-6 border-border border group rounded-lg bg-card flex gap-10 mb-4 relative cursor-pointer",
+        isFavorite &&
+          !favorite &&
+          "hover:bg-selected-hover border-selected-border bg-selected-bg "
+      )}
       onClick={handleToggle}
     >
       <div className='h-[38px] w-[38px]'>

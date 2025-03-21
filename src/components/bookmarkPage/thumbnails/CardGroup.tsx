@@ -18,6 +18,8 @@ interface CardGroupProps {
 
   favoriteExe: Card[];
   setFavoriteExe: React.Dispatch<React.SetStateAction<Card[]>>;
+
+  favorite?: boolean;
 }
 
 export default function CardGroup({
@@ -29,6 +31,7 @@ export default function CardGroup({
   favoriteExe,
   setFavoriteExe,
   isDownloadPage,
+  favorite,
 }: CardGroupProps) {
   const containerClasses = cn(
     "flex flex-col gap-2 px-1.5 lg:px-0 mt-2 lg:mt-0 ",
@@ -39,6 +42,7 @@ export default function CardGroup({
     <div className={containerClasses}>
       {cards.map((card) => (
         <CardRenderer
+          favorite={favorite}
           key={card.id}
           isDownloadPage={isDownloadPage}
           data={card}

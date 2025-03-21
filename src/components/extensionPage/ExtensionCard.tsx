@@ -13,12 +13,14 @@ interface ExtensionCardProps {
   data: Card;
   setFavoriteExe: (callback: (prev: Card[]) => Card[]) => void;
   favoriteExe: Card[];
+  favorite?: boolean;
 }
 
 const ExtensionCard = ({
   data,
   setFavoriteExe,
   favoriteExe,
+  favorite,
 }: ExtensionCardProps) => {
   const { handleToggle, title, icon } = useBookmarkItem(data);
   const [switchChecked, setSwitchChecked] = useState(false);
@@ -40,7 +42,12 @@ const ExtensionCard = ({
 
   return (
     <div
-      className='bg-card rounded-[24px] max-w-[284px] group p-6 flex flex-col relative items-start gap-6 cursor-pointer group'
+      className={cn(
+        "bg-card rounded-[24px] max-w-[284px] group p-6 flex flex-col relative items-start gap-6 cursor-pointer group border border-transparent",
+        isFavorite &&
+          !favorite &&
+          "hover:bg-selected-hover border-selected-border bg-selected-bg "
+      )}
       onClick={handleToggle}
     >
       <div className='flex justify-between w-full h-[60px]'>
