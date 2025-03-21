@@ -9,6 +9,7 @@ import EditBookmark from "@/pages/EditBookmark";
 import { Card } from "@/types/TabCardType";
 
 import { toast } from "react-toastify";
+import { copyToClipboard } from "@/lib/handle-copy";
 interface Props {
   activeTabData?: Card | undefined;
 }
@@ -16,9 +17,11 @@ const ActionsBtns = ({ activeTabData }: Props) => {
   const { deleteCard, setShowCardDetail } = useBookmarks();
   const { path, id } = activeTabData ?? {};
   const handleCopy = () => {
-    navigator.clipboard.writeText(path ? path : "");
-    if (path) toast.success(" URL copied to clipboard!");
-    else toast.error("URL is not copied");
+    copyToClipboard(
+      path ?? "",
+      () => toast.success("URL copied to clipboard!"),
+      () => toast.error("URL is not copied")
+    );
   };
   const handleDelete = () => {
     setShowCardDetail(false);
@@ -30,7 +33,7 @@ const ActionsBtns = ({ activeTabData }: Props) => {
       <DialogBox
         className='!p-0 rounded-md bg-card max-w-[768px]  w-full '
         trigger={
-          <button className='px-3  py-3 text-sm text-foreground rounded-full  hover:text-text bg-badge flex items-center'>
+          <button className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center'>
             <Edit />
           </button>
         }
@@ -38,17 +41,17 @@ const ActionsBtns = ({ activeTabData }: Props) => {
         <EditBookmark activeTabData={activeTabData} />
       </DialogBox>
 
-      <button className='px-3  py-3 text-sm text-foreground rounded-full  hover:text-text bg-badge flex items-center '>
+      <button className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center '>
         <Share />
       </button>
       <button
         onClick={handleCopy}
-        className='px-3  py-3 text-sm text-foreground rounded-full  hover:text-text bg-badge flex items-center '
+        className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center '
       >
         <Copy />
       </button>
       <AlertDialogBox
-        className='px-3  py-3 text-sm text-foreground rounded-full  hover:text-text bg-badge flex items-center'
+        className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center'
         onClick={handleDelete}
       />
     </div>

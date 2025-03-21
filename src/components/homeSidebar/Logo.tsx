@@ -2,7 +2,7 @@ import { usePageContext } from "@/context/PageContext";
 
 const Logo = () => {
   const { setPage } = usePageContext();
-  const goHome = () => setPage("home");
+  const goHome = () => setPage("bookmarks");
   return (
     <button
       onClick={goHome}

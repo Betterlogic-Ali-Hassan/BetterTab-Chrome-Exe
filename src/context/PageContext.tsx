@@ -18,7 +18,7 @@ export const PageContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [page, setPage] = useState<string>("home");
+  const [page, setPage] = useState<string>("bookmarks");
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   return (

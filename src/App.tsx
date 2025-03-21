@@ -14,13 +14,18 @@ const App = () => {
   return (
     <BookmarkProvider>
       <FormProvider>
-        {page === "home" && <Home />}
+        {page === "bookmarks" && <Home />}
         {page === "edit" && <EditBookmark />}
         {page === "history" && <HistoryPage />}
         {page === "extensions" && <ExtensionPage />}
         {page === "downloads" && <Downloads />}
         {page === "notes" && <Notes />}
-        {dialogOpen && <div className='fixed inset-0 bg-black/50 z-40 '></div>}
+        {dialogOpen && (
+          <div
+            className='fixed inset-0 bg-black/50  '
+            style={{ zIndex: 50 }}
+          ></div>
+        )}
       </FormProvider>
     </BookmarkProvider>
   );

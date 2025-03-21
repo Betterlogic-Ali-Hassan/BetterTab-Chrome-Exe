@@ -7,16 +7,17 @@ interface Props {
   savBtnAction?: () => void;
 }
 const EditActionBtns = ({ savBtnAction }: Props) => {
-  const { setPage } = usePageContext();
+  const { setDialogOpen } = usePageContext();
   const { setShowCardDetail } = useBookmarks();
 
   const handleBack = () => {
     setShowCardDetail(false);
-    setPage("home");
+    setDialogOpen(false);
   };
   return (
     <div className='flex items-center justify-end gap-x-3 border-t border-border  px-4 py-4 sm:px-8'>
       <AlertDialogBox
+        onClick={handleBack}
         className='btn secondary flex items-center gap-x-1.5 rounded'
         trigger={
           <>
@@ -25,11 +26,6 @@ const EditActionBtns = ({ savBtnAction }: Props) => {
           </>
         }
       />
-      <DialogClose asChild>
-        <button className='btn secondary ml-auto rounded ' onClick={handleBack}>
-          Cancel
-        </button>
-      </DialogClose>
       <DialogClose
         className='btn  inline-flex rounded done-btn'
         onClick={savBtnAction}

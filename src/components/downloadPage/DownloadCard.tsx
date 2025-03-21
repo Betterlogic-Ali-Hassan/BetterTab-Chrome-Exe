@@ -2,13 +2,21 @@
 import type { Card } from "@/types/TabCardType";
 
 import DeleteEntry from "../DeleteEntry";
+import { copyToClipboard } from "@/lib/handle-copy";
+import { toast } from "react-toastify";
 interface DownloadCardProps {
   data: Card;
 }
 
 const DownloadCard = ({ data }: DownloadCardProps) => {
   const { title, icon, path, id } = data;
-
+  const handleCopy = () => {
+    copyToClipboard(
+      path ?? "",
+      () => toast.success("URL copied to clipboard!"),
+      () => toast.error("URL is not copied")
+    );
+  };
   return (
     <div className='p-6 border-border border group rounded-lg bg-card flex gap-5 mb-4 relative cursor-pointer'>
       <div className='h-[32px] w-[32px]'>
@@ -27,7 +35,12 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
             {path}
           </a>
         </div>
-        <button className='btn rounded mt-4'>Show folder</button>
+        <div className='flex items-center gap-2'>
+          <button className='btn rounded mt-4' onClick={handleCopy}>
+            Copy link
+          </button>
+          <button className='btn rounded mt-4'>Show folder</button>
+        </div>
       </div>
       <DeleteEntry
         id={id}
