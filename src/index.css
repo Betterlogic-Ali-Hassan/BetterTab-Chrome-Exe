@@ -6,50 +6,37 @@
 
 @layer base {
   :root {
-    --background-color: #ffffff !important; /* Pure white background */
-    --card-color: #f6f7f8 !important; /* Light gray for cards */
-    --text-color: #1c1c1c !important; /* Dark text for readability */
-    --text-foreground: rgba(
-      28,
-      28,
-      28,
-      0.8
-    ) !important; /* Subtle foreground emphasis */
-    --border-color: #e4e6e8 !important; /* Soft light gray borders */
+    --background-color: #ffffff; /* Pure white background */
+    --card-color: #f6f7f8; /* Light gray for cards */
+    --text-color: #1c1c1c; /* Dark text for readability */
+    --text-foreground: rgba(28, 28, 28, 0.8); /* Subtle foreground emphasis */
+    --text-primary: #fff; /* Primary text color */
+    --border-color: #e4e6e8; /* Soft light gray borders */
 
-    --badge-color: #dae0e6 !important; /* Light gray badge */
-    --brand-color: #0079d3 !important; /* Reddit’s blue */
+    --badge-color: #dae0e6; /* Light gray badge */
+    --brand-color: #0079d3; /* Reddit’s blue */
 
-    --radius: 0.5rem !important; /* Rounded corners */
+    --radius: 0.5rem; /* Rounded corners */
 
-    --btn-hover: #dbeeff !important; /* Light blue hover for buttons */
-    --brand-hover: #1484d6 !important; /* Slightly lighter Reddit blue */
-    --hover-color: #f0f2f5 !important; /* Subtle hover effect */
+    --btn-hover: #dbeeff; /* Light blue hover for buttons */
+    --brand-hover: #1484d6; /* Slightly lighter Reddit blue */
+    --hover-color: #f0f2f5; /* Subtle hover effect */
 
-    --selected-hover-bg: rgba(
-      0,
-      121,
-      211,
-      0.15
-    ) !important; /* Blue selection hover */
-    --selected-bg: rgba(
-      0,
-      121,
-      211,
-      0.1
-    ) !important; /* Light selection background */
-    --selected-border: #0079d3 !important; /* Strong selection border */
+    --selected-hover-bg: rgba(0, 121, 211, 0.15); /* Blue selection hover */
+    --selected-bg: rgba(0, 121, 211, 0.1); /* Light selection background */
+    --selected-border: #0079d3; /* Strong selection border */
 
-    --error-color: #ff585b !important; /* Reddit’s red for errors */
-    --home-sidebar-hover: #f8f9fa !important; /* Sidebar hover effect */
+    --error-color: #ff585b; /* Reddit’s red for errors */
+    --home-sidebar-hover: #f8f9fa; /* Sidebar hover effect */
 
-    --cancel-btn: #ffffff !important; /* White cancel button */
-    --input-color: #ffffff !important; /* White input background */
+    --cancel-btn: #ffffff; /* White cancel button */
+    --input-color: #ffffff; /* White input background */
 
-    --progress-wrap: #c8e6c9 !important; /* Light green progress background */
-    --progress: #46a629 !important; /* Green progress bar */
+    --progress-wrap: #c8e6c9; /* Light green progress background */
+    --progress: #46a629; /* Green progress bar */
   }
   .dark {
+    --text-primary: #fff; /* Primary text color */
     --home-sidebar-hover: #171c1f;
     --background-color: #000;
     --card-color: #171c1f;
@@ -81,13 +68,13 @@
     @apply rounded-r  flex items-center text-sm  input-shadow   font-medium border-0 outline-none ml-[1px] h-[36px] py-2 px-3 gap-1.5 text-text bg-input hover:bg-hover;
   }
   .input {
-    @apply block w-full rounded-none rounded-l bg-input focus:ring-brand focus:ring-2 text-sm text-text dark:text-white font-medium border-0  input-shadow py-1.5 px-3 outline-none h-[36px] placeholder:text-[#777];
+    @apply block w-full rounded-none rounded-l bg-input focus:ring-brand focus:ring-2 text-sm text-text font-medium border-0  input-shadow py-1.5 px-3 outline-none h-[36px] placeholder:text-[#777];
   }
   .cancel-btn {
     @apply sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center  border-transparent    text-text bg-cancel-btn hover:bg-hover  input-shadow px-3 py-2 h-[36px];
   }
   .done-btn {
-    @apply sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center bg-brand border-transparent text-white hover:bg-brand-hover hover:text-white px-3 py-2 h-[36px];
+    @apply sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center bg-brand border-transparent text-text-primary hover:bg-brand-hover hover:text-text-primary px-3 py-2 h-[36px];
   }
 }
 .no-scrollbar {
@@ -133,20 +120,20 @@ body::-webkit-scrollbar {
 }
 .swiper-button-next,
 .swiper-button-prev {
-  color: black !important;
-  background: white !important;
-  border-radius: 50% !important;
-  height: 28px !important;
-  width: 28px !important;
-  margin-top: calc(0px - (28px / 2)) !important;
+  color: black;
+  background: white;
+  border-radius: 50%;
+  height: 28px;
+  width: 28px;
+  margin-top: calc(0px - (28px / 2));
 }
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 16px !important;
-  font-weight: 700 !important;
+  font-size: 16px;
+  font-weight: 700;
 }
 .swiper-button-disabled {
-  display: none !important;
+  display: none;
 }
 .swiper-wrapper {
   display: flex;
@@ -158,16 +145,26 @@ body {
   overflow: hidden;
 }
 div[role="dialog"] {
-  /* padding: 0 !important; */
+  /* padding: 0 ; */
   box-shadow: none;
 }
 
 .tooltip {
-  color: var(--card-color) !important;
+  color: var(--card-color);
 }
 .Toastify__progress-bar--wrp {
-  background: var(--progress-wrap) !important;
+  background: var(--progress-wrap);
 }
 .Toastify__progress-bar-theme--dark {
-  background-color: var(--progress) !important;
+  background-color: var(--progress);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button {
+  color: var(--text-color);
 }

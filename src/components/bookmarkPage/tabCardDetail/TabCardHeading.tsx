@@ -11,7 +11,7 @@ const TabCardHeading = ({ path, title }: Props) => {
           className='w-[32px] h-[32px] flex-none rounded overflow-hidden mr-2'
           src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${path}/&size=32`}
         />
-        <span className='max-w-[186px] truncate'>{title}</span>
+        <span className='max-w-[186px] truncate text-text'>{title}</span>
       </h2>
     </>
   );

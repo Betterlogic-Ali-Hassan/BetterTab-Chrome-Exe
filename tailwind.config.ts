@@ -14,6 +14,7 @@ module.exports = {
 			text: 'var(--text-color)',
 			card: 'var(--card-color)',
 			border: 'var(--border-color)',
+			'text-primary': 'var(--text-primary)',
 			foreground: 'var(--text-foreground)',
 			badge: 'var(--badge-color)',
 			searchbar: 'var(--searchbar-color)',

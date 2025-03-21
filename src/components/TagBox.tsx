@@ -180,7 +180,7 @@ export default function TagBox({
     <div className='space-y-2'>
       <div className='flex gap-3 items-center overflow-hidden h-5'>
         {!allowedText && (
-          <label htmlFor='tags-input' className='text-sm font-medium'>
+          <label htmlFor='tags-input' className='text-sm text-text font-medium'>
             Tags
           </label>
         )}
@@ -205,7 +205,7 @@ export default function TagBox({
         />
         <button
           type='button'
-          className='btn ml-2 inline-flex items-center rounded-md bg-hover px-3 py-2 text-sm font-medium'
+          className='btn ml-2 inline-flex items-center rounded-md bg-hover px-3 py-2 text-sm font-medium hover:bg-card'
           onClick={handleAddTag}
           aria-label='Add tag'
         >

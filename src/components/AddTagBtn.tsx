@@ -14,7 +14,7 @@ export function TagButton({
       type='button'
       className={cn(
         "flex-none cursor-pointer inline-block  whitespace-nowrap truncate hover:!bg-hover max-w-xs tag py-2 px-3 rounded-[0.25rem] text-sm font-semibold btn text-text !bg-transparent capitalize",
-        isSelected && " !bg-brand text-white hover:!bg-brand-hover"
+        isSelected && " !bg-brand text-text-primary hover:!bg-brand-hover"
       )}
       onClick={onClick}
       aria-pressed={isSelected}
