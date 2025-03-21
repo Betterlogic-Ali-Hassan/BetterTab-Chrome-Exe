@@ -29,7 +29,7 @@ const Searchbar = () => {
   return (
     <div className='hidden lg:flex gap-4 justify-between items-center py-2  '>
       <div className='flex gap-2 grow'>
-        <div className='grow flex items-center gap-2  w-full rounded border-0 bg-card  py-1.5 px-4 ring-1 ring-inset ring-border focus:ring-2 focus:ring-inset  text-sm leading-6 whitespace-nowrap text-foreground min-h-[40px]'>
+        <div className='grow flex items-center gap-2  w-full rounded border-0 bg-card ring-1  py-1.5 px-4 ring-inset ring-border focus:ring-2 focus:ring-inset  text-sm leading-6 whitespace-nowrap text-foreground min-h-[40px]'>
           <SearchIcon />
           <input
             type='text'
@@ -44,7 +44,7 @@ const Searchbar = () => {
           />
           <span className='ml-auto inline-block'>Ctrl + K</span>
         </div>
-        {page === "home" ? <AddNewCardBtn /> : null}
+        {page === "bookmarks" ? <AddNewCardBtn /> : null}
       </div>
     </div>
   );

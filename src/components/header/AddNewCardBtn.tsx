@@ -8,7 +8,7 @@ const AddNewCardBtn = () => {
     <DialogBox
       className='w-full max-w-3xl bg-hover p-6 rounded-lg '
       trigger={
-        <Button className='h-[40px]'>
+        <Button className='h-[40px] shadow-none'>
           <PlusIcon className='h-5 w-5 text-text mr-2' />
           New
         </Button>

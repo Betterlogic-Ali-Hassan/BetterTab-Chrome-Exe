@@ -77,7 +77,7 @@ export function BackToTopContainer({
           <Button
             onClick={scrollToTop}
             aria-label='Back to top'
-            className='h-12 w-12 rounded-full !p-0 flex items-center justify-center'
+            className='h-12 w-12 rounded-full !p-0 flex items-center justify-center ring-0 '
           >
             <ArrowUp className='h-5 w-5' />
             <span className='sr-only'>Back to top</span>

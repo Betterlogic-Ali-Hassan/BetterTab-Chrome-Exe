@@ -6,51 +6,40 @@
 
 @layer base {
   :root {
-    --background-color: #e5e5e5;
+    --background-color: #fff;
     --text-color: #000000;
-    --card-color: #fff;
+    --card-color: #f6f8f9;
     --border-color: #d4d4d4;
     --text-foreground: #00000080;
-    --badge-color: #e5e5e5;
-    --searchbar-color: #fff;
+    --badge-color: #e5ebee;
     --brand-color: #3b82f6;
     --radius: 0.5rem;
-    --btn-hover: #fafafa;
+    --btn-hover: #dbe4e9;
     --brand-hover: #60a5fa;
-    --hover-color: #f5f5f5;
+    --hover-color: #dbe4e9;
     --selected-hover-bg: #bfdbfe33;
     --selected-bg: #bfdbfe1a;
     --selected-border: #93c5fd80;
     --error-color: #dc2626;
-    --warn-color: #fefce8;
-    --warn-border: transparent;
-    --warn-text: #facc15;
-    --success-color: #4ade80;
-    --sidebar-hover: #e5e5e5;
-    --home-sidebar-hover: #f2f2f2;
+    --home-sidebar-hover: #f6f8f9;
     --cancel-btn: white;
-    --input-color: white;
+    --input-color: #f6f8f9;
     --progress-wrap: #043d11;
     --progress: #21c221;
   }
   .dark {
-    --home-sidebar-hover: #27272a;
+    --home-sidebar-hover: #171c1f;
     --background-color: #000;
-    --card-color: #171717;
+    --card-color: #171c1f;
+    --error-color: #dc2626;
     --text-color: #ffff;
     --text-foreground: #d4d4d4;
-    --btn-hover: #ffffff33;
-    --badge-color: #262626;
+    --btn-hover: #2a3236;
+    --badge-color: #333d42;
     --border-color: #262626;
-    --hover-color: #1b1b1b;
-    --error-color: #fca5a5;
-    --warn-color: #fefce8;
-    --warn-border: #fde047;
-    --warn-text: #fde047;
-    --success-color: #86efac;
-    --sidebar-hover: #1b1b1b;
+    --hover-color: #2a3236;
     --cancel-btn: #ffffff1a;
-    --input-color: #ffffff0d;
+    --input-color: #2a3236;
     --progress-wrap: #043d11;
     --progress: #21c2218a;
   }

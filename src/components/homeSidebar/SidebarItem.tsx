@@ -37,12 +37,12 @@ const SidebarItem = ({
             "flex h-11 w-11 items-center justify-center rounded-[14px] p-0 transition-colors ",
             "hover:bg-home-sidebar-hover hover:text-default-foreground",
             "focus:bg-default/40 focus:text-default-foreground outline-none",
-            selected && "bg-home-sidebar-hover",
+            selected && "bg-badge",
             className
           )}
           onClick={handelClick(link ? link : page)}
         >
-          <div className='flex w-full items-center justify-center'>
+          <div className='flex w-full items-center justify-center text-text'>
             <div>{icon}</div>
           </div>
         </TooltipTrigger>

@@ -19,7 +19,7 @@ const DropDownContent = () => {
   };
 
   return (
-    <div className='absolute right-2 top-10 lg:right-1 lg:top-7 z-30 w-48 origin-top-right rounded bg-card py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+    <div className='absolute right-2 top-10 lg:right-1 lg:top-7 z-30 w-48 origin-top-right rounded bg-background  py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
       {!showSelectionCard && (
         <DropDownButton
           onClick={() => toggleSelectionCard(true)}
@@ -56,7 +56,7 @@ const DropDownButton = ({
   text: string;
 }) => (
   <button
-    className='px-4 py-2 text-sm text-text text-start w-full flex items-center gap-3 hover:bg-hover'
+    className='px-4 py-2 text-sm text-text text-start w-full flex items-center gap-3 hover:bg-home-sidebar-hover'
     onClick={onClick}
   >
     {icon}
