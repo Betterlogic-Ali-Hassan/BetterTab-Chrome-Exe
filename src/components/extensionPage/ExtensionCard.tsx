@@ -44,9 +44,7 @@ const ExtensionCard = ({
     <div
       className={cn(
         "bg-card rounded-[24px] max-w-[284px] group p-6 flex flex-col relative items-start gap-6 cursor-pointer group border border-transparent",
-        isFavorite &&
-          !favorite &&
-          "hover:bg-selected-hover border-selected-border bg-selected-bg "
+        isFavorite && favorite && "bg-[#85bbfd3a]  "
       )}
       onClick={handleToggle}
     >
