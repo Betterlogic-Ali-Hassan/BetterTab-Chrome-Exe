@@ -4,7 +4,7 @@ import TagBoxContent from "@/components/addNewCard/TagBoxContent";
 import TextBoxInputs from "@/components/addNewCard/TextBoxInputs";
 import EditActionBtns from "@/components/EditActionBtns";
 import { Edit } from "lucide-react";
-
+import SelectFolder from "../components/addNewFolder/SelectFolder";
 import { useBookmarks } from "@/context/BookmarkContext";
 
 import type { Card } from "@/types/TabCardType";
@@ -69,6 +69,12 @@ const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
         className='sm:px-8 sm:py-0 sm:pt-2'
         notAllowTitle
       />
+      <SelectFolder
+        className='px-8'
+        triggerClassName='bg-input '
+        popoverClassName='w-[702px] '
+      />
+      <div className='h-4'></div>
       <TagBoxContent
         actionBtns
         className='sm:px-8 sm:pt-2'
