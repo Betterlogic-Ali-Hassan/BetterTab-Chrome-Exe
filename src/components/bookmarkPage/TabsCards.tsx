@@ -32,9 +32,18 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
     );
   }, [cards.length]);
 
+  // Filter out cards that are in favorites from the normal list
+  const filteredCards = useMemo(() => {
+    if (isExtensionsPage) {
+      const favoriteIds = new Set(favoriteExe.map((card) => card.id));
+      return cards.filter((card) => !favoriteIds.has(card.id));
+    }
+    return cards;
+  }, [cards, favoriteExe, isExtensionsPage]);
+
   const visibleCards = useMemo(() => {
-    return cards.slice(0, visibleCardsCount);
-  }, [cards, visibleCardsCount]);
+    return filteredCards.slice(0, visibleCardsCount);
+  }, [filteredCards, visibleCardsCount]);
 
   const cardGroups = useMemo(() => {
     if (!isShowHourlyLog) {
@@ -63,7 +72,7 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
     return groups.filter((group) => group.length > 0);
   }, [visibleCards, isShowHourlyLog]);
 
-  const hasMoreCards = visibleCardsCount < cards.length;
+  const hasMoreCards = visibleCardsCount < filteredCards.length;
 
   return (
     <div className={cn(isListView && "max-w-[970px]")}>

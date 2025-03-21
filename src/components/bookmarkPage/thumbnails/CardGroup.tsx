@@ -15,10 +15,8 @@ interface CardGroupProps {
   isDownloadPage: boolean;
   isShowHourlyLog: boolean;
   showHourlyLogAfter: boolean;
-
   favoriteExe: Card[];
   setFavoriteExe: React.Dispatch<React.SetStateAction<Card[]>>;
-
   favorite?: boolean;
 }
 

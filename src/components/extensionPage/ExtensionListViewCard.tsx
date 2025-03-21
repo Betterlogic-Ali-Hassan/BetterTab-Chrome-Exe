@@ -22,7 +22,6 @@ const ExtensionListViewCard = ({
   favorite,
 }: ExtensionCardProps) => {
   const { handleToggle, title, icon, path, tags, des } = useBookmarkItem(data);
-
   const isFavorite = favoriteExe.some((card) => card.id === data.id);
 
   const addFavoriteExe = (e: React.MouseEvent) => {
