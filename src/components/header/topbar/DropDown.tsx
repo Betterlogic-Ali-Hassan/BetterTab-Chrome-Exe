@@ -30,13 +30,13 @@ const DropDown = () => {
     history: "History",
     extensions: "Extensions",
   };
-  const isDownloadPage = page === "downloads";
+  const isShowSelectionMenu = page === "downloads" || page === "extensions";
   return (
     <div className='hidden lg:flex lg:h-[3.25rem] items-center justify-end'>
       {!isShowThumbnailView && <ThumbnailToggle />}
       <div className='flex items-center px-4 whitespace-nowrap text-foreground  text-sm'>
         {count} {pageTitles[page] || "Bookmarks"}
-        {!isDownloadPage && (
+        {!isShowSelectionMenu && (
           <div className='relative flex justify-center items-center'>
             <button
               ref={btnRef}
