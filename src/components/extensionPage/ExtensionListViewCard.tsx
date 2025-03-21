@@ -36,9 +36,7 @@ const ExtensionListViewCard = ({
     <div
       className={cn(
         "p-6 border-border border group rounded-lg bg-card flex gap-10 mb-4 relative cursor-pointer",
-        isFavorite &&
-          favorite &&
-          "hover:bg-selected-hover border-selected-border bg-selected-bg "
+        isFavorite && favorite && isFavorite && favorite && "bg-[#85bbfd3a]  "
       )}
       onClick={handleToggle}
     >
