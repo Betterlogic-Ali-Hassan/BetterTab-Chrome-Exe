@@ -6,26 +6,48 @@
 
 @layer base {
   :root {
-    --background-color: #fff;
-    --text-color: #000000;
-    --card-color: #f6f8f9;
-    --border-color: #d4d4d4;
-    --text-foreground: #00000080;
-    --badge-color: #e5ebee;
-    --brand-color: #3b82f6;
-    --radius: 0.5rem;
-    --btn-hover: #dbe4e9;
-    --brand-hover: #60a5fa;
-    --hover-color: #dbe4e9;
-    --selected-hover-bg: #bfdbfe33;
-    --selected-bg: #bfdbfe1a;
-    --selected-border: #93c5fd80;
-    --error-color: #dc2626;
-    --home-sidebar-hover: #f6f8f9;
-    --cancel-btn: white;
-    --input-color: #f6f8f9;
-    --progress-wrap: #043d11;
-    --progress: #21c221;
+    --background-color: #ffffff !important; /* Pure white background */
+    --card-color: #f6f7f8 !important; /* Light gray for cards */
+    --text-color: #1c1c1c !important; /* Dark text for readability */
+    --text-foreground: rgba(
+      28,
+      28,
+      28,
+      0.8
+    ) !important; /* Subtle foreground emphasis */
+    --border-color: #e4e6e8 !important; /* Soft light gray borders */
+
+    --badge-color: #dae0e6 !important; /* Light gray badge */
+    --brand-color: #0079d3 !important; /* Reddit’s blue */
+
+    --radius: 0.5rem !important; /* Rounded corners */
+
+    --btn-hover: #dbeeff !important; /* Light blue hover for buttons */
+    --brand-hover: #1484d6 !important; /* Slightly lighter Reddit blue */
+    --hover-color: #f0f2f5 !important; /* Subtle hover effect */
+
+    --selected-hover-bg: rgba(
+      0,
+      121,
+      211,
+      0.15
+    ) !important; /* Blue selection hover */
+    --selected-bg: rgba(
+      0,
+      121,
+      211,
+      0.1
+    ) !important; /* Light selection background */
+    --selected-border: #0079d3 !important; /* Strong selection border */
+
+    --error-color: #ff585b !important; /* Reddit’s red for errors */
+    --home-sidebar-hover: #f8f9fa !important; /* Sidebar hover effect */
+
+    --cancel-btn: #ffffff !important; /* White cancel button */
+    --input-color: #ffffff !important; /* White input background */
+
+    --progress-wrap: #c8e6c9 !important; /* Light green progress background */
+    --progress: #46a629 !important; /* Green progress bar */
   }
   .dark {
     --home-sidebar-hover: #171c1f;
