@@ -9,9 +9,12 @@ const ShortcutBox = ({ text }: { text: string }) => {
           loading='lazy'
         />
       </div>
-      <span className='text-[13px] font-medium text-text max-w-[60px] truncate'>
-        {text}
-      </span>
+      <div className='relative w-[60px] overflow-hidden'>
+        <span className='text-[13px] font-medium text-text whitespace-nowrap block text-center'>
+          {text}
+        </span>
+        <div className='absolute inset-y-0 right-0 w-1/3 bg-gradient-to-r from-transparent to-background pointer-events-none'></div>
+      </div>
     </a>
   );
 };

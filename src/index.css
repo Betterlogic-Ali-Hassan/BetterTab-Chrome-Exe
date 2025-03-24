@@ -199,3 +199,6 @@ textarea {
 svg {
   color: var(--svg-color) !important;
 }
+#tippy-2 {
+  z-index: 30 !important;
+}

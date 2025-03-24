@@ -72,7 +72,7 @@ const TopNav = ({ className, categoriesData }: Props) => {
                         className='ml-2 inline-flex items-center justify-center rounded-full hover:bg-brand-hover/80'
                         onClick={(e) => handleRemoveCategory(categoryId, e)}
                       >
-                        <X size={16} className='text-white' />
+                        <X size={16} className='text-white mt-0.5' />
                       </span>
                     </Button>
                   </SwiperSlide>
