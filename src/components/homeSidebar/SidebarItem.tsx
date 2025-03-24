@@ -13,6 +13,7 @@ interface Props {
   className?: string;
   side?: "left" | "right" | "top" | "bottom";
   tooltipClassName?: string;
+  linkSelected?: boolean;
 }
 const SidebarItem = ({
   icon,
@@ -21,9 +22,10 @@ const SidebarItem = ({
   className,
   side = "right",
   tooltipClassName,
+  linkSelected,
 }: Props) => {
   const { page, setPage } = usePageContext();
-  const selected = page === link;
+  const selected = page === link || linkSelected;
   const handelClick = (link: string) => {
     return () => {
       setPage(link);
@@ -49,6 +51,7 @@ const SidebarItem = ({
         <TooltipContent
           side={side}
           className={cn("bg-text  text-card ", tooltipClassName)}
+          style={{ zIndex: 1000 }}
         >
           <p className='text-xs'>{tooltip}</p>
         </TooltipContent>

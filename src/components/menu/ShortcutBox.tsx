@@ -1,7 +1,7 @@
 const ShortcutBox = ({ text }: { text: string }) => {
   return (
     <a href='#' className='flex items-center flex-col'>
-      <div className='h-[60px] w-[60px] rounded-md bg-card flex items-center justify-center hover:bg-hover'>
+      <div className='h-[60px] w-[60px] rounded-md bg-card flex items-center justify-center hover:bg-badge'>
         <img
           src='/google.png'
           alt='google'
