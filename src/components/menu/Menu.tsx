@@ -10,12 +10,13 @@ import Recent from "./Recent";
 import Workspace from "./Workspace";
 import Tools from "./Tools";
 import SidebarItem from "../homeSidebar/SidebarItem";
-import { MenuIcon } from "lucide-react";
+
 import { useOutsideClick } from "@/hooks/use-outside-click";
 import { cn } from "@/lib/utils";
 import CrossIcon from "../svgs/CrossIcon";
 import AddNew from "./AddNew";
 import RightClickMenu from "./RightClickMenu";
+import Bolt from "../svgs/Bolt";
 
 const Menu = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -79,7 +80,7 @@ const Menu = () => {
       ></div>
       <button ref={buttonRef} onClick={handleOpen}>
         <SidebarItem
-          icon={<MenuIcon />}
+          icon={<Bolt />}
           tooltip='Menu'
           className='flex mt-2'
           linkSelected={open}
