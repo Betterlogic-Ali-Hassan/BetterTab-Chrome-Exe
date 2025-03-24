@@ -4,11 +4,12 @@ import MobileCategoriesFilter from "../bookmarkPage/MobileCategoriesFilter";
 import MobileMenu from "./MobileMenu";
 import SettingIcon from "../svgs/SettingIcon";
 import Logo from "./Logo";
+import Menu from "../menu/Menu";
 
 const HomeSidebar = () => {
   return (
     <div className='fixed left-0 top-0 h-screen z-50 '>
-      <div className='relative flex h-full w-16 flex-1 flex-col items-center border-r border-border px-2 pt-8 '>
+      <div className='relative flex h-full w-16 flex-1 flex-col items-center border-r border-border px-2 pt-8 bg-sidebar '>
         <Logo />
         <span
           aria-hidden='true'
@@ -23,6 +24,7 @@ const HomeSidebar = () => {
                   {sidebarData.map((item, i) => (
                     <SidebarItem {...item} key={i} />
                   ))}
+                  <Menu />
                   <SidebarItem
                     icon={<MobileCategoriesFilter />}
                     tooltip='Filters'

@@ -44,7 +44,7 @@ const ExtensionCard = ({
     <div
       className={cn(
         "bg-card rounded-[24px] max-w-[284px] group p-6 flex flex-col relative items-start gap-6 cursor-pointer group border border-transparent",
-        isFavorite && favorite && "bg-[#85bbfd3a]  "
+        isFavorite && favorite && "bg-card-pin  "
       )}
       onClick={handleToggle}
     >
@@ -58,7 +58,11 @@ const ExtensionCard = ({
             )}
             onClick={addFavoriteExe}
           >
-            {isFavorite ? <BsPinFill size={18} /> : <BsPin size={18} />}
+            {isFavorite ? (
+              <BsPinFill size={18} className='text-pin' />
+            ) : (
+              <BsPin size={18} className='text-pin-disabled' />
+            )}
           </span>
           <Switch checked={switchChecked} onCheckedChange={handleSwitch} />
           <MoreIconBtn className='!h-0 lg:px-0 ' />

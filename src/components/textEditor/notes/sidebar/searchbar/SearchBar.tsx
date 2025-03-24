@@ -17,7 +17,7 @@ const SearchBar = () => {
         placeholder='Search...'
       />
       <Button
-        className='bg-brand mt-3  text-white w-full justify-center hover:bg-brand-hover '
+        className='bg-brand mt-3  text-text-primary w-full justify-center hover:bg-brand-hover '
         onClick={addNewNote}
       >
         <CgNotes size={18} className='mr-1' />

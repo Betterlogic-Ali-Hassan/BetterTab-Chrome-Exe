@@ -17,6 +17,7 @@ const EditActionBtns = ({ savBtnAction }: Props) => {
   return (
     <div className='flex items-center justify-end gap-x-3 border-t border-border  px-4 py-4 sm:px-8'>
       <AlertDialogBox
+        isDialogBtn
         onClick={handleBack}
         className='btn secondary flex items-center gap-x-1.5 rounded'
         trigger={

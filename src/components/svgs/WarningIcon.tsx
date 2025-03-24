@@ -1,8 +1,8 @@
 const WarningIcon = () => {
   return (
-    <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10'>
+    <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-error-light sm:mx-0 sm:h-10 sm:w-10'>
       <svg
-        className='h-6 w-6 text-error'
+        className='h-6 w-6 !text-error error'
         fill='none'
         viewBox='0 0 24 24'
         strokeWidth='1.5'

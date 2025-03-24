@@ -52,7 +52,7 @@ const TabCardDetail = ({ cards }: Props) => {
                   </div>
                   <div className='text-xs text-text '>Added on 11/5/2024</div>
                 </div>
-                <hr className='border-neutral-200 dark:border-neutral-700' />
+                <hr className='border-border' />
                 <ActionsBtns activeTabData={activeTabData} />
                 <CloseBtn />
               </div>
