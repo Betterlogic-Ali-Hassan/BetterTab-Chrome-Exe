@@ -38,7 +38,7 @@ const Menu = () => {
       {open && (
         <div
           ref={ref}
-          className='bg-card  p-4 ml-[65px]  max-w-[415px] max-h-[820px] w-full h-full overflow-y-auto no-scrollbar fixed top-2 rounded-md '
+          className='bg-card border border-border shadow-sm p-4 ml-[65px]  max-w-[415px] max-h-[820px] w-full h-full overflow-y-auto no-scrollbar fixed top-2 rounded-md '
         >
           <SearchInput
             className='border bg-input rounded-md h-[40px] flex items-center text-text'
