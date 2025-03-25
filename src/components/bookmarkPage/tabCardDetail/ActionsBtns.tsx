@@ -33,7 +33,7 @@ const ActionsBtns = ({ activeTabData }: Props) => {
       <DialogBox
         className='!p-0 rounded-md bg-card max-w-[768px]  w-full '
         trigger={
-          <button className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center'>
+          <button className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center hover:opacity-80'>
             <Edit />
           </button>
         }

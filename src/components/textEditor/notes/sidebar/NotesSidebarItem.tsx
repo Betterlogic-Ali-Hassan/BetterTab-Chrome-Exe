@@ -8,6 +8,7 @@ import { formatDistanceToNow } from "date-fns";
 import { Trash2 } from "lucide-react";
 import CardColorSelection from "./CardColorSelection";
 import { useState } from "react";
+import SidebarItem from "@/components/homeSidebar/SidebarItem";
 
 interface Props {
   id: number;
@@ -64,20 +65,29 @@ const NotesSidebarItem = ({ title, des, id, timestamp, cardView }: Props) => {
           <span className='text-text opacity-70 text-xs mt-1'>
             {formatDistanceToNow(new Date(timestamp), { addSuffix: true })}
           </span>
-          <CardColorSelection
-            selectedColor={selectedColor}
-            setSelectedColor={setSelectedColor}
-          />
+          <div className='flex items-center gap-3'>
+            <CardColorSelection
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
+            />
+            {filteredNotes.length > 1 && (
+              <SidebarItem
+                icon={
+                  <span
+                    className=' hover:text-error h-[36px] w-[36px] bg-badge flex items-center justify-center rounded-[10px] opacity-0 group-hover:opacity-100 duration-200 transition'
+                    onClick={handleDelete}
+                  >
+                    <Trash2 size={18} />
+                  </span>
+                }
+                tooltip='Delete Note'
+                className='h-[36px] w-[36px]'
+                side='top'
+              />
+            )}
+          </div>
         </div>
       </div>
-      {filteredNotes.length > 1 && (
-        <span
-          className='absolute top-3 right-3 hover:text-error opacity-0 group-hover:opacity-100 duration-200 transition'
-          onClick={handleDelete}
-        >
-          <Trash2 size={18} />
-        </span>
-      )}
     </button>
   );
 };

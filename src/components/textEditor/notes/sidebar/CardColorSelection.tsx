@@ -1,3 +1,4 @@
+import SidebarItem from "@/components/homeSidebar/SidebarItem";
 import {
   Popover,
   PopoverContent,
@@ -16,9 +17,17 @@ const CardColorSelection = ({ selectedColor, setSelectedColor }: Props) => {
   };
   return (
     <Popover>
-      <PopoverTrigger className='flex items-center gap-2 bg-input text-sm  p-2 px-2 rounded-sm  h-[36px]   border border-border hover:bg-hover mt-1'>
-        <IoColorPaletteSharp size={18} />
-        Background
+      <PopoverTrigger>
+        <SidebarItem
+          icon={
+            <span className='opacity-0 group-hover:opacity-100 transition duration-200 flex rounded-[10px] items-center gap-2 bg-badge text-sm  justify-center   h-[36px] w-[36px]   border border-border hover:opacity-80 mt-1'>
+              <IoColorPaletteSharp size={20} />
+            </span>
+          }
+          tooltip='Background'
+          className='h-[36px] w-[36px]'
+          side='top'
+        />
       </PopoverTrigger>
       <PopoverContent className='border border-border shadow-md bg-input'>
         <div className='flex flex-wrap justify-center gap-4  rounded-md'>

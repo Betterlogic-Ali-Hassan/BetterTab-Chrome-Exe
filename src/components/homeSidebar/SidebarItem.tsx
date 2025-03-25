@@ -39,7 +39,7 @@ const SidebarItem = ({
             "flex h-11 w-11 items-center justify-center rounded-[14px] p-0 transition-colors ",
             "hover:bg-home-sidebar-hover hover:text-default-foreground",
             "focus:bg-default/40 focus:text-default-foreground outline-none",
-            selected && "bg-badge",
+            selected && "bg-badge hover:bg-badge",
             className
           )}
           onClick={handelClick(link ? link : page)}
