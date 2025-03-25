@@ -34,16 +34,34 @@ const ExtensionListViewCard = ({
   return (
     <div
       className={cn(
-        "p-6 border-border border group rounded-lg bg-card flex gap-10 mb-4 relative cursor-pointer",
+        "p-4 rounded-xl shadow-sm  border-border border group  bg-card flex gap-4 mb-4 relative cursor-pointer",
         isFavorite && favorite && isFavorite && favorite && "bg-[#85bbfd3a]  "
       )}
       onClick={handleToggle}
     >
-      <div className='h-[38px] w-[38px]'>
-        <img src={icon || "/placeholder.svg"} alt={title} />
+      <div className='h-[48px] w-[48px]'>
+        <img
+          src={icon || "/placeholder.svg"}
+          alt={title}
+          className='rounded-lg shadow-sm'
+        />
       </div>
       <div className='grow'>
-        <h3 className='font-semibold text-text'>{title}</h3>
+        <div className='flex items-center justify-between'>
+          <h3 className='font-semibold text-text'>{title}</h3>
+          <div className='flex items-center gap-6'>
+            <Switch />
+            <span
+              className={cn(
+                "cursor-pointer opacity-0 group-hover:opacity-100 text-text ",
+                isFavorite && "block"
+              )}
+              onClick={addFavoriteExe}
+            >
+              {isFavorite ? <BsPinFill size={20} /> : <BsPin size={20} />}
+            </span>
+          </div>
+        </div>
         <a
           href={path}
           target='_blank'
@@ -53,28 +71,19 @@ const ExtensionListViewCard = ({
         >
           {path}
         </a>
-        <p className='mt-6 text-[15px]'>{des}</p>
-        <div className='flex items-center justify-between mt-6'>
-          <div className='flex items-center gap-4'>
+        <p className='mt-3 text-sm'>{des}</p>
+        <div className='flex items-center justify-between mt-2'>
+          <div className='flex items-center gap-2'>
             {tags.map((tag) => (
-              <button className='btn rounded' key={tag.id}>
+              <button
+                className=' inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white text-brand border border-brand/90'
+                key={tag.id}
+              >
                 {tag.name}
               </button>
             ))}
           </div>
-          <Switch />
         </div>
-      </div>
-      <div>
-        <span
-          className={cn(
-            "cursor-pointer hidden group-hover:block text-text absolute top-6 right-6",
-            isFavorite && "block"
-          )}
-          onClick={addFavoriteExe}
-        >
-          {isFavorite ? <BsPinFill size={20} /> : <BsPin size={20} />}
-        </span>
       </div>
     </div>
   );
