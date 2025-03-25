@@ -1,22 +1,14 @@
 "use client";
-import { RefObject, useRef, useState } from "react";
+import { useState } from "react";
 import { Check } from "lucide-react";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
 import { SiGooglesheets } from "react-icons/si";
 import { PiPresentationChartLight } from "react-icons/pi";
 import { MdOutlineAssignment } from "react-icons/md";
 
-interface DocDropdownProps {
-  addExceptionRef?: (ref: RefObject<HTMLDivElement | null>) => void;
-}
-
-const DocDropdown = ({ addExceptionRef }: DocDropdownProps) => {
+const DocDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState("doc");
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  if (addExceptionRef && dropdownRef) {
-    addExceptionRef(dropdownRef);
-  }
 
   const items = [
     {
@@ -51,7 +43,7 @@ const DocDropdown = ({ addExceptionRef }: DocDropdownProps) => {
   };
 
   return (
-    <div className='relative' ref={dropdownRef}>
+    <div className='relative'>
       <button
         onClick={toggleDropdown}
         className='text-sm opacity-80 text-text hover:opacity-100 font-medium px-3 py-2 rounded-md hover:bg-accent'

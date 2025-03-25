@@ -8,16 +8,11 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
-import { RefObject, useRef } from "react";
+
 interface RightClickMenuProps {
-  addExceptionRef?: (ref: RefObject<HTMLDivElement | null>) => void;
   children: React.ReactNode;
 }
-const RightClickMenu = ({ children, addExceptionRef }: RightClickMenuProps) => {
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  if (addExceptionRef && dropdownRef) {
-    addExceptionRef(dropdownRef);
-  }
+const RightClickMenu = ({ children }: RightClickMenuProps) => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>{children}</ContextMenuTrigger>

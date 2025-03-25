@@ -13,7 +13,7 @@ const ShortcutBox = ({ text }: { text: string }) => {
         <span className='text-[13px] font-medium text-text whitespace-nowrap block text-center'>
           {text}
         </span>
-        <div className='absolute inset-y-0 right-0 w-1/3 bg-gradient-to-r from-transparent to-background pointer-events-none'></div>
+        <div className='absolute inset-y-0 right-0 w-1/3 bg-gradient-to-r from-transparent to-input pointer-events-none'></div>
       </div>
     </a>
   );

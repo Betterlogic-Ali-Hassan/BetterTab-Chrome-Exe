@@ -21,10 +21,10 @@ const HomeSidebar = () => {
             <nav className='flex w-full flex-col items-center gap-1 outline-none justify-between h-full'>
               <li className='relative mb-2 w-full max-w-[44px] p-0'>
                 <ul className='flex flex-col gap-2 pt-1' data-has-title='true'>
+                  <Menu />
                   {sidebarData.map((item, i) => (
                     <SidebarItem {...item} key={i} />
                   ))}
-                  <Menu />
                   <SidebarItem
                     icon={<MobileCategoriesFilter />}
                     tooltip='Filters'
