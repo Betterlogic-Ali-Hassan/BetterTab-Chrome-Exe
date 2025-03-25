@@ -6,6 +6,8 @@ import { useEditorContext } from "@/context/EditorContext";
 import { cn } from "@/lib/utils";
 import { formatDistanceToNow } from "date-fns";
 import { Trash2 } from "lucide-react";
+import CardColorSelection from "./CardColorSelection";
+import { useState } from "react";
 
 interface Props {
   id: number;
@@ -20,13 +22,14 @@ const removeHTMLTags = (html: string) => {
 };
 
 const NotesSidebarItem = ({ title, des, id, timestamp, cardView }: Props) => {
+  const [selectedColor, setSelectedColor] = useState("#f6f7f8");
   const { selectedNoteId, selectNote, deleteNote, filteredNotes } =
     useEditorContext();
   const selected = selectedNoteId === id;
   const handleClick = () => selectNote(id);
 
   const handleDelete = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent triggering the button click
+    e.stopPropagation();
     deleteNote(id);
   };
 
@@ -34,13 +37,14 @@ const NotesSidebarItem = ({ title, des, id, timestamp, cardView }: Props) => {
     <button
       type='button'
       className={cn(
-        "p-5 bg-card relative hover:bg-hover transition duration-200 group border border-border rounded-sm max-h-[150px] min-h-[136px] flex",
-        selected && "bg-card border border-brand",
+        `p-5 relative hover:bg-hover transition duration-200 group border border-border rounded-sm max-h-[150px] min-h-[136px] flex`,
+        selected && `border border-brand`,
         cardView && "max-h-[280px] min-h-[260px] max-w-[164px]"
       )}
+      style={{ backgroundColor: selectedColor }}
       onClick={handleClick}
     >
-      <div className='flex gap-2 flex-col items-start'>
+      <div className='flex gap-2 flex-col items-start w-full'>
         <div className='flex flex-col items-start gap-1'>
           <h4 className='text-sm font-medium text-text text-start max-w-[284px] line-clamp-2 overflow-hidden text-ellipsis'>
             {removeHTMLTags(title || "Untitled")}
@@ -56,9 +60,15 @@ const NotesSidebarItem = ({ title, des, id, timestamp, cardView }: Props) => {
               : removeHTMLTags(des)}
           </div>
         </div>
-        <span className='text-text opacity-70 text-xs mt-2'>
-          {formatDistanceToNow(new Date(timestamp), { addSuffix: true })}
-        </span>
+        <div className='flex items-center w-full justify-between'>
+          <span className='text-text opacity-70 text-xs mt-1'>
+            {formatDistanceToNow(new Date(timestamp), { addSuffix: true })}
+          </span>
+          <CardColorSelection
+            selectedColor={selectedColor}
+            setSelectedColor={setSelectedColor}
+          />
+        </div>
       </div>
       {filteredNotes.length > 1 && (
         <span

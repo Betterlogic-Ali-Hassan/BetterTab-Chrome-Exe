@@ -1,0 +1,48 @@
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { colors } from "@/constant/CardColor";
+import { Check } from "lucide-react";
+import { IoColorPaletteSharp } from "react-icons/io5";
+interface Props {
+  selectedColor: string;
+  setSelectedColor: (color: string) => void;
+}
+const CardColorSelection = ({ selectedColor, setSelectedColor }: Props) => {
+  const handleColorChange = (color: string) => {
+    setSelectedColor(color);
+  };
+  return (
+    <Popover>
+      <PopoverTrigger className='flex items-center gap-2 bg-input text-sm  p-2 px-2 rounded-sm  h-[36px]   border border-border hover:bg-hover mt-1'>
+        <IoColorPaletteSharp size={18} />
+        Background
+      </PopoverTrigger>
+      <PopoverContent className='border border-border shadow-md bg-input'>
+        <div className='flex flex-wrap justify-center gap-4  rounded-md'>
+          {colors.map((color) => (
+            <button
+              key={color.value}
+              className='relative w-8 h-8 rounded-full border-2 border-border flex items-center justify-center focus:outline-none '
+              style={{ backgroundColor: color.value }}
+              onClick={() => handleColorChange(color.value)}
+              aria-label={`Select ${color.label} color`}
+            >
+              {selectedColor === color.value && (
+                <Check
+                  className={`h-4 w-4 ${
+                    color.value === "#ffffff" ? "text-black" : "text-black"
+                  }`}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+};
+
+export default CardColorSelection;
