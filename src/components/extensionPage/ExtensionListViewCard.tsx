@@ -50,7 +50,6 @@ const ExtensionListViewCard = ({
         <div className='flex items-center justify-between'>
           <h3 className='font-semibold text-text'>{title}</h3>
           <div className='flex items-center gap-6'>
-            <Switch />
             <span
               className={cn(
                 "cursor-pointer opacity-0 group-hover:opacity-100 text-text ",
@@ -60,6 +59,7 @@ const ExtensionListViewCard = ({
             >
               {isFavorite ? <BsPinFill size={20} /> : <BsPin size={20} />}
             </span>
+            <Switch />
           </div>
         </div>
         <a
