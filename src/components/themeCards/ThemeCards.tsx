@@ -5,17 +5,10 @@ import CrossIcon from "../svgs/CrossIcon";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { cn } from "@/lib/utils";
 
-type Theme = "light" | "dark" | "sunrise" | "sunset" | "system" | "forest";
+type Theme = "light" | "dark" | "sunrise" | "sunset" | "forest";
 
 const ThemeCards = () => {
-  const themes: Theme[] = [
-    "dark",
-    "light",
-    "system",
-    "sunrise",
-    "sunset",
-    "forest",
-  ];
+  const themes: Theme[] = ["dark", "light", "sunrise", "sunset", "forest"];
 
   const [openDropDown, setOpenDropDown] = useState(false);
   const handleOpenDropDown = () => {

@@ -8,7 +8,7 @@ const ThemeCard = ({
   theme,
 }: {
   icon: React.ReactNode;
-  theme: "light" | "dark" | "sunrise" | "sunset" | "system" | "forest";
+  theme: "light" | "dark" | "sunrise" | "sunset" | "forest";
 }) => {
   const { theme: themeValue, setTheme } = useTheme();
   const handleSetTheme = () => setTheme(theme);
