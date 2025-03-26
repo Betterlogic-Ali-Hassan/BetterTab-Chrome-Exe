@@ -8,7 +8,7 @@ import { PageContextProvider } from "./context/PageContext.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <PageContextProvider>
-      <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
+      <ThemeProvider>
         <App />
         <ToastContainer
           position='bottom-center'

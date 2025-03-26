@@ -1,5 +1,5 @@
 import { Sun } from "lucide-react";
-import ThemeCard from "./themeCard";
+import ThemeCard from "./ThemeCard";
 import { useState } from "react";
 import CrossIcon from "../svgs/CrossIcon";
 import { MdOutlineWbSunny } from "react-icons/md";
