@@ -7,6 +7,9 @@ import { Switch } from "../ui/switch";
 import { BsPin, BsPinFill } from "react-icons/bs";
 import { cn } from "@/lib/utils";
 import { useBookmarkItem } from "@/hooks/use-bookmark-item";
+import Badge from "../ui/Badge";
+import { getCategoryName } from "@/lib/category-utils";
+import { useBookmarks } from "@/context/BookmarkContext";
 
 interface ExtensionCardProps {
   data: Card;
@@ -22,6 +25,7 @@ const ExtensionListViewCard = ({
   favorite,
 }: ExtensionCardProps) => {
   const { handleToggle, title, icon, path, tags, des } = useBookmarkItem(data);
+  const { toggleCategory } = useBookmarks();
   const isFavorite = favoriteExe.some((card) => card.id === data.id);
 
   const addFavoriteExe = (e: React.MouseEvent) => {
@@ -73,14 +77,13 @@ const ExtensionListViewCard = ({
         </a>
         <p className='mt-3 text-sm'>{des}</p>
         <div className='flex items-center justify-between mt-2'>
-          <div className='flex items-center gap-2'>
+          <div className='flex items-center gap-2 mt-1'>
             {tags.map((tag) => (
-              <button
-                className=' inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white text-brand border border-brand/90'
+              <Badge
+                text={tag.name}
+                onClick={getCategoryName(tag.id, toggleCategory)}
                 key={tag.id}
-              >
-                {tag.name}
-              </button>
+              />
             ))}
           </div>
         </div>

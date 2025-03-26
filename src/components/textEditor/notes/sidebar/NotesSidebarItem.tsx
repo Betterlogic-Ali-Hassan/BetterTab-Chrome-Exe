@@ -23,7 +23,7 @@ const removeHTMLTags = (html: string) => {
 };
 
 const NotesSidebarItem = ({ title, des, id, timestamp, cardView }: Props) => {
-  const [selectedColor, setSelectedColor] = useState("#f6f7f8");
+  const [selectedColor, setSelectedColor] = useState("");
   const { selectedNoteId, selectNote, deleteNote, filteredNotes } =
     useEditorContext();
   const selected = selectedNoteId === id;
@@ -38,9 +38,9 @@ const NotesSidebarItem = ({ title, des, id, timestamp, cardView }: Props) => {
     <button
       type='button'
       className={cn(
-        `p-5 relative hover:bg-hover transition duration-200 group border border-border rounded-sm max-h-[150px] min-h-[136px] flex`,
-        selected && `border border-brand`,
-        cardView && "max-h-[280px] min-h-[260px] max-w-[164px]"
+        `p-5 relative bg-card  hover:bg-hover transition duration-200 group border border-border rounded-sm max-h-[150px] min-h-[136px] flex`,
+        selected && `border border-brand `,
+        cardView && "max-h-[280px] min-h-[260px] max-w-[164px] p-3"
       )}
       style={{ backgroundColor: selectedColor }}
       onClick={handleClick}
@@ -61,7 +61,7 @@ const NotesSidebarItem = ({ title, des, id, timestamp, cardView }: Props) => {
               : removeHTMLTags(des)}
           </div>
         </div>
-        <div className='flex items-center w-full justify-between'>
+        <div className='flex items-center w-full justify-between gap-2'>
           <span className='text-text opacity-70 text-xs mt-1'>
             {formatDistanceToNow(new Date(timestamp), { addSuffix: true })}
           </span>

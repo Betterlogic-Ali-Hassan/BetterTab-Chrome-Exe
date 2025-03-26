@@ -1,81 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ... */
-
-@layer base {
-  :root {
-    --background-color: #ffffff; /* Pure white background */
-    --card-color: #f6f7f8; /* Light gray for cards */
-    --card-pin-color: #85bbfd3a;
-    --text-color: #1c1c1c; /* Dark text for readability */
-    --text-foreground: rgba(28, 28, 28, 0.8); /* Subtle foreground emphasis */
-    --text-primary: #fff; /* Primary text color */
-    --border-color: #e4e6e8; /* Soft light gray borders */
-
-    --badge-color: #dae0e6; /* Light gray badge */
-    --brand-color: #0079d3; /* Reddit’s blue */
-
-    --radius: 0.5rem; /* Rounded corners */
-
-    --btn-hover: #dbeeff; /* Light blue hover for buttons */
-    --brand-hover: #1484d6; /* Slightly lighter Reddit blue */
-    --hover-color: #f0f2f5; /* Subtle hover effect */
-
-    --selected-hover-bg: rgba(0, 121, 211, 0.15); /* Blue selection hover */
-    --selected-bg: rgba(0, 121, 211, 0.1); /* Light selection background */
-    --selected-border: #0079d3; /* Strong selection border */
-
-    --error-color: #ff585b; /* Reddit’s red for errors */
-    --error-light-color: #fee2e2;
-    --home-sidebar-hover: #f8f9fa; /* Sidebar hover effect */
-    --sidebar-bg-color: #ffffff;
-
-    --cancel-btn: #ffffff; /* White cancel button */
-    --input-color: #ffffff; /* White input background */
-
-    --progress-wrap: #c8e6c9; /* Light green progress background */
-    --progress: #46a629; /* Green progress bar */
-
-    --date-card-color: #f6f7f8;
-    --date-selected-bg-color: black;
-    --date-hover-bg-color: #f0f2f5;
-    --date-text-color: #000;
-    --date-selected-text-color: #f0f2f5;
-
-    --delete-bg-color: #f6f7f8; /* Red for delete */
-    --delete-text-color: #000;
-
-    --export-bg-color: #f6f7f8; /* Blue for export */
-    --export-text-color: #000;
-
-    --pin-color: #000;
-    --pin-disabled-color: #000;
-
-    --svg-color: #000;
-  }
-  .dark {
-    --sidebar-bg-color: #0000;
-    --text-primary: #fff; /* Primary text color */
-    --home-sidebar-hover: #171c1f;
-    --background-color: #000;
-    --card-color: #171c1f;
-    --error-color: #dc2626;
-    --error-light-color: #fee2e2;
-    --text-color: #ffff;
-    --text-foreground: #d4d4d4;
-    --btn-hover: #2a3236;
-    --badge-color: #333d42;
-    --border-color: #262626;
-    --hover-color: #2a3236;
-    --cancel-btn: #ffffff1a;
-    --input-color: #2a3236;
-    --progress-wrap: #043d11;
-    --progress: #21c2218a;
-    --svg-color: #fff;
-  }
-}
+@import "./styles/base/tailwind.css";
+@import "./styles/base/variables.css";
+@import "./styles/base/reset.css";
+@import "./styles/components/button.css";
+@import "./styles/components/inputs.css";
+@import "./styles/components/scrollbars.css";
+@import "./styles/components/tooltips.css";
+@import "./styles/components/progress.css";
+@import "./styles/components/swiper.css";
 
 @layer base {
   * {
@@ -84,50 +15,11 @@
   body {
     @apply bg-background text-foreground;
   }
-  .control-label {
-    @apply text-sm font-semibold;
-  }
-  .btn {
-    @apply rounded-r  flex items-center text-sm  input-shadow   font-medium border-0 outline-none ml-[1px] h-[36px] py-2 px-3 gap-1.5 text-text bg-input hover:bg-hover;
-  }
-  .input {
-    @apply block w-full rounded-none rounded-l bg-input focus:ring-brand focus:ring-2 text-sm text-text font-medium border-0  input-shadow py-1.5 px-3 outline-none h-[36px] placeholder:text-[#777];
-  }
-  .cancel-btn {
-    @apply sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center  border-transparent    text-text bg-cancel-btn hover:bg-hover  input-shadow px-3 py-2 h-[36px];
-  }
-  .done-btn {
-    @apply sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center bg-brand border-transparent text-text-primary hover:bg-brand-hover hover:text-text-primary px-3 py-2 h-[36px];
-  }
 }
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+div[role="dialog"] {
+  box-shadow: none;
 }
-body::-webkit-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.dark .input-shadow {
-  --tw-text-opacity: 1;
-  --tw-ring-color: #ffffff1a;
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
-    var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
-    calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
-    var(--tw-shadow, 0 0 #0000);
-}
-.input-shadow {
-  --tw-text-opacity: 1;
-  --tw-ring-color: #d4d4d4;
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0
-    var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
-    calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
-    var(--tw-shadow, 0 0 #0000);
-}
+
 .partially-assigned-bg {
   background: linear-gradient(
     225deg,
@@ -140,65 +32,4 @@ body::-webkit-scrollbar {
     #ffffff1a 15px,
     #ffffff1a
   );
-}
-.swiper-button-next,
-.swiper-button-prev {
-  color: black;
-  background: white;
-  border-radius: 50%;
-  height: 28px;
-  width: 28px;
-  margin-top: calc(0px - (28px / 2));
-}
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 16px;
-  font-weight: 700;
-}
-.swiper-button-disabled {
-  display: none;
-}
-.swiper-wrapper {
-  display: flex;
-  order: 1;
-  margin-left: 4px;
-}
-html,
-body {
-  overflow: hidden;
-}
-div[role="dialog"] {
-  /* padding: 0 ; */
-  box-shadow: none;
-}
-
-.tooltip {
-  color: var(--card-color);
-}
-.Toastify__progress-bar--wrp {
-  background: var(--progress-wrap);
-}
-.Toastify__progress-bar-theme--dark {
-  background-color: var(--progress);
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-input,
-button,
-label {
-  color: var(--text-color);
-}
-input,
-textarea {
-  font-weight: 400 !important;
-}
-svg {
-  color: var(--svg-color) !important;
-}
-#tippy-2 {
-  z-index: 30 !important;
 }

@@ -20,7 +20,7 @@ const CardColorSelection = ({ selectedColor, setSelectedColor }: Props) => {
       <PopoverTrigger>
         <SidebarItem
           icon={
-            <span className='opacity-0 group-hover:opacity-100 transition duration-200 flex rounded-[10px] items-center gap-2 bg-badge text-sm  justify-center   h-[36px] w-[36px]   border border-border hover:opacity-80 mt-1'>
+            <span className='opacity-0 group-hover:opacity-100 transition duration-200 flex rounded-[10px] items-center gap-2 bg-badge text-sm  justify-center   h-[36px] w-[36px]    hover:opacity-80 mt-1'>
               <IoColorPaletteSharp size={20} />
             </span>
           }
@@ -29,7 +29,7 @@ const CardColorSelection = ({ selectedColor, setSelectedColor }: Props) => {
           side='top'
         />
       </PopoverTrigger>
-      <PopoverContent className='border border-border shadow-md bg-input'>
+      <PopoverContent className=' shadow-md bg-input'>
         <div className='flex flex-wrap justify-center gap-4  rounded-md'>
           {colors.map((color) => (
             <button

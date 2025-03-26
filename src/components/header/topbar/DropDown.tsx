@@ -4,18 +4,21 @@ import { useBookmarks } from "@/context/BookmarkContext";
 import ThumbnailToggle from "../../bookmarkPage/ThumbnailToggle";
 import { usePageContext } from "@/context/PageContext";
 import DotsIcon from "../../svgs/DotsIcon";
+import { cn } from "@/lib/utils";
 
 const DropDown = () => {
   const { cards } = useBookmarks();
   const { page } = usePageContext();
   const [openDropDown, setOpenDropDown] = useState(false);
-  const btnRef = useRef<HTMLButtonElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const count = cards.length;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (!btnRef.current) return;
-      if (!btnRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setOpenDropDown(false);
       }
     };
@@ -24,6 +27,7 @@ const DropDown = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
   const isShowThumbnailView = page === "downloads" || page === "history";
   const pageTitles: Record<string, string> = {
     downloads: "Downloads",
@@ -31,17 +35,29 @@ const DropDown = () => {
     extensions: "Extensions",
   };
   const isShowSelectionMenu = page === "downloads" || page === "extensions";
+
+  const handleOpenDropDown = () => {
+    if (!isShowSelectionMenu) setOpenDropDown(!openDropDown);
+  };
+
   return (
     <div className='hidden lg:flex lg:h-[3.25rem] items-center justify-end'>
       {!isShowThumbnailView && <ThumbnailToggle />}
-      <div className='flex items-center px-4 whitespace-nowrap text-foreground  text-sm'>
-        {count} {pageTitles[page] || "Bookmarks"}
+      <div
+        className={cn(
+          "flex items-center px-4 whitespace-nowrap text-foreground text-sm cursor-pointer",
+          isShowSelectionMenu && "cursor-default"
+        )}
+        ref={containerRef}
+      >
+        <span onClick={handleOpenDropDown}>
+          {count} {pageTitles[page] || "Bookmarks"}
+        </span>
         {!isShowSelectionMenu && (
           <div className='relative flex justify-center items-center'>
             <button
-              ref={btnRef}
-              className='p-2 lg:p-0.5  lg:text-foreground   hover:text-text'
-              onClick={() => setOpenDropDown(!openDropDown)}
+              className='p-2 lg:p-0.5 lg:text-foreground hover:text-text'
+              onClick={handleOpenDropDown}
             >
               <DotsIcon />
             </button>
