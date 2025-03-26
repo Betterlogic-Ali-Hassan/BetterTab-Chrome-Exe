@@ -48,6 +48,7 @@ module.exports = {
 			'card-pin':'var( --card-pin-color)',
 			'pin':'var( --pin-color)',
 			'pin-disabled':'var( --pin-disabled-color)',
+			'sidebar-selected':'var( --sidebar-selected-color)',
 
 
 			
