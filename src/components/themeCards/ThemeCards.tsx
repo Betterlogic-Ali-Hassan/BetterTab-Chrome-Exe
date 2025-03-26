@@ -24,7 +24,7 @@ const ThemeCards = () => {
 
       <div
         className={cn(
-          "flex flex-col gap-4 p-6 bg-card border border-border rounded-[12px] fixed w-full max-w-[300px] items-center z-[1500] top-28 right-6 pt-10 translate-x-[100%] opacity-0 transition duration-300",
+          "flex flex-col gap-4 p-6 bg-card border border-border rounded-[12px] overflow-y-auto max-h-full no-scrollbar fixed w-full max-w-[280px] items-center z-[1500] top-28 right-6 pt-10 translate-x-[100%] opacity-0 transition duration-300",
           openDropDown && "translate-x-0 opacity-100"
         )}
       >
