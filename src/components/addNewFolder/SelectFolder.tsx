@@ -8,7 +8,8 @@ import {
 } from "@/components/ui/popover";
 
 import { useFolderSelect } from "@/hooks/use-folder-select";
-import { PopoverContent as PopoverContents } from "./PopoverContent";
+import { SearchInput } from "./SearchInput";
+import { FolderList } from "./SelectFolderList";
 import { cn } from "@/lib/utils";
 
 interface FolderSelectProps {
@@ -23,7 +24,15 @@ export function FolderSelect({
   popoverClassName,
   triggerClassName,
 }: FolderSelectProps) {
-  const { selected, openPopover, setOpenPopover } = useFolderSelect();
+  const {
+    searchTerm,
+    selected,
+    openPopover,
+    filteredFolders,
+    handleSearch,
+    handleSelect,
+    setOpenPopover,
+  } = useFolderSelect();
 
   return (
     <div className={className}>
@@ -42,11 +51,12 @@ export function FolderSelect({
           </PopoverTrigger>
           <PopoverContent
             className={cn(
-              "relative z-50 max-h-96 w-[720px]  overflow-hidden p-0",
+              "relative z-50 max-h-96 w-[720px]  overflow-hidden rounded-md border bg-card text-popover-foreground shadow-md p-0",
               popoverClassName
             )}
           >
-            <PopoverContents />
+            <SearchInput value={searchTerm} onChange={handleSearch} />
+            <FolderList folders={filteredFolders} onSelect={handleSelect} />
           </PopoverContent>
         </Popover>
       </div>
