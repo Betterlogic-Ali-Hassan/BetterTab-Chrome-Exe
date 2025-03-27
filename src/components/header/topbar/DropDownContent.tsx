@@ -19,7 +19,7 @@ const DropDownContent = () => {
   };
 
   return (
-    <div className='absolute right-2 top-10 lg:right-1 lg:top-7 z-30 w-48 origin-top-right rounded bg-card  py-1 shadow-lg  focus:outline-none'>
+    <div className='absolute right-2 top-10 lg:right-1 lg:top-7 z-30 w-48 origin-top-right rounded bg-card border border-border  py-1 shadow-lg  focus:outline-none'>
       {!showSelectionCard && (
         <DropDownButton
           onClick={() => toggleSelectionCard(true)}

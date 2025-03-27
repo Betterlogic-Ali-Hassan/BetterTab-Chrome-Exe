@@ -3,13 +3,17 @@ import PasteLinkInput from "@/components/addNewCard/PasteLinkInput";
 import TagBoxContent from "@/components/addNewCard/TagBoxContent";
 import TextBoxInputs from "@/components/addNewCard/TextBoxInputs";
 import EditActionBtns from "@/components/EditActionBtns";
-import { Edit } from "lucide-react";
-import SelectFolder from "../components/addNewFolder/SelectFolder";
+import { ChevronDown, Edit } from "lucide-react";
+
 import { useBookmarks } from "@/context/BookmarkContext";
 
 import type { Card } from "@/types/TabCardType";
 import { toast } from "react-toastify";
 import { useFormContext } from "@/context/from-Context";
+import { useFolderSelect } from "@/hooks/use-folder-select";
+import { PopoverContent } from "@/components/addNewFolder/PopoverContent";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface EditBookmarkProps {
   activeTabData?: Card;
@@ -18,7 +22,11 @@ interface EditBookmarkProps {
 const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
   const { resetForm, setIsLoading, formData } = useFormContext();
   const { updateCard } = useBookmarks();
-
+  const { selected } = useFolderSelect();
+  const [showFolderSelect, setShowFolderSelect] = useState(false);
+  const handleSelectFolder = () => {
+    setShowFolderSelect(!showFolderSelect);
+  };
   const handleSaveBtn = () => {
     if (!activeTabData) return;
 
@@ -69,11 +77,24 @@ const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
         className='sm:px-8 sm:py-0 sm:pt-2'
         notAllowTitle
       />
-      <SelectFolder
-        className='px-8'
-        triggerClassName='bg-input '
-        popoverClassName='w-[702px] '
-      />
+      <div
+        onClick={handleSelectFolder}
+        className='w-full  outline-none focus:outline-none ring-0 flex h-12 px-4 text-sm items-center justify-between rounded-sm border border-border bg-transparent text-text mx-8 bg-white max-w-[708px]  placeholder:text-foreground disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 rounded-b-none transition duration-200'
+      >
+        {selected}
+        <span>
+          <ChevronDown size={20} />
+        </span>
+      </div>
+      <div
+        className={cn(
+          "transition-all duration-300 ease-in-out overflow-hidden !mt-0",
+          showFolderSelect ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+        )}
+      >
+        <PopoverContent className='bg-white ml-8 max-w-[708px] rounded-t-none -mt-1 pt-1 ' />
+      </div>
+
       <div className='h-4'></div>
       <TagBoxContent
         actionBtns

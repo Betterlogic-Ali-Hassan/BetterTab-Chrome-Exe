@@ -1,14 +1,14 @@
+import { useMenu } from "@/context/MenuContext";
 import Card from "./Card";
 import ShortcutBox from "./ShortcutBox";
 
-type Props = {
-  setDropDownOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  values: { url: string; caption: string }[];
-};
-const FavoriteSection = ({ setDropDownOpen, values }: Props) => {
+const FavoriteSection = () => {
+  const { setShowDropdown, favorites } = useMenu();
+
   const handleDropDown = () => {
-    setDropDownOpen(true);
+    setShowDropdown(true);
   };
+
   return (
     <Card>
       <div className='flex items-center justify-between'>
@@ -24,7 +24,7 @@ const FavoriteSection = ({ setDropDownOpen, values }: Props) => {
         Add websites to access them in on click
       </p>
       <div className='grid grid-cols-5 gap-3  mt-2'>
-        {values.map((value, index) => (
+        {favorites.map((value, index) => (
           <ShortcutBox text={value.caption} key={index} />
         ))}
       </div>

@@ -3,6 +3,7 @@ import TabsCards from "./TabsCards";
 import { useBookmarks } from "@/context/BookmarkContext";
 import DataNotFound from "../DataNotFound";
 import { BackToTopContainer } from "../BackToTop";
+import ThemeCards from "../themeCards/ThemeCards";
 
 const TabsArea = () => {
   const { cards } = useBookmarks();
@@ -13,6 +14,7 @@ const TabsArea = () => {
         <>
           <TabsCards cards={cards} />
           <TabCardDetail cards={cards} />
+          <ThemeCards />
         </>
       ) : (
         <DataNotFound />

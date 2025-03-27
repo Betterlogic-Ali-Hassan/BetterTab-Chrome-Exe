@@ -1,31 +1,30 @@
-import { Sun } from "lucide-react";
 import ThemeCard from "./ThemeCard";
-import { useState } from "react";
+
 import CrossIcon from "../svgs/CrossIcon";
 import { MdOutlineWbSunny } from "react-icons/md";
 import { cn } from "@/lib/utils";
+import { useThemeDropDownContext } from "@/context/ThemeDropDownContext";
 
 type Theme = "light" | "dark" | "sunrise" | "sunset" | "forest";
 
 const ThemeCards = () => {
   const themes: Theme[] = ["dark", "light", "sunrise", "sunset", "forest"];
+  const { isThemeDropDownOpen, setIsThemeDropDownOpen } =
+    useThemeDropDownContext();
 
-  const [openDropDown, setOpenDropDown] = useState(false);
-  const handleOpenDropDown = () => {
-    setOpenDropDown(!openDropDown);
-  };
-  const handleCloseDropDown = () => setOpenDropDown(false);
+  const handleCloseDropDown = () => setIsThemeDropDownOpen(false);
 
   return (
-    <>
-      <button onClick={handleOpenDropDown}>
-        <Sun size={22} />
-      </button>
-
+    <div
+      className={cn(
+        "h-full mb-2 no-scrollbar fixed w-full max-w-[280px] items-center   top-0 mt-[75px] right-6 pt-10 translate-x-[100%] opacity-0 transition duration-300",
+        isThemeDropDownOpen && "translate-x-0 opacity-100"
+      )}
+    >
       <div
         className={cn(
-          "flex flex-col gap-4 p-6 bg-card border border-border rounded-[12px] overflow-y-auto max-h-full no-scrollbar fixed w-full max-w-[280px] items-center z-[1500] top-28 right-6 pt-10 translate-x-[100%] opacity-0 transition duration-300",
-          openDropDown && "translate-x-0 opacity-100"
+          "flex flex-col gap-4 p-6 bg-card border border-border rounded-[12px] max-[1600px]:max-h-[660px] overflow-y-auto   mb-2 no-scrollbar w-full max-w-[280px] items-center  bottom-2  pt-10 translate-x-[100%] opacity-0 transition duration-300",
+          isThemeDropDownOpen && "translate-x-0 opacity-100"
         )}
       >
         {themes.map((theme) => (
@@ -43,7 +42,7 @@ const ThemeCards = () => {
           <CrossIcon />
         </span>
       </div>
-    </>
+    </div>
   );
 };
 

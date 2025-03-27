@@ -10,6 +10,12 @@ const Searchbar = () => {
   const { searchTerm, setSearchTerm } = useBookmarks();
   const inputRef = useRef<HTMLInputElement>(null);
 
+  useEffect(() => {
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 100);
+  }, []);
+
   // Memoized event handler
   const handleShortcut = useCallback((event: KeyboardEvent) => {
     if (event.ctrlKey && event.key.toLowerCase() === "k") {

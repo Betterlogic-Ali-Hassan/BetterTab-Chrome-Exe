@@ -1,9 +1,5 @@
 "use client";
 
-import type React from "react";
-
-import { useState } from "react";
-
 import { cn } from "@/lib/utils";
 
 import SidebarItem from "../homeSidebar/SidebarItem";
@@ -19,38 +15,10 @@ import RightClickMenu from "./RightClickMenu";
 import Bolt from "../svgs/Bolt";
 import CrossIcon from "../svgs/CrossIcon";
 import VoiceSearch from "./voiceSearch/VoiceSearch";
+import { useMenu } from "@/context/MenuContext";
 
 const Menu = () => {
-  // State management
-  const [open, setOpen] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [formValues, setFormValues] = useState({ url: "", caption: "" });
-  const [favorites, setFavorites] = useState<
-    { url: string; caption: string }[]
-  >([]);
-
-  const addFavorite = () => {
-    const { url, caption } = formValues;
-    if (!url.trim() || !caption.trim()) return;
-
-    setFavorites((prev) => [...prev, { url, caption }]);
-    handleCloseDropdown();
-  };
-
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormValues((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    addFavorite();
-  };
-
-  const handleCloseDropdown = () => {
-    setFormValues({ url: "", caption: "" });
-    setShowDropdown(false);
-  };
+  const { open, showDropdown, setOpen } = useMenu();
 
   return (
     <>
@@ -78,37 +46,26 @@ const Menu = () => {
             className={cn(
               "bg-card border border-border shadow-sm p-4 py-8 max-w-[415px] max-h-[850px]",
               "w-full h-full overflow-y-auto no-scrollbar fixed top-0 rounded-r-md",
-              "opacity-0 -translate-x-[120%] transition duration-300 ease-in-out z-[1200]",
-              open && "opacity-100 translate-x-[0]"
+              "opacity-0 pointer-events-none  transition duration-300 ease-in-out z-[1200]",
+              open && "opacity-100 pointer-events-auto "
             )}
           >
             {/* Search input */}
             <VoiceSearch />
 
             {/* Menu sections */}
-            <FavoriteSection
-              setDropDownOpen={setShowDropdown}
-              values={favorites}
-            />
+            <FavoriteSection />
             <MostVisited />
             <Recent />
             <Workspace />
             <Tools />
 
             {/* Add new favorite dropdown */}
-            {showDropdown && (
-              <AddNew
-                setShowDropdown={handleCloseDropdown}
-                formValues={formValues}
-                onChange={handleFormChange}
-                onSubmit={handleFormSubmit}
-                addFavorite={addFavorite}
-              />
-            )}
+            {showDropdown && <AddNew />}
           </div>
           <span
             className={cn(
-              "fixed top-1 z-[1600] ml-[435px] bg-input  items-center justify-center rounded-full h-[40px] w-[40px] opacity-80 hidden hover:opacity-100 cursor-pointer",
+              "fixed top-3 z-[1600] ml-[435px] bg-card  items-center justify-center rounded-full h-[40px] w-[40px]  hidden hover:bg-hover cursor-pointer",
               open && "flex"
             )}
             onClick={() => setOpen(false)}

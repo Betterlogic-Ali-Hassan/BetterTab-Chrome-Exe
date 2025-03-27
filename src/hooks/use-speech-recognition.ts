@@ -11,6 +11,7 @@ export interface SpeechRecognitionHookResult {
   toggleListening: () => void
   startListening: () => void
   stopListening: () => void
+  
 }
 
 export function useSpeechRecognition(): SpeechRecognitionHookResult {

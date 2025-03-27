@@ -1,13 +1,19 @@
 import { useBookmarks } from "@/context/BookmarkContext";
 import { cn } from "@/lib/utils";
 import MoreIcon from "./svgs/MoreIcon";
+import { useThemeDropDownContext } from "@/context/ThemeDropDownContext";
 interface Props {
   className?: string;
 }
 const MoreIconBtn = ({ className }: Props) => {
-  const { showSelectionCard, setShowCardDetail } = useBookmarks();
+  const { showSelectionCard, setShowCardDetail, showCardDetail } =
+    useBookmarks();
+  const { setIsThemeDropDownOpen } = useThemeDropDownContext();
   const handleCardDetail = () => {
-    setShowCardDetail(true);
+    if (!showCardDetail) {
+      setIsThemeDropDownOpen(false);
+    }
+    setShowCardDetail(!showCardDetail);
   };
   return (
     <>

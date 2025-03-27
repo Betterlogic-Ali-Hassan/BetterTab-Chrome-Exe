@@ -49,6 +49,9 @@
     --pin-disabled-color: #000;
 
     --svg-color: #000;
+
+    --switch-enabled-bg-color: #000;
+    --switch-disabled-bg-color: #dae0e6;
   }
   [data-theme="dark"] {
     --sidebar-bg-color: #0000;
@@ -62,6 +65,9 @@
     --text-foreground: #d4d4d4;
     --btn-hover: #2a3236;
     --badge-color: #333d42;
+    --switch-enabled-bg-color: #fff;
+    --switch-disabled-bg-color: #333d42;
+    --switch-disabled-color: #fff;
     --sidebar-selected-color: #333d42;
     --border-color: #262626;
     --hover-color: #2a3236;
@@ -98,6 +104,8 @@
   --sidebar-bg-color: #fff3d4; /* Light creamy background */
   --home-sidebar-hover: #ffce85a0; /* Sidebar hover effect */
   --badge-color: #f8c16e;
+  --switch-enabled-bg-color: #5a3e1b;
+  --switch-disabled-bg-color: #f8c16e;
   --sidebar-selected-color: #ffce85;
   --error-color: #ff6b6b; /* Soft red for errors */
   --error-light-color: #ffe3e3;
@@ -134,6 +142,8 @@
   --sidebar-bg-color: #3b2445; /* Dark evening shade */
   --home-sidebar-hover: #ff704380; /* Enhanced hover effect */
   --badge-color: #ff914db6; /* Bright golden-orange badge */
+  --switch-enabled-bg-color: #ffddc1;
+  --switch-disabled-bg-color: #ff914db6;
   --sidebar-selected-color: #ff5e3a;
   --error-color: #ff4757; /* Deep red for errors */
   --error-light-color: #ffb3b3;
@@ -171,6 +181,8 @@
   --sidebar-bg-color: #dcedc8; /* Misty light green */
   --home-sidebar-hover: #a5d6a780; /* Gentle sidebar hover */
   --badge-color: #9ccc65; /* Leafy badge */
+  --switch-enabled-bg-color: #000;
+  --switch-disabled-bg-color: #9ccc65;
   --sidebar-selected-color: #81c784;
   --error-color: #d32f2f; /* Deep red for errors */
   --error-light-color: #ffcdd2;

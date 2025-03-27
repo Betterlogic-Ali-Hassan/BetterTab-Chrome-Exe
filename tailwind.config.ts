@@ -49,6 +49,9 @@ module.exports = {
 			'pin':'var( --pin-color)',
 			'pin-disabled':'var( --pin-disabled-color)',
 			'sidebar-selected':'var( --sidebar-selected-color)',
+			'switch-enabled-bg': 'var(--switch-enabled-bg-color)',
+			'switch-disabled-bg': 'var(--switch-disabled-bg-color)',
+		
 
 
 			

@@ -54,7 +54,7 @@ const PasteLinkInput = ({ actionBtns, className, notAllowTitle }: Props) => {
               onChange={handleUrlInputValue}
               id='url'
               placeholder='https://example.com'
-              className='input'
+              className='input rounded'
             />
             {errors.url && (
               <>
@@ -63,7 +63,11 @@ const PasteLinkInput = ({ actionBtns, className, notAllowTitle }: Props) => {
                 </div>
               </>
             )}
-            <button type='button' className='btn' onClick={handlePasteUrl}>
+            <button
+              type='button'
+              className='absolute right-4 top-[50%] -translate-y-1/2 flex items-center gap-2 bg-card px-3 py-2 rounded-full text-sm text-foreground hover:bg-hover font-medium border border-border  h-[32px]'
+              onClick={handlePasteUrl}
+            >
               {!loading ? (
                 <>
                   <ClipBoardIcon />

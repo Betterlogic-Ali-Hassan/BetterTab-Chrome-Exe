@@ -4,7 +4,7 @@
   }
 
   .input {
-    @apply block w-full rounded-none rounded-l bg-input focus:ring-brand focus:ring-2 text-sm text-text font-medium border-0 input-shadow py-1.5 px-3 outline-none h-[36px] placeholder:text-[#777];
+    @apply block w-full rounded-none rounded-l bg-input focus:ring-brand focus:ring-2 text-sm text-text font-medium border-0 input-shadow py-1.5 px-3 outline-none h-[40px] placeholder:text-[#777];
   }
 }
 

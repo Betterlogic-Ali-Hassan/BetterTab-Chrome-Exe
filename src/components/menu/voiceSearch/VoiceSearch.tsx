@@ -6,10 +6,14 @@ import SearchInput from "./SearchInput";
 
 export default function VoiceSearch(): JSX.Element {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const { isListening, isSupported, transcript, toggleListening } =
-    useSpeechRecognition();
+  const {
+    isListening,
+    isSupported,
+    transcript,
+    toggleListening,
+    stopListening,
+  } = useSpeechRecognition();
 
-  // Update search query when transcript changes
   useEffect(() => {
     if (transcript) {
       setSearchQuery(transcript);
@@ -19,8 +23,11 @@ export default function VoiceSearch(): JSX.Element {
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      console.log("Searching for:", searchQuery);
-      // Implement your search functionality here
+      stopListening();
+      const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(
+        searchQuery
+      )}`;
+      window.open(googleSearchUrl, "_blank");
     }
   };
 

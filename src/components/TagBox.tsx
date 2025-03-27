@@ -205,11 +205,11 @@ export default function TagBox({
         />
         <button
           type='button'
-          className='btn ml-2 inline-flex items-center rounded-md bg-hover px-3 py-2 text-sm font-medium hover:bg-card'
+          className='btn ml-2 h-[40px] inline-flex items-center rounded-md bg-hover px-3 py-2 text-sm font-medium hover:bg-card'
           onClick={handleAddTag}
           aria-label='Add tag'
         >
-          <PlusIcon className='h-5 w-5 text-neutral-400 mr-1' />
+          <PlusIcon className='h-5 w-5 text-neutral-400 ' />
           Add
         </button>
       </div>
