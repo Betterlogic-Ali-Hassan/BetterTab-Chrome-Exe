@@ -1,7 +1,5 @@
 "use client";
 
-import type React from "react";
-
 import { Globe } from "lucide-react";
 import CrossIcon from "../svgs/CrossIcon";
 import { Button } from "@/components/ui/button";
