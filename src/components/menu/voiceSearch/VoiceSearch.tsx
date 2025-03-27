@@ -12,6 +12,7 @@ export default function VoiceSearch(): JSX.Element {
     transcript,
     toggleListening,
     stopListening,
+    startListening,
   } = useSpeechRecognition();
 
   useEffect(() => {
@@ -28,6 +29,9 @@ export default function VoiceSearch(): JSX.Element {
         searchQuery
       )}`;
       window.open(googleSearchUrl, "_blank");
+    }
+    if (searchQuery === "") {
+      startListening();
     }
   };
 

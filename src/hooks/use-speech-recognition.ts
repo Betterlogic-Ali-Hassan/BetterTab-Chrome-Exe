@@ -26,6 +26,7 @@ export function useSpeechRecognition(): SpeechRecognitionHookResult {
       setIsSupported(false)
       return
     }
+    
 
     // Initialize SpeechRecognition
     const SpeechRecognitionConstructor = window.SpeechRecognition || window.webkitSpeechRecognition
