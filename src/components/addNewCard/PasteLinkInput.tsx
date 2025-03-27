@@ -21,12 +21,7 @@ interface Props {
 const urlRegex =
   /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)$/;
 
-const PasteLinkInput = ({
-  actionBtns,
-  className,
-  notAllowTitle,
-  isWorkingUrl = true,
-}: Props) => {
+const PasteLinkInput = ({ actionBtns, className, notAllowTitle }: Props) => {
   const { formData, updateFormData, nextStep, errors, resetForm } =
     useFormContext();
   const [loading, setLoading] = useState(false);
@@ -66,8 +61,7 @@ const PasteLinkInput = ({
       const isValid = urlRegex.test(pastedText);
       setIsValidUrl(isValid);
 
-      // Only start loading if URL is valid and isWorkingUrl is true
-      if (isWorkingUrl && isValid) {
+      if (isValid) {
         setLoading(true);
 
         setTimeout(() => {
@@ -101,8 +95,7 @@ const PasteLinkInput = ({
     const isValid = urlRegex.test(inputUrl);
     setIsValidUrl(isValid);
 
-    // Only start loading if URL is valid, not empty, and isWorkingUrl is true
-    if (isWorkingUrl && isValid && inputUrl.trim() !== "") {
+    if (isValid && inputUrl.trim() !== "") {
       setLoading(true);
 
       setTimeout(() => {
@@ -153,7 +146,7 @@ const PasteLinkInput = ({
             )}
             <button
               type='button'
-              className='absolute right-4 top-[50%] -translate-y-1/2 flex items-center gap-2 bg-card px-3 py-2 rounded text-sm text-foreground hover:bg-hover font-medium border border-border h-[32px]'
+              className='absolute right-2 top-[50%] -translate-y-1/2 flex items-center gap-2 bg-card px-3 py-2 rounded text-sm text-foreground hover:bg-hover font-medium border border-border h-[32px]'
               onClick={handlePasteUrl}
             >
               {!loading ? (

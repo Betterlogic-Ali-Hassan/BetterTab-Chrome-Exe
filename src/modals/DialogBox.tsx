@@ -13,6 +13,7 @@ interface Props {
   children: React.ReactNode;
   className?: string;
 }
+
 const DialogBox = ({ trigger, children, className }: Props) => {
   const [open, setOpen] = useState(false);
   const { setDialogOpen } = usePageContext();
@@ -21,17 +22,24 @@ const DialogBox = ({ trigger, children, className }: Props) => {
     setOpen(isOpen);
     setDialogOpen(isOpen);
   };
+
   return (
     <>
       <Dialog open={open} onOpenChange={handleOpenChange} modal={false}>
-        <DialogTrigger className='text-sm text-foreground hover:text-text transition-colors max-lg:self-baseline'>
+        <DialogTrigger
+          className='text-sm text-foreground hover:text-text transition-colors max-lg:self-baseline'
+          onClick={() => setOpen(true)}
+        >
           {trigger}
         </DialogTrigger>
-        <DialogContent className={className}>
+        <DialogContent
+          className={className}
+          onInteractOutside={(event) => event.preventDefault()}
+        >
           <DialogHeader>
             <DialogTitle></DialogTitle>
-            {children}
           </DialogHeader>
+          {children}
         </DialogContent>
       </Dialog>
     </>

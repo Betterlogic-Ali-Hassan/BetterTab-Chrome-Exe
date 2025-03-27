@@ -8,7 +8,7 @@ const CloseBtn = () => {
   return (
     <button
       onClick={handleShowCardDetail}
-      className='absolute top-0 right-0 text-foreground hover:text-text max-lg:hidden'
+      className='absolute -top-[10px] -right-[12px] h-8 w-8 flex items-center justify-center bg-badge hover:bg-input rounded-full text-foreground hover:text-text max-lg:hidden'
     >
       <svg
         xmlns='http://www.w3.org/2000/svg'
@@ -16,7 +16,7 @@ const CloseBtn = () => {
         viewBox='0 0 24 24'
         strokeWidth='1.5'
         stroke='currentColor'
-        className='h-7 w-7 lg:h-6 lg:w-6'
+        className='h-7 w-7 lg:h-5 lg:w-5'
       >
         <path
           strokeLinecap='round'

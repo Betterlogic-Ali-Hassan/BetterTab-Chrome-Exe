@@ -36,7 +36,7 @@ const ThemeCards = () => {
         ))}
 
         <span
-          className='absolute top-2 right-2 cursor-pointer opacity-80 hover:opacity-100'
+          className='absolute top-2 right-2 h-8 w-8 flex items-center justify-center bg-badge hover:bg-input rounded-full cursor-pointer opacity-80 hover:opacity-100'
           onClick={handleCloseDropDown}
         >
           <CrossIcon />

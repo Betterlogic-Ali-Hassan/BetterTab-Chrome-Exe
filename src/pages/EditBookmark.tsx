@@ -70,7 +70,7 @@ const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
         notAllowTitle
       />
       <SelectFolder
-        triggerClassName='bg-white'
+        triggerClassName='!font-normal w-full rounded-none rounded bg-input focus:ring-brand focus:ring-2 text-sm text-text font-medium border-0 input-shadow py-1.5 px-3 outline-none   '
         className='mx-8 '
         popoverClassName='max-w-[708px] bg-white  '
       />
