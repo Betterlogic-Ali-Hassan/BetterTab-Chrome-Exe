@@ -16,11 +16,11 @@ const TabCard = ({ data }: Props) => {
     title,
     id,
     handleToggle,
+    date,
     selected,
     path,
     page,
     showSelectionCard,
-    today,
     tags,
     toggleCategory,
   } = useBookmarkItem(data);
@@ -64,7 +64,7 @@ const TabCard = ({ data }: Props) => {
 
           {page === "history" ? (
             <div className='pr-6 text-xs opacity-50 truncate sm:max-w-[140px] sm:min-w-[120px] lg:min-w-[140px] tracking-wide'>
-              {today}
+              {date}
             </div>
           ) : (
             tags.slice(0, 1).map((tag) => (

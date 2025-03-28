@@ -1,10 +1,15 @@
+"use client";
+
+import { useHeaderContext } from "@/context/HeaderContext";
 import ActionBtn from "./ActionBtn";
 
 const ActionsBtns = () => {
+  const { currentHeader } = useHeaderContext();
+
   return (
     <div className='w-full flex items-center justify-between my-4 flex-wrap gap-4 '>
       <p className='text-lg font-bold text-text'>
-        Wednesday, 2025/03/05 09:00 PM
+        {currentHeader.date} {currentHeader.time}
       </p>
       <div className='flex items-center gap-4 flex-wrap'>
         <ActionBtn

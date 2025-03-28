@@ -8,4 +8,6 @@ export type Card = {
     name: string;
   }[];
   des: string;
+  date?: string;
+  time?: string;
 };

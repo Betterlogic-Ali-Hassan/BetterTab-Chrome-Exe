@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import type { Card } from "@/types/TabCardType";
 import { cn } from "@/lib/utils";
 import { useThumbnailToggler } from "@/context/ThumbnailTogglerContext";
@@ -9,6 +9,7 @@ import { usePageContext } from "@/context/PageContext";
 import HourlyLog from "../historyPage/HourlyLog";
 import CardGroup from "./thumbnails/CardGroup";
 import InfiniteScrollSentinel from "../InfiniteScrollSentinel";
+import { useHeaderContext } from "@/context/HeaderContext";
 
 interface TabsCardsProps {
   cards: Card[];
@@ -18,6 +19,7 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
   const { isListView } = useThumbnailToggler();
   const [favoriteExe, setFavoriteExe] = useState<Card[]>([]);
   const { page } = usePageContext();
+  const { setCurrentHeader } = useHeaderContext();
   const isShowHourlyLog = page === "history";
   const isExtensionsPage = page === "extensions";
   const isDownloadPage = page === "downloads";
@@ -45,32 +47,52 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
     return filteredCards.slice(0, visibleCardsCount);
   }, [filteredCards, visibleCardsCount]);
 
+  // Group cards by time and date
   const cardGroups = useMemo(() => {
     if (!isShowHourlyLog) {
       return [visibleCards];
     }
 
-    const groups = [];
-    let currentIndex = 0;
+    // Group cards by time and date
+    const groups: Record<string, Card[]> = {};
 
-    while (currentIndex < visibleCards.length) {
-      if (currentIndex === 0) {
-        groups.push(visibleCards.slice(0, Math.min(10, visibleCards.length)));
-        currentIndex = 10;
-      } else if (currentIndex === 10) {
-        groups.push(visibleCards.slice(10, Math.min(30, visibleCards.length)));
-        currentIndex = 30;
-      } else if (currentIndex === 30) {
-        groups.push(visibleCards.slice(30, Math.min(45, visibleCards.length)));
-        currentIndex = 45;
+    visibleCards.forEach((card) => {
+      if (card.time && card.date) {
+        const key = `${card.date}-${card.time}`;
+        if (!groups[key]) {
+          groups[key] = [];
+        }
+        groups[key].push(card);
       } else {
-        groups.push(visibleCards.slice(currentIndex));
-        break;
+        // For cards without time/date, use a default group
+        const key = "default";
+        if (!groups[key]) {
+          groups[key] = [];
+        }
+        groups[key].push(card);
       }
-    }
+    });
 
-    return groups.filter((group) => group.length > 0);
+    // Convert to array and sort by date and time (newest first)
+    return Object.values(groups).sort((a, b) => {
+      if (!a[0].date || !a[0].time) return 1;
+      if (!b[0].date || !b[0].time) return -1;
+
+      const dateA = new Date(`${a[0].date} ${a[0].time}`).getTime();
+      const dateB = new Date(`${b[0].date} ${b[0].time}`).getTime();
+      return dateB - dateA;
+    });
   }, [visibleCards, isShowHourlyLog]);
+
+  // Initialize header with the first card's date and time
+  useEffect(() => {
+    if (cards.length > 0 && cards[0].date && cards[0].time) {
+      setCurrentHeader({
+        date: cards[0].date,
+        time: cards[0].time,
+      });
+    }
+  }, [cards, setCurrentHeader]);
 
   const hasMoreCards = visibleCardsCount < filteredCards.length;
 

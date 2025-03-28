@@ -1,5 +1,10 @@
-export const historyData = [
+import type { Card } from "@/types/TabCardType";
+
+// Add time and date to all cards
+export const historyData: Card[] = [
   {
+    time: "9:30PM",
+    date: "Wednesday, 2025/03/05",
     id: 1,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.reddit.com/&size=32",
     title: "Reddit",
@@ -11,6 +16,8 @@ export const historyData = [
     ],
   },
   {
+    time: "9:30PM",
+    date: "Wednesday, 2025/03/05",
     id: 2,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.netflix.com/&size=32",
     title: "Netflix",
@@ -22,16 +29,21 @@ export const historyData = [
     ],
   },
   {
+    time: "9:30PM",
+    date: "Wednesday, 2025/03/05",
     id: 3,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.amazon.com/&size=32",
     title: "Amazon",
     path: "https://www.amazon.com/",
+    des: "Join the conversation! Twitter is the place to find out what's happening in the world right now.",
     tags: [
       { id: "buy", name: "Buy" },
       { id: "community", name: "Community" },
     ],
   },
   {
+    time: "9:30PM",
+    date: "Wednesday, 2025/03/05",
     id: 4,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.wikipedia.org/&size=32",
     title: "Wikipedia",
@@ -43,9 +55,12 @@ export const historyData = [
     ],
   },
   {
+    time: "9:30PM",
+    date: "Wednesday, 2025/03/05",
     id: 5,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.linkedin.com/&size=32",
     title: "LinkedIn",
+    des: "Join the conversation! Twitter is the place to find out what's happening in the world right now.",
     path: "https://www.linkedin.com/",
     tags: [
       { id: "documentation", name: "Documentation" },
@@ -53,6 +68,8 @@ export const historyData = [
     ],
   },
   {
+    time: "8:45PM",
+    date: "Wednesday, 2025/03/05",
     id: 6,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.instagram.com/&size=32",
     title: "Instagram",
@@ -64,6 +81,8 @@ export const historyData = [
     ],
   },
   {
+    time: "8:45PM",
+    date: "Wednesday, 2025/03/05",
     id: 7,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.twitter.com/&size=32",
     title: "Twitter",
@@ -75,6 +94,8 @@ export const historyData = [
     ],
   },
   {
+    time: "8:45PM",
+    date: "Wednesday, 2025/03/05",
     id: 8,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.youtube.com/&size=32",
     title: "YouTube",
@@ -86,6 +107,8 @@ export const historyData = [
     ],
   },
   {
+    time: "8:15PM",
+    date: "Wednesday, 2025/03/05",
     id: 9,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.twitter.com/&size=32",
     title: "Twitter",
@@ -97,6 +120,8 @@ export const historyData = [
     ],
   },
   {
+    time: "8:15PM",
+    date: "Wednesday, 2025/03/05",
     id: 10,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.instagram.com/&size=32",
     title: "Instagram",
@@ -108,6 +133,8 @@ export const historyData = [
     ],
   },
   {
+    time: "7:30PM",
+    date: "Wednesday, 2025/03/05",
     id: 11,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.linkedin.com/&size=32",
     title: "LinkedIn",
@@ -119,6 +146,8 @@ export const historyData = [
     ],
   },
   {
+    time: "7:30PM",
+    date: "Wednesday, 2025/03/05",
     id: 12,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.wikipedia.org/&size=32",
     title: "Wikipedia",
@@ -130,6 +159,8 @@ export const historyData = [
     ],
   },
   {
+    time: "7:30PM",
+    date: "Wednesday, 2025/03/05",
     id: 13,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.amazon.com/&size=32",
     title: "Amazon",
@@ -141,6 +172,8 @@ export const historyData = [
     ],
   },
   {
+    time: "6:45PM",
+    date: "Wednesday, 2025/03/05",
     id: 14,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732196.png",
     title: "Base64 Encoder/Decoder",
@@ -152,6 +185,8 @@ export const historyData = [
     ],
   },
   {
+    time: "6:45PM",
+    date: "Wednesday, 2025/03/05",
     id: 15,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.amazon.com/&size=32",
     title: "Amazon",
@@ -163,6 +198,8 @@ export const historyData = [
     ],
   },
   {
+    time: "5:30PM",
+    date: "Wednesday, 2025/03/05",
     id: 16,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732203.png",
     title: "Currency Converter",
@@ -174,6 +211,8 @@ export const historyData = [
     ],
   },
   {
+    time: "5:30PM",
+    date: "Wednesday, 2025/03/05",
     id: 17,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732215.png",
     title: "IP Address Lookup",
@@ -185,6 +224,8 @@ export const historyData = [
     ],
   },
   {
+    time: "4:15PM",
+    date: "Wednesday, 2025/03/05",
     id: 18,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732208.png",
     title: "Barcode Generator",
@@ -196,6 +237,8 @@ export const historyData = [
     ],
   },
   {
+    time: "4:15PM",
+    date: "Wednesday, 2025/03/05",
     id: 19,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732227.png",
     title: "Text to Speech Converter",
@@ -207,6 +250,8 @@ export const historyData = [
     ],
   },
   {
+    time: "3:00PM",
+    date: "Wednesday, 2025/03/05",
     id: 20,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732228.png",
     title: "Word Counter",
@@ -218,6 +263,8 @@ export const historyData = [
     ],
   },
   {
+    time: "3:00PM",
+    date: "Wednesday, 2025/03/05",
     id: 21,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.netflix.com/&size=32",
     title: "Netflix",
@@ -229,6 +276,8 @@ export const historyData = [
     ],
   },
   {
+    time: "2:15PM",
+    date: "Tuesday, 2025/03/04",
     id: 22,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.reddit.com/&size=32",
     title: "Reddit",
@@ -240,6 +289,8 @@ export const historyData = [
     ],
   },
   {
+    time: "2:15PM",
+    date: "Tuesday, 2025/03/04",
     id: 23,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.netflix.com/&size=32",
     title: "Netflix",
@@ -251,16 +302,21 @@ export const historyData = [
     ],
   },
   {
+    time: "1:30PM",
+    date: "Tuesday, 2025/03/04",
     id: 24,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.amazon.com/&size=32",
     title: "Amazon",
     path: "https://www.amazon.com/",
+    des: "Join the conversation! Twitter is the place to find out what's happening in the world right now.",
     tags: [
       { id: "buy", name: "Buy" },
       { id: "community", name: "Community" },
     ],
   },
   {
+    time: "1:30PM",
+    date: "Tuesday, 2025/03/04",
     id: 25,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.wikipedia.org/&size=32",
     title: "Wikipedia",
@@ -272,16 +328,21 @@ export const historyData = [
     ],
   },
   {
+    time: "11:45AM",
+    date: "Tuesday, 2025/03/04",
     id: 26,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.linkedin.com/&size=32",
     title: "LinkedIn",
     path: "https://www.linkedin.com/",
+    des: "Join the conversation! Twitter is the place to find out what's happening in the world right now.",
     tags: [
       { id: "documentation", name: "Documentation" },
       { id: "engineering", name: "Engineering" },
     ],
   },
   {
+    time: "11:45AM",
+    date: "Tuesday, 2025/03/04",
     id: 27,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.instagram.com/&size=32",
     title: "Instagram",
@@ -293,6 +354,8 @@ export const historyData = [
     ],
   },
   {
+    time: "10:30AM",
+    date: "Tuesday, 2025/03/04",
     id: 28,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.twitter.com/&size=32",
     title: "Twitter",
@@ -304,6 +367,8 @@ export const historyData = [
     ],
   },
   {
+    time: "10:30AM",
+    date: "Tuesday, 2025/03/04",
     id: 29,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.youtube.com/&size=32",
     title: "YouTube",
@@ -315,6 +380,8 @@ export const historyData = [
     ],
   },
   {
+    time: "9:15AM",
+    date: "Tuesday, 2025/03/04",
     id: 30,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.twitter.com/&size=32",
     title: "Twitter",
@@ -326,6 +393,8 @@ export const historyData = [
     ],
   },
   {
+    time: "9:15AM",
+    date: "Tuesday, 2025/03/04",
     id: 31,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.instagram.com/&size=32",
     title: "Instagram",
@@ -337,6 +406,8 @@ export const historyData = [
     ],
   },
   {
+    time: "8:45AM",
+    date: "Monday, 2025/03/03",
     id: 32,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.linkedin.com/&size=32",
     title: "LinkedIn",
@@ -348,6 +419,8 @@ export const historyData = [
     ],
   },
   {
+    time: "8:45AM",
+    date: "Monday, 2025/03/03",
     id: 33,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.wikipedia.org/&size=32",
     title: "Wikipedia",
@@ -359,6 +432,8 @@ export const historyData = [
     ],
   },
   {
+    time: "7:30AM",
+    date: "Monday, 2025/03/03",
     id: 34,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.amazon.com/&size=32",
     title: "Amazon",
@@ -370,6 +445,8 @@ export const historyData = [
     ],
   },
   {
+    time: "7:30AM",
+    date: "Monday, 2025/03/03",
     id: 35,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732196.png",
     title: "Base64 Encoder/Decoder",
@@ -381,6 +458,8 @@ export const historyData = [
     ],
   },
   {
+    time: "6:15AM",
+    date: "Monday, 2025/03/03",
     id: 36,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.amazon.com/&size=32",
     title: "Amazon",
@@ -392,6 +471,8 @@ export const historyData = [
     ],
   },
   {
+    time: "6:15AM",
+    date: "Monday, 2025/03/03",
     id: 37,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732203.png",
     title: "Currency Converter",
@@ -403,6 +484,8 @@ export const historyData = [
     ],
   },
   {
+    time: "5:30AM",
+    date: "Monday, 2025/03/03",
     id: 38,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732215.png",
     title: "IP Address Lookup",
@@ -414,6 +497,8 @@ export const historyData = [
     ],
   },
   {
+    time: "5:30AM",
+    date: "Monday, 2025/03/03",
     id: 39,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732208.png",
     title: "Barcode Generator",
@@ -425,6 +510,8 @@ export const historyData = [
     ],
   },
   {
+    time: "4:45AM",
+    date: "Monday, 2025/03/03",
     id: 40,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732227.png",
     title: "Text to Speech Converter",
@@ -436,6 +523,8 @@ export const historyData = [
     ],
   },
   {
+    time: "4:45AM",
+    date: "Monday, 2025/03/03",
     id: 41,
     icon: "https://cdn-icons-png.flaticon.com/512/732/732228.png",
     title: "Word Counter",
@@ -447,6 +536,8 @@ export const historyData = [
     ],
   },
   {
+    time: "3:30AM",
+    date: "Monday, 2025/03/03",
     id: 42,
     icon: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.netflix.com/&size=32",
     title: "Netflix",

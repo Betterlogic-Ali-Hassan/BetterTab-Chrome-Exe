@@ -9,29 +9,32 @@ import Downloads from "./pages/Downloads";
 import Notes from "./pages/Notes";
 import { MenuProvider } from "./context/MenuContext";
 import { ThemeDropDownContextProvider } from "./context/ThemeDropDownContext";
+import { HeaderProvider } from "./context/HeaderContext";
 
 const App = () => {
   const { page, dialogOpen } = usePageContext();
   return (
     <BookmarkProvider>
-      <ThemeDropDownContextProvider>
-        <MenuProvider>
-          <FormProvider>
-            {page === "bookmarks" && <Home />}
-            {page === "edit" && <EditBookmark />}
-            {page === "history" && <HistoryPage />}
-            {page === "extensions" && <ExtensionPage />}
-            {page === "downloads" && <Downloads />}
-            {page === "notes" && <Notes />}
-            {dialogOpen && (
-              <div
-                className='fixed inset-0 bg-black/50  '
-                style={{ zIndex: 50 }}
-              ></div>
-            )}
-          </FormProvider>
-        </MenuProvider>
-      </ThemeDropDownContextProvider>
+      <HeaderProvider>
+        <ThemeDropDownContextProvider>
+          <MenuProvider>
+            <FormProvider>
+              {page === "bookmarks" && <Home />}
+              {page === "edit" && <EditBookmark />}
+              {page === "history" && <HistoryPage />}
+              {page === "extensions" && <ExtensionPage />}
+              {page === "downloads" && <Downloads />}
+              {page === "notes" && <Notes />}
+              {dialogOpen && (
+                <div
+                  className='fixed inset-0 bg-black/50  '
+                  style={{ zIndex: 50 }}
+                ></div>
+              )}
+            </FormProvider>
+          </MenuProvider>
+        </ThemeDropDownContextProvider>
+      </HeaderProvider>
     </BookmarkProvider>
   );
 };

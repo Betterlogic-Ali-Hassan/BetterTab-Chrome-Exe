@@ -5,7 +5,7 @@ import { usePageContext } from "@/context/PageContext";
 import { Card } from "@/types/TabCardType";
 
 export function useBookmarkItem(data: Card) {
-  const { id, path, tags, icon, title, des } = data;
+  const { id, path, tags, icon, title, des, date } = data;
   const { page } = usePageContext();
   const {
     toggleCard,
@@ -38,5 +38,6 @@ export function useBookmarkItem(data: Card) {
     selectedCards,
     showSelectionCard,
     toggleCategory,
+    date,
   };
 }
