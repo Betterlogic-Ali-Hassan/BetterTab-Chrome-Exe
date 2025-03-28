@@ -51,45 +51,46 @@ const AlertDialogBox = ({
           </>
         )}
       </AlertDialogTrigger>
-      <AlertDialogContent className='max-w-lg border-none transform overflow-hidden rounded-md bg-card  px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 w-full sm:p-6'>
+      <AlertDialogContent className='max-w-lg border-none transform overflow-hidden rounded-md bg-card  p-6 text-left shadow-xl transition-all sm:my-8 w-full sm:p-6'>
         <AlertDialogHeader>
-          <AlertDialogTitle className='sm:flex sm:items-start'>
-            <WarningIcon />
-            <div className='mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left'>
+          <AlertDialogTitle className='pb-4'>
+            <div className='flex flex-col gap-4'>
+              <WarningIcon />
               <h3
-                className='text-base font-semibold leading-6 text-text'
+                className='text-lg font-semibold leading-6 text-text tracking-tight'
                 id='modal-title'
               >
-                Delete Bookmark
+                Are you absolutely sure?
               </h3>
-              <div className='mt-2'>
-                <p className='text-sm text-foreground '>
-                  Are you sure you want to delete this bookmark?
-                </p>
-              </div>
+            </div>
+            <div className='mt-2'>
+              <p className='text-[15px] font-normal text-foreground '>
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
+              </p>
             </div>
           </AlertDialogTitle>
           <AlertDialogDescription></AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel className='btn secondary sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center  border-transparent text-text  px-3 py-2 h-[36px] bg-card  hover:bg-hover rounded'>
+        <AlertDialogFooter className='flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 border-t -mx-6 -mb-6 px-6 py-5'>
+          <AlertDialogCancel className='btn  secondary sm:mt-0 sm:w-auto mt-3 inline-flex w-full justify-center   text-text  px-6  border border-border py-2 h-[36px] bg-card  hover:bg-hover rounded'>
             Cancel
           </AlertDialogCancel>
           {isDialogBtn ? (
             <DialogClose
-              className='inline-flex w-full justify-center gap-x-1.5 bg-error rounded  px-3 py-2 text-sm font-semibold !text-text-primary shadow-sm  hover:opacity-80 sm:ml-3 sm:w-auto h-[36px] border-transparent'
+              className='inline-flex w-full justify-center gap-x-2 bg-error rounded  px-4 py-2 text-sm font-semibold !text-text-primary shadow-sm  hover:opacity-80 sm:ml-3 sm:w-auto h-[36px] border-transparent'
               onClick={onClick}
             >
               <Bin />
-              Delete
+              Continue
             </DialogClose>
           ) : (
             <AlertDialogAction
-              className='inline-flex w-full justify-center gap-x-1.5 bg-error rounded  px-3 py-2 text-sm font-semibold !text-white shadow-sm bg-red-500 hover:opacity-80 sm:ml-3 sm:w-auto h-[36px] border-transparent'
+              className='inline-flex w-full justify-center gap-x-2 bg-error rounded  px-4 py-2 text-sm font-semibold !text-text-primary shadow-sm bg-red-500 hover:opacity-80 sm:ml-3 sm:w-auto h-[36px] border-transparent'
               onClick={onClick}
             >
               <Bin />
-              Delete
+              Continue
             </AlertDialogAction>
           )}
         </AlertDialogFooter>

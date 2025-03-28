@@ -61,7 +61,9 @@ const DropDown = () => {
             >
               <DotsIcon />
             </button>
-            {openDropDown && <DropDownContent />}
+            {openDropDown && (
+              <DropDownContent setOpenDropDown={setOpenDropDown} />
+            )}
           </div>
         )}
       </div>

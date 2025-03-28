@@ -95,7 +95,7 @@ const Categories = ({ className }: { className?: string }) => {
         ))}
         {!isDownloadPage && (
           <DialogBox
-            className='p-6 py-12 rounded-md bg-card max-w-[768px]  w-full '
+            className='p-6 !rounded-[32px] bg-background max-w-[550px] w-full '
             trigger={
               <span className=' rounded lg:mr-8 mt-2 block text-text    font-medium  '>
                 Add New

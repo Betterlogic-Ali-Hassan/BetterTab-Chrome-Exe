@@ -40,7 +40,7 @@ export function FolderSelect({
         <Popover open={openPopover} onOpenChange={setOpenPopover}>
           <PopoverTrigger
             className={cn(
-              "w-full mb-1 outline-none focus:outline-none ring-0 flex h-12 px-4 text-sm items-center justify-between rounded-sm border border-border bg-transparent text-text  placeholder:text-foreground disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+              "w-full bg-searchbar outline-none focus:outline-none ring-0 flex h-12 px-4 text-sm items-center justify-between rounded-sm border border-border  text-text  placeholder:text-foreground disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
               triggerClassName
             )}
           >

@@ -42,6 +42,14 @@ export default function TagBox({
   const notificationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const formUpdateTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
+    if (tag && tag.length > 0) {
+      const initialTags = tag.map((t) => t.name);
+      setSelectedTags(initialTags);
+      debouncedFormUpdate(initialTags);
+    }
+  }, [tag]);
+
   const showNotification = useCallback((text: string) => {
     if (notificationTimeoutRef.current) {
       clearTimeout(notificationTimeoutRef.current);
@@ -116,23 +124,35 @@ export default function TagBox({
 
     setTagInputValue("");
     setSearchTerm("");
-  }, [tagInputValue, showNotification, selectedTags]);
+  }, [
+    tagInputValue,
+    showNotification,
+    selectedTags,
+    categories,
+    setCategories,
+  ]);
 
   const toggleTag = useCallback(
     (tagName: string) => {
       setSelectedTags((prev) => {
         const isSelected = prev.includes(tagName);
+        const newTags = isSelected
+          ? prev.filter((t) => t !== tagName)
+          : [...prev, tagName];
+
+        // Update form data with the new tags
+        debouncedFormUpdate(newTags);
 
         if (isSelected) {
           showNotification(`Removed: Tag "${tagName}"`);
-          return prev.filter((t) => t !== tagName);
         } else {
           showNotification(`Added: Tag "${tagName}"`);
-          return [...prev, tagName];
         }
+
+        return newTags;
       });
     },
-    [showNotification]
+    [showNotification, debouncedFormUpdate]
   );
 
   const handleKeyDown = useCallback(
@@ -157,10 +177,7 @@ export default function TagBox({
         <TagButton
           key={category.id}
           tag={category.name}
-          isSelected={
-            selectedTags.includes(category.name) ||
-            tag?.some((t) => t.name === category.name)
-          }
+          isSelected={selectedTags.includes(category.name)}
           onClick={() => toggleTag(category.name)}
         />
       )),

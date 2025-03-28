@@ -44,7 +44,7 @@ const Menu = () => {
         <div className=' ml-[52px]  flex '>
           <div
             className={cn(
-              "bg-card border border-border shadow-sm p-4 py-8 max-w-[415px] max-h-[850px]",
+              "bg-background border border-border shadow-sm p-4 py-8 max-w-[415px] max-h-[850px]",
               "w-full h-full overflow-y-auto no-scrollbar fixed top-0 rounded-r-md",
               "opacity-0 pointer-events-none  transition duration-300 ease-in-out z-[1200]",
               open && "opacity-100 pointer-events-auto "

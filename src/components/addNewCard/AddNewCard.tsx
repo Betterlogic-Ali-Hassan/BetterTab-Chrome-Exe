@@ -9,7 +9,7 @@ const AddNewCard = () => {
   return (
     <FormProvider>
       <div className='flex items-center flex-col  justify-center relative mx-2 '>
-        <div className='w-full  bg-hover '>
+        <div className='w-full   '>
           <Heading />
           <div className='flex flex-col gap-6 sm:gap-8 overflow-hidden sm:overflow-visible'>
             <Stepper />

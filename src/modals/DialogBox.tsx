@@ -6,6 +6,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { usePageContext } from "@/context/PageContext";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 
 interface Props {
@@ -33,7 +34,7 @@ const DialogBox = ({ trigger, children, className }: Props) => {
           {trigger}
         </DialogTrigger>
         <DialogContent
-          className={className}
+          className={cn("!bg-background gap-0", className)}
           onInteractOutside={(event) => event.preventDefault()}
         >
           <DialogHeader>

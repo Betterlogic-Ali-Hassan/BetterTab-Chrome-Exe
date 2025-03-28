@@ -29,7 +29,7 @@ const CardColorSelection = ({ selectedColor, setSelectedColor }: Props) => {
           side='top'
         />
       </PopoverTrigger>
-      <PopoverContent className=' shadow-md bg-input max-w-[155px] p-3'>
+      <PopoverContent className=' shadow-md bg-background max-w-[155px] p-3'>
         <div className='flex flex-wrap justify-center gap-4  rounded-md'>
           {colors.map((color) => (
             <button

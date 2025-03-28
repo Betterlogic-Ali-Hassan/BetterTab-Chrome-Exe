@@ -40,7 +40,10 @@ const ActionBtns = ({
           onClick={nextBtnClick}
         >
           {showSaveBtn ? (
-            <DialogClose className='flex items-center gap-1'>
+            <DialogClose
+              className='flex items-center gap-1'
+              style={{ color: "var(--text-text-primary)" }}
+            >
               {loading && <Loader2 size={20} className='animate-spin' />}
               Save
             </DialogClose>

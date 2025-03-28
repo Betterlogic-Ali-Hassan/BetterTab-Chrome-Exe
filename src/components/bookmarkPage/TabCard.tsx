@@ -87,7 +87,7 @@ const TabCard = ({ data }: Props) => {
         <DeleteEntry
           id={id}
           className={cn(
-            "mx-2  cursor-pointer group-hover:opacity-100 transition duration-200 text-foreground hover:text-text max-sm:opacity-100",
+            "mx-2  cursor-pointer group-hover:opacity-100 transition duration-200   rounded-full hover:bg-background text-foreground hover:text-text max-sm:opacity-100",
             showSelectionCard && "!opacity-0 pointer-events-none"
           )}
         />

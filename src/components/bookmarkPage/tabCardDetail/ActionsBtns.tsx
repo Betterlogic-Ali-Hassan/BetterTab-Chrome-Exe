@@ -31,7 +31,7 @@ const ActionsBtns = ({ activeTabData }: Props) => {
   return (
     <div className='flex items-center justify-start gap-4'>
       <DialogBox
-        className='!p-0 rounded-md bg-card max-w-[768px]  w-full '
+        className='!p-0 !rounded-[32px] bg-card max-w-[550px]  w-full '
         trigger={
           <button className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center hover:opacity-80'>
             <Edit />

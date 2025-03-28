@@ -6,7 +6,7 @@ import Button from "../ui/my-button";
 const AddNewCardBtn = () => {
   return (
     <DialogBox
-      className='w-full max-w-3xl bg-hover p-6 rounded-lg '
+      className='w-full !rounded-[32px] bg-background max-w-[600px]  p-6  '
       trigger={
         <Button className='h-[40px] shadow-none'>
           <PlusIcon className='h-5 w-5 text-text mr-2' />

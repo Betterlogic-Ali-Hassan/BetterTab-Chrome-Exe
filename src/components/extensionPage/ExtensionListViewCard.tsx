@@ -38,7 +38,7 @@ const ExtensionListViewCard = ({
   return (
     <div
       className={cn(
-        "p-4 rounded-xl shadow-sm  border-border border group  bg-card flex gap-4 mb-4 relative cursor-pointer",
+        "p-4 rounded-xl  border-border border group  bg-card flex gap-4 mb-4 relative cursor-pointer",
         isFavorite && favorite && isFavorite && favorite && "bg-[#85bbfd3a]  "
       )}
       onClick={handleToggle}
@@ -47,7 +47,7 @@ const ExtensionListViewCard = ({
         <img
           src={icon || "/placeholder.svg"}
           alt={title}
-          className='rounded-lg shadow-sm'
+          className='rounded-lg'
         />
       </div>
       <div className='grow'>

@@ -8,7 +8,7 @@ const CloseBtn = () => {
   return (
     <button
       onClick={handleShowCardDetail}
-      className='absolute -top-[10px] -right-[12px] h-8 w-8 flex items-center justify-center bg-badge hover:bg-input rounded-full text-foreground hover:text-text max-lg:hidden'
+      className='absolute -top-[10px] -right-[12px] h-8 w-8 flex items-center justify-center bg-badge hover:bg-background rounded-full text-foreground hover:text-text max-lg:hidden'
     >
       <svg
         xmlns='http://www.w3.org/2000/svg'

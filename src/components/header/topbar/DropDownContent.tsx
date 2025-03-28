@@ -1,8 +1,10 @@
 import { useBookmarks } from "@/context/BookmarkContext";
 import SelectIcon from "../../svgs/SelectIcon";
 import CrossIcon from "../../svgs/CrossIcon";
-
-const DropDownContent = () => {
+interface Props {
+  setOpenDropDown: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const DropDownContent = ({ setOpenDropDown }: Props) => {
   const {
     setShowSelectionCard,
     selectAll,
@@ -19,7 +21,7 @@ const DropDownContent = () => {
   };
 
   return (
-    <div className='absolute right-2 top-10 lg:right-1 lg:top-7 z-30 w-48 origin-top-right rounded bg-card border border-border  py-1 shadow-lg  focus:outline-none'>
+    <div className='absolute right-2 top-10 lg:right-1 lg:top-7 z-30 w-48 origin-top-right rounded bg-background border border-border  py-1 shadow-lg  focus:outline-none'>
       {!showSelectionCard && (
         <DropDownButton
           onClick={() => toggleSelectionCard(true)}
@@ -29,8 +31,9 @@ const DropDownContent = () => {
       )}
       <DropDownButton
         onClick={() => {
-          setShowSelectionCard(true);
+          toggleSelectionCard(true);
           selectAll();
+          setOpenDropDown(false);
         }}
         icon={<SelectIcon />}
         text='Select all'

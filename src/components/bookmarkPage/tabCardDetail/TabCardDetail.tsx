@@ -28,6 +28,8 @@ const TabCardDetail = ({ cards }: Props) => {
                 <TabCardHeading
                   title={activeTabData?.title}
                   path={activeTabData?.path}
+                  className='text-base'
+                  imageClassName='h-[28px] w-[28px] mr-1'
                 />
                 <div className='text-sm overflow-hidden truncate'>
                   <a
@@ -47,10 +49,12 @@ const TabCardDetail = ({ cards }: Props) => {
                   ))}
                 </div>
                 <div className='flex items-center gap-5'>
-                  <div className='text-xs text-text '>
+                  <div className='text-xs text-text font-semibold '>
                     Updated on 11/20/2024
                   </div>
-                  <div className='text-xs text-text '>Added on 11/5/2024</div>
+                  <div className='text-xs text-text font-semibold '>
+                    Added on 11/5/2024
+                  </div>
                 </div>
                 <hr className='border-border' />
                 <ActionsBtns activeTabData={activeTabData} />

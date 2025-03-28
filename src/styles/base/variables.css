@@ -7,7 +7,7 @@
     --text-foreground: rgba(28, 28, 28, 0.8); /* Subtle foreground emphasis */
     --text-primary: #fff; /* Primary text color */
     --border-color: #e4e6e8; /* Soft light gray borders */
-
+    --search-bar: #f6f7f8;
     --badge-color: #dae0e6; /* Light gray badge */
     --brand-color: #0079d3; /* Reddit’s blue */
 
@@ -28,7 +28,6 @@
     --sidebar-selected-color: #dae0e6;
 
     --cancel-btn: #ffffff; /* White cancel button */
-    --input-color: #ffffff; /* White input background */
 
     --progress-wrap: #c8e6c9; /* Light green progress background */
     --progress: #46a629; /* Green progress bar */
@@ -54,6 +53,7 @@
     --switch-disabled-bg-color: #dae0e6;
   }
   [data-theme="dark"] {
+    --search-bar: #171c1f;
     --sidebar-bg-color: #0000;
     --text-primary: #fff; /* Primary text color */
     --home-sidebar-hover: #171c1f;
@@ -72,7 +72,6 @@
     --border-color: #262626;
     --hover-color: #2a3236;
     --cancel-btn: #ffffff1a;
-    --input-color: #2a3236;
     --progress-wrap: #043d11;
     --progress: #21c2218a;
     --svg-color: #fff;
@@ -93,6 +92,7 @@
   }
 }
 [data-theme="sunrise"] {
+  --search-bar: #ffeab6;
   --background-color: #fffae3; /* Warm sunrise yellow */
   --card-color: #ffeab6; /* Soft golden cards */
   --text-color: #5a3e1b; /* Deep brown for text */
@@ -112,7 +112,6 @@
   --text-primary: #4a2f15; /* Dark brown for primary text */
   --text-foreground: #7a4e25;
   --cancel-btn: #ffdcb0;
-  --input-color: #ffefcc;
   --progress-wrap: #ffb347;
   --progress: #ff950050;
   --svg-color: #5a3e1b;
@@ -131,6 +130,7 @@
 }
 /* Sunset Theme */
 [data-theme="sunset"] {
+  --search-bar: #5a2d63;
   --background-color: #2c1e3c; /* Deep twilight purple */
   --card-color: #5a2d63; /* Rich dusk purple */
   --text-color: #ffddc1; /* Soft peach for text */
@@ -150,7 +150,6 @@
   --text-primary: #ffe0b2; /* Warm sandy tone */
   --text-foreground: #ffcc99;
   --cancel-btn: #8a2be2; /* Vibrant evening purple */
-  --input-color: #4a1f4a;
   --progress-wrap: #ff4500;
   --progress: #ff914d50;
   --svg-color: #ffddc1;
@@ -170,6 +169,7 @@
 
 /* Forest Theme */
 [data-theme="forest"] {
+  --search-bar: #bee6c0;
   --background-color: #e3f2e1; /* Soft misty green */
   --card-color: #bee6c0; /* Light leafy green */
   --text-color: #000; /* Deep forest green for text */
@@ -189,7 +189,6 @@
   --text-primary: #2e7d32; /* Forest green for readability */
   --text-foreground: #4caf50;
   --cancel-btn: #a5d6a7; /* Soft fern tone */
-  --input-color: #c8e6c9; /* Light pastel green input */
   --progress-wrap: #4c9a2a;
   --progress: #66bb6a50;
   --svg-color: #2d472c;

@@ -15,7 +15,7 @@ const EditActionBtns = ({ savBtnAction }: Props) => {
     setDialogOpen(false);
   };
   return (
-    <div className='flex items-center justify-end gap-x-3 border-t border-border  px-4 py-4 sm:px-8'>
+    <div className='flex items-center justify-end gap-x-3 border-t border-border py-4 '>
       <AlertDialogBox
         isDialogBtn
         onClick={handleBack}

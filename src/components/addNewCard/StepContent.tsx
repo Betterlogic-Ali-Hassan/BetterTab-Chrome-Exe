@@ -13,7 +13,7 @@ const StepContent = () => {
   ];
 
   return (
-    <div className='bg-card shadow-sm dark:bg-shadow-none   sm:rounded-lg border border-border'>
+    <div className='  dark:bg-shadow-none   sm:rounded-lg border border-border'>
       {stepComponents[currentStep]}
     </div>
   );

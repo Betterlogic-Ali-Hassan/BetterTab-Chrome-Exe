@@ -1,4 +1,5 @@
 "use client";
+
 import PasteLinkInput from "@/components/addNewCard/PasteLinkInput";
 import TagBoxContent from "@/components/addNewCard/TagBoxContent";
 import TextBoxInputs from "@/components/addNewCard/TextBoxInputs";
@@ -10,6 +11,7 @@ import { useBookmarks } from "@/context/BookmarkContext";
 import type { Card } from "@/types/TabCardType";
 import { toast } from "react-toastify";
 import { useFormContext } from "@/context/from-Context";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface EditBookmarkProps {
   activeTabData?: Card;
@@ -53,34 +55,49 @@ const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
 
   return (
     <>
-      <div className='flex items-center justify-between'>
-        <h2 className='px-4 py-6 sm:p-8  sm:pb-4 text-xl font-semibold leading-7  flex items-center gap-3 text-text'>
+      <div className='flex items-center justify-between min-h-[72px] px-6'>
+        <h2 className='text-xl font-semibold leading-7 flex items-center gap-3 text-text'>
           <Edit className='h-5 w-5' />
           Edit Bookmark
         </h2>
       </div>
-      <PasteLinkInput
-        actionBtns
-        className='sm:px-8 sm:pb-0 sm:pt-2 '
-        notAllowTitle
-      />
-      <TextBoxInputs
-        actionBtns
-        className='sm:px-8 sm:py-0 sm:pt-2'
-        notAllowTitle
-      />
-      <SelectFolder
-        triggerClassName='!font-normal w-full rounded-none rounded bg-input focus:ring-brand focus:ring-2 text-sm text-text font-medium border-0 input-shadow py-1.5 px-3 outline-none   '
-        className='mx-8 '
-        popoverClassName='max-w-[708px] bg-white  '
-      />
-      <div className='h-4'></div>
-      <TagBoxContent
-        actionBtns
-        className='sm:px-8 sm:pt-2'
-        tag={activeTabData?.tags}
-      />
-      <EditActionBtns savBtnAction={handleSaveBtn} />
+      <div className='px-6 pb-2'>
+        <Tabs defaultValue='meta' className='w-full'>
+          <TabsList className='grid w-full grid-cols-2 mb-4 bg-hover'>
+            <TabsTrigger value='meta'>Meta</TabsTrigger>
+            <TabsTrigger value='tags'>Tags</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value='meta'>
+            <PasteLinkInput
+              actionBtns
+              className='sm:px-0 sm:pb-0 sm:pt-2'
+              notAllowTitle
+            />
+            <TextBoxInputs
+              actionBtns
+              className='sm:px-0 sm:py-0 sm:pt-2'
+              notAllowTitle
+            />
+            <SelectFolder
+              triggerClassName='!font-normal w-full rounded-none rounded focus:ring-brand focus:ring-2 text-sm text-text font-medium border-border border w py-1.5 px-3 outline-none bg-searchbar'
+              className='mx-0'
+              popoverClassName='max-w-[550px] bg-white'
+            />
+          </TabsContent>
+
+          <TabsContent value='tags'>
+            <TagBoxContent
+              actionBtns
+              className='sm:px-0 sm:pt-2'
+              tag={activeTabData?.tags}
+            />
+          </TabsContent>
+        </Tabs>
+
+        <div className='h-4'></div>
+        <EditActionBtns savBtnAction={handleSaveBtn} />
+      </div>
     </>
   );
 };
