@@ -3,7 +3,6 @@
 import { exeFilter } from "@/constant/ExeFilter";
 import Badge from "../ui/Badge";
 import { useExtensionContext } from "@/context/ExtensionContext";
-import { cn } from "@/lib/utils";
 
 const ExtensionFilter = () => {
   const { activeFilter, setActiveFilter } = useExtensionContext();
@@ -15,10 +14,7 @@ const ExtensionFilter = () => {
           key={i}
           text={item.label}
           onClick={() => setActiveFilter(item.value)}
-          className={cn(
-            "cursor-pointer",
-            activeFilter === item.value && "bg-brand text-text-primary"
-          )}
+          active={activeFilter === item.value}
         />
       ))}
       <Badge text='Developer Mode' />

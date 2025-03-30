@@ -9,7 +9,6 @@ import { usePageContext } from "@/context/PageContext";
 import CardGroup from "./thumbnails/CardGroup";
 import InfiniteScrollSentinel from "../InfiniteScrollSentinel";
 import { useHeaderContext } from "@/context/HeaderContext";
-import { useExtensionContext } from "@/context/ExtensionContext";
 
 interface TabsCardsProps {
   cards: Card[];
@@ -18,7 +17,7 @@ interface TabsCardsProps {
 const TabsCards = ({ cards }: TabsCardsProps) => {
   const { isListView } = useThumbnailToggler();
   const [favoriteExe, setFavoriteExe] = useState<Card[]>([]);
-  const { pinnedExtensions } = useExtensionContext();
+
   const { page } = usePageContext();
   const { setCurrentHeader } = useHeaderContext();
   const isShowHourlyLog = page === "history";
@@ -100,23 +99,21 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
 
   return (
     <div className={cn(isListView && "max-w-[970px]")}>
-      {isExtensionsPage &&
-        favoriteExe.length > 0 &&
-        pinnedExtensions.size > 0 && (
-          <div className='mb-12'>
-            <CardGroup
-              favorite
-              cards={favoriteExe}
-              isListView={isListView}
-              isExtensionsPage={isExtensionsPage}
-              isShowHourlyLog={false}
-              showHourlyLogAfter={false}
-              favoriteExe={favoriteExe}
-              setFavoriteExe={setFavoriteExe}
-              isDownloadPage={isDownloadPage}
-            />
-          </div>
-        )}
+      {isExtensionsPage && favoriteExe.length > 0 && (
+        <div className='mb-12'>
+          <CardGroup
+            favorite
+            cards={favoriteExe}
+            isListView={isListView}
+            isExtensionsPage={isExtensionsPage}
+            isShowHourlyLog={false}
+            showHourlyLogAfter={false}
+            favoriteExe={favoriteExe}
+            setFavoriteExe={setFavoriteExe}
+            isDownloadPage={isDownloadPage}
+          />
+        </div>
+      )}
 
       {cardGroups.map((group, index) => (
         <CardGroup

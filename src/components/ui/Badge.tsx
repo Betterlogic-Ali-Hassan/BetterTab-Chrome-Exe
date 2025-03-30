@@ -37,7 +37,10 @@ const Badge = ({ text, onClick, className, active, filterType }: Props) => {
   };
 
   const count = getCount();
-
+  const clearFilter = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveFilter("");
+  };
   return (
     <button
       onClick={onClick}
@@ -49,9 +52,9 @@ const Badge = ({ text, onClick, className, active, filterType }: Props) => {
     >
       {text}
       {count !== null && <span className='ml-1 text-xs'>({count})</span>}
-      {page === "extensions" && (
+      {page === "extensions" && active && (
         <span
-          onClick={() => setActiveFilter("all")}
+          onClick={clearFilter}
           className='ml-1 mt-0.5 opacity-60 hover:opacity-100'
         >
           <X size={18} />

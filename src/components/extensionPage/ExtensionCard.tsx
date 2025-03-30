@@ -23,6 +23,7 @@ const ExtensionCard = ({
   favoriteExe,
   favorite,
 }: ExtensionCardProps) => {
+  console.log(favoriteExe);
   const { handleToggle, title, icon, id } = useBookmarkItem(data);
   const { toggleEnabled, togglePinned, enabledExtensions } =
     useExtensionContext();

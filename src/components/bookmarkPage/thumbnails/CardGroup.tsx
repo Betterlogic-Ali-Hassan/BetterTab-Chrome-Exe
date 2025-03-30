@@ -74,6 +74,13 @@ export default function CardGroup({
     };
   }, [cards, date, time, isShowHourlyLog, setCurrentHeader]);
 
+  const dataToRender = (() => {
+    if (favorite && favoriteExe.length > 0) {
+      return favoriteExe;
+    }
+    return page === "extensions" ? filteredExtensions : cards;
+  })();
+
   if (isExtensionsPage && filteredExtensions.length === 0) {
     return (
       <div className='text-center py-12 text-muted-foreground flex items-center w-full justify-center col-span-3'>
@@ -81,13 +88,11 @@ export default function CardGroup({
       </div>
     );
   }
-
-  const data = page === "extensions" ? filteredExtensions : cards;
   return (
     <div>
       {isShowHourlyLog && <HourlyLog specificTime={time} />}
       <div className={containerClasses} ref={groupRef}>
-        {data.map((card) => (
+        {dataToRender.map((card) => (
           <CardRenderer
             favorite={favorite}
             key={card.id}

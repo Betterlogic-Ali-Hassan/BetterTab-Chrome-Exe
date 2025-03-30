@@ -9,7 +9,7 @@ import {
   useEffect,
 } from "react";
 
-import { extensions } from "@/constant/extensionData";
+import { useBookmarks } from "./BookmarkContext";
 
 export type FilterType = "all" | "enabled" | "disabled" | "pinned" | string;
 type ExtensionContextType = {
@@ -29,7 +29,7 @@ const ExtensionContext = createContext<ExtensionContextType | undefined>(
 
 // Create a provider component
 export function ExtensionProvider({ children }: { children: ReactNode }) {
-  const [extensionsData] = useState<Card[]>(extensions);
+  const { cards } = useBookmarks();
 
   const [enabledExtensions, setEnabledExtensions] = useState<Set<number>>(
     new Set()
@@ -41,8 +41,7 @@ export function ExtensionProvider({ children }: { children: ReactNode }) {
 
   // Filter state
   const [activeFilter, setActiveFilter] = useState<FilterType>("all");
-  const [filteredExtensions, setFilteredExtensions] =
-    useState<Card[]>(extensionsData);
+  const [filteredExtensions, setFilteredExtensions] = useState<Card[]>(cards);
 
   // Toggle extension enabled state
   const toggleEnabled = (id: number) => {
@@ -68,22 +67,28 @@ export function ExtensionProvider({ children }: { children: ReactNode }) {
 
   // Update filtered extensions whenever the filter or extension states change
   useEffect(() => {
-    let filtered = [...extensionsData]; // Create a copy to avoid mutation issues
+    let filtered = [...cards];
 
     if (activeFilter === "enabled") {
-      filtered = extensionsData.filter((ext) => enabledExtensions.has(ext.id));
+      filtered = cards.filter((ext) => enabledExtensions.has(ext.id));
     } else if (activeFilter === "disabled") {
-      filtered = extensionsData.filter((ext) => !enabledExtensions.has(ext.id));
+      filtered = cards.filter((ext) => !enabledExtensions.has(ext.id));
     } else if (activeFilter === "pinned") {
-      filtered = extensionsData.filter((ext) => pinnedExtensions.has(ext.id));
-    } else if (activeFilter !== "all") {
-      filtered = extensionsData.filter((ext) =>
-        ext.tags?.some?.((tag) => tag.id === activeFilter)
+      // Show pinned extensions regardless of enabled/disabled status
+      filtered = cards.filter((ext) => pinnedExtensions.has(ext.id));
+    }
+
+    // For all filters except "pinned", we should still show pinned items at the top
+    if (activeFilter !== "pinned") {
+      const pinnedItems = cards.filter((ext) => pinnedExtensions.has(ext.id));
+      const nonPinnedItems = filtered.filter(
+        (ext) => !pinnedExtensions.has(ext.id)
       );
+      filtered = [...pinnedItems, ...nonPinnedItems];
     }
 
     setFilteredExtensions(filtered);
-  }, [activeFilter, enabledExtensions, pinnedExtensions, extensionsData]);
+  }, [activeFilter, enabledExtensions, pinnedExtensions, cards]);
 
   // Context value
   const value: ExtensionContextType = {
