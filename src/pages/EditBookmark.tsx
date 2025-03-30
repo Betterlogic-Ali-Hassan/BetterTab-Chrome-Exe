@@ -12,6 +12,7 @@ import type { Card } from "@/types/TabCardType";
 import { toast } from "react-toastify";
 import { useFormContext } from "@/context/from-Context";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { usePageContext } from "@/context/PageContext";
 
 interface EditBookmarkProps {
   activeTabData?: Card;
@@ -20,7 +21,7 @@ interface EditBookmarkProps {
 const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
   const { resetForm, setIsLoading, formData } = useFormContext();
   const { updateCard } = useBookmarks();
-
+  const { page } = usePageContext();
   const handleSaveBtn = () => {
     if (!activeTabData) return;
 
@@ -69,11 +70,14 @@ const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
           </TabsList>
 
           <TabsContent value='meta'>
-            <PasteLinkInput
-              actionBtns
-              className='sm:px-0 sm:pb-0 sm:pt-2'
-              notAllowTitle
-            />
+            {page !== "extensions" && (
+              <PasteLinkInput
+                actionBtns
+                className='sm:px-0 sm:pb-0 sm:pt-2'
+                notAllowTitle
+              />
+            )}
+
             <TextBoxInputs
               actionBtns
               className='sm:px-0 sm:py-0 sm:pt-2'

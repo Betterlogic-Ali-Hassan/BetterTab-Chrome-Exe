@@ -10,6 +10,9 @@ import { Card } from "@/types/TabCardType";
 
 import { toast } from "react-toastify";
 import { copyToClipboard } from "@/lib/handle-copy";
+import SettingIcon from "@/components/svgs/SettingIcon";
+import { usePageContext } from "@/context/PageContext";
+import { MdOutlineHome } from "react-icons/md";
 interface Props {
   activeTabData?: Card | undefined;
 }
@@ -28,6 +31,7 @@ const ActionsBtns = ({ activeTabData }: Props) => {
     deleteCard(id ? id : 0);
     toast.success("Bookmark Deleted");
   };
+  const { page } = usePageContext();
   return (
     <div className='flex items-center justify-start gap-4'>
       <DialogBox
@@ -45,8 +49,17 @@ const ActionsBtns = ({ activeTabData }: Props) => {
         onClick={handleCopy}
         className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center '
       >
-        <Copy />
+        {page === "extensions" ? <SettingIcon /> : <Copy />}
       </button>
+      {page === "extensions" && (
+        <button
+          onClick={handleCopy}
+          className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center '
+        >
+          <MdOutlineHome size={24} />
+        </button>
+      )}
+
       <AlertDialogBox
         className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center'
         onClick={handleDelete}

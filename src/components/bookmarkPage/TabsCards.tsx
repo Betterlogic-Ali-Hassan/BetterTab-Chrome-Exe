@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import { useThumbnailToggler } from "@/context/ThumbnailTogglerContext";
 import { usePageContext } from "@/context/PageContext";
 
-import HourlyLog from "../historyPage/HourlyLog";
 import CardGroup from "./thumbnails/CardGroup";
 import InfiniteScrollSentinel from "../InfiniteScrollSentinel";
 import { useHeaderContext } from "@/context/HeaderContext";
@@ -47,24 +46,23 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
     return filteredCards.slice(0, visibleCardsCount);
   }, [filteredCards, visibleCardsCount]);
 
-  // Group cards by time and date
   const cardGroups = useMemo(() => {
     if (!isShowHourlyLog) {
       return [visibleCards];
     }
 
-    // Group cards by time and date
+    // Create a map to group cards by time only (not date-time)
     const groups: Record<string, Card[]> = {};
 
     visibleCards.forEach((card) => {
-      if (card.time && card.date) {
-        const key = `${card.date}-${card.time}`;
+      if (card.time) {
+        // Use only time as the key to group all cards with the same time together
+        const key = card.time;
         if (!groups[key]) {
           groups[key] = [];
         }
         groups[key].push(card);
       } else {
-        // For cards without time/date, use a default group
         const key = "default";
         if (!groups[key]) {
           groups[key] = [];
@@ -73,18 +71,20 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
       }
     });
 
-    // Convert to array and sort by date and time (newest first)
     return Object.values(groups).sort((a, b) => {
-      if (!a[0].date || !a[0].time) return 1;
-      if (!b[0].date || !b[0].time) return -1;
+      if (!a[0].time) return 1;
+      if (!b[0].time) return -1;
 
-      const dateA = new Date(`${a[0].date} ${a[0].time}`).getTime();
-      const dateB = new Date(`${b[0].date} ${b[0].time}`).getTime();
-      return dateB - dateA;
+      // Parse times for comparison (assuming format like "9:30PM")
+      const timeA = a[0].time;
+      const timeB = b[0].time;
+
+      // Simple string comparison for time (works for standard time formats)
+      // For more complex time comparison, you might need a proper time parser
+      return timeB.localeCompare(timeA);
     });
   }, [visibleCards, isShowHourlyLog]);
 
-  // Initialize header with the first card's date and time
   useEffect(() => {
     if (cards.length > 0 && cards[0].date && cards[0].time) {
       setCurrentHeader({
@@ -98,8 +98,6 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
 
   return (
     <div className={cn(isListView && "max-w-[970px]")}>
-      {isShowHourlyLog && <HourlyLog />}
-
       {isExtensionsPage && favoriteExe.length > 0 && (
         <div className='mb-12'>
           <CardGroup

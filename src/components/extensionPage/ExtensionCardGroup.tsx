@@ -22,7 +22,6 @@ const CARDS_PER_LOAD = 20;
 export default function ExtensionCardsGroup({
   cards,
   isListView,
-
   favoriteExe,
   setFavoriteExe,
 }: ExtensionCardsGroupProps) {

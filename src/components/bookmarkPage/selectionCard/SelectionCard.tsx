@@ -55,11 +55,11 @@ const SelectionCard = () => {
   return (
     <div
       className={cn(
-        "hidden lg:block relative max-w-[280px] max-[1600px]:fixed  max-[1600px]:right-6  opacity-0 translate-x-[100%] transition-all duration-300 ",
+        "hidden lg:block relative max-w-[280px] max-[1600px]:fixed  max-[1600px]:right-8  opacity-0 translate-x-[100%] transition-all duration-300 ",
         showSelectionCard && "opacity-100 translate-x-0 "
       )}
     >
-      <div className='sticky top-0 left-0 w-full max-w-md min-w-72 text-white ml-2'>
+      <div className='sticky top-0 left-0 w-full max-w-[280px] min-w-72  '>
         <div>
           <div className='text-sm flex flex-col items-start text-text z-30 rounded-md bg-card overflow-hidden'>
             <div className='rounded-t-md py-2 px-4 font-medium  text-text  bg-selected-hover w-full whitespace-nowrap flex items-center justify-between'>

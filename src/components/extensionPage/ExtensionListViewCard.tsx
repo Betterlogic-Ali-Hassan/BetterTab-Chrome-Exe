@@ -13,7 +13,7 @@ import { useBookmarks } from "@/context/BookmarkContext";
 
 interface ExtensionCardProps {
   data: Card;
-  setFavoriteExe: (callback: (prev: Card[]) => Card[]) => void;
+  setFavoriteExe: (callback: (prev: Card[]) => Card[]) => void | undefined;
   favoriteExe: Card[];
   favorite?: boolean;
 }

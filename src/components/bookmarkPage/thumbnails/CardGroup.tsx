@@ -16,7 +16,7 @@ interface CardGroupProps {
   isExtensionsPage: boolean;
   isDownloadPage: boolean;
   isShowHourlyLog: boolean;
-  showHourlyLogAfter: boolean;
+  showHourlyLogAfter?: boolean;
   favoriteExe: Card[];
   setFavoriteExe: React.Dispatch<React.SetStateAction<Card[]>>;
   favorite?: boolean;
@@ -27,7 +27,6 @@ export default function CardGroup({
   isListView,
   isExtensionsPage,
   isShowHourlyLog,
-  showHourlyLogAfter,
   favoriteExe,
   setFavoriteExe,
   isDownloadPage,
@@ -41,21 +40,24 @@ export default function CardGroup({
   const groupRef = useRef<HTMLDivElement>(null);
   const { setCurrentHeader } = useHeaderContext();
 
-  // Get time and date from the first card in the group
   const time = cards[0]?.time || "";
   const date = cards[0]?.date || "";
 
-  // Set up intersection observer to update header when this group is visible
   useEffect(() => {
-    if (!isShowHourlyLog || !time || !date) return;
+    if (!isShowHourlyLog || !time) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          setCurrentHeader({ date, time });
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
+            setCurrentHeader({ date, time });
+          }
+        });
       },
-      { threshold: 0.2 }
+      {
+        threshold: 0.5,
+        rootMargin: "-250px 0px",
+      }
     );
 
     if (groupRef.current) {
@@ -67,11 +69,12 @@ export default function CardGroup({
         observer.unobserve(groupRef.current);
       }
     };
-  }, [date, time, isShowHourlyLog, setCurrentHeader]);
+  }, [cards, date, time, isShowHourlyLog, setCurrentHeader]);
 
   return (
-    <div ref={groupRef}>
-      <div className={containerClasses}>
+    <div>
+      {isShowHourlyLog && <HourlyLog specificTime={time} />}
+      <div className={containerClasses} ref={groupRef}>
         {cards.map((card) => (
           <CardRenderer
             favorite={favorite}
@@ -85,7 +88,6 @@ export default function CardGroup({
           />
         ))}
       </div>
-      {isShowHourlyLog && showHourlyLogAfter && <HourlyLog />}
     </div>
   );
 }
