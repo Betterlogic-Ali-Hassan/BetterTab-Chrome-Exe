@@ -30,11 +30,10 @@ const DropDown = () => {
 
   const isShowThumbnailView = page === "downloads" || page === "history";
   const pageTitles: Record<string, string> = {
-    downloads: "Downloads",
     history: "History",
     extensions: "Extensions",
   };
-  const isShowSelectionMenu = page === "downloads" || page === "extensions";
+  const isShowSelectionMenu = page === "extensions";
 
   const handleOpenDropDown = () => {
     if (!isShowSelectionMenu) setOpenDropDown(!openDropDown);
