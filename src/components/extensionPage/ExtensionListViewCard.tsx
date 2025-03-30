@@ -10,6 +10,7 @@ import { useBookmarkItem } from "@/hooks/use-bookmark-item";
 import Badge from "../ui/Badge";
 import { getCategoryName } from "@/lib/category-utils";
 import { useBookmarks } from "@/context/BookmarkContext";
+import { useExtensionContext } from "@/context/ExtensionContext";
 
 interface ExtensionCardProps {
   data: Card;
@@ -24,15 +25,19 @@ const ExtensionListViewCard = ({
   favoriteExe,
   favorite,
 }: ExtensionCardProps) => {
-  const { handleToggle, title, icon, path, tags, des } = useBookmarkItem(data);
+  const { handleToggle, title, icon, path, tags, des, id } =
+    useBookmarkItem(data);
   const { toggleCategory } = useBookmarks();
   const isFavorite = favoriteExe.some((card) => card.id === data.id);
-
+  const { toggleEnabled, togglePinned, enabledExtensions } =
+    useExtensionContext();
   const addFavoriteExe = (e: React.MouseEvent) => {
     e.stopPropagation();
+
     setFavoriteExe((prev) =>
       isFavorite ? prev.filter((card) => card.id !== data.id) : [...prev, data]
     );
+    togglePinned(id);
   };
 
   return (
@@ -63,7 +68,10 @@ const ExtensionListViewCard = ({
             >
               {isFavorite ? <BsPinFill size={20} /> : <BsPin size={20} />}
             </span>
-            <Switch />
+            <Switch
+              checked={enabledExtensions.has(id)}
+              onCheckedChange={() => toggleEnabled(id)}
+            />
           </div>
         </div>
         <a

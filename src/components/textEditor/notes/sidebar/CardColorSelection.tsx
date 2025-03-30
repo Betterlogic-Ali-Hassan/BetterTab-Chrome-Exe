@@ -29,12 +29,12 @@ const CardColorSelection = ({ selectedColor, setSelectedColor }: Props) => {
           side='top'
         />
       </PopoverTrigger>
-      <PopoverContent className=' shadow-md bg-background max-w-[155px] p-3'>
-        <div className='flex flex-wrap justify-center gap-4  rounded-md'>
+      <PopoverContent className=' shadow-md bg-background max-w-[250px] p-3'>
+        <div className='flex flex-wrap  gap-4  rounded-md'>
           {colors.map((color) => (
             <button
               key={color.value}
-              className='relative w-8 h-8 rounded-full border-2 border-border flex items-center justify-center focus:outline-none '
+              className='relative w-8 h-8 rounded-md border-2 border-border flex items-center justify-center focus:outline-none '
               style={{ backgroundColor: color.value }}
               onClick={() => handleColorChange(color.value)}
               aria-label={`Select ${color.label} color`}
@@ -48,6 +48,13 @@ const CardColorSelection = ({ selectedColor, setSelectedColor }: Props) => {
               )}
             </button>
           ))}
+          <input
+            type='text'
+            name='color'
+            id='color'
+            value={selectedColor}
+            className='input rounded'
+          />
         </div>
       </PopoverContent>
     </Popover>

@@ -6,9 +6,11 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 import type { Card } from "@/types/TabCardType";
 import { useHeaderContext } from "@/context/HeaderContext";
+import { useExtensionContext } from "@/context/ExtensionContext";
 
 import CardRenderer from "./CardRenderer";
 import HourlyLog from "@/components/historyPage/HourlyLog";
+import { usePageContext } from "@/context/PageContext";
 
 interface CardGroupProps {
   cards: Card[];
@@ -39,7 +41,8 @@ export default function CardGroup({
 
   const groupRef = useRef<HTMLDivElement>(null);
   const { setCurrentHeader } = useHeaderContext();
-
+  const { filteredExtensions } = useExtensionContext();
+  const { page } = usePageContext();
   const time = cards[0]?.time || "";
   const date = cards[0]?.date || "";
 
@@ -71,11 +74,20 @@ export default function CardGroup({
     };
   }, [cards, date, time, isShowHourlyLog, setCurrentHeader]);
 
+  if (isExtensionsPage && filteredExtensions.length === 0) {
+    return (
+      <div className='text-center py-12 text-muted-foreground flex items-center w-full justify-center col-span-3'>
+        No extensions match the selected filter.
+      </div>
+    );
+  }
+
+  const data = page === "extensions" ? filteredExtensions : cards;
   return (
     <div>
       {isShowHourlyLog && <HourlyLog specificTime={time} />}
       <div className={containerClasses} ref={groupRef}>
-        {cards.map((card) => (
+        {data.map((card) => (
           <CardRenderer
             favorite={favorite}
             key={card.id}

@@ -7,6 +7,7 @@ import ThumbnailCard from "./thumbnailView/ThumbnailCard";
 import ExtensionCard from "../../extensionPage/ExtensionCard";
 import ExtensionListViewCard from "../../extensionPage/ExtensionListViewCard";
 import DownloadCard from "../../downloadPage/DownloadCard";
+import { useExtensionContext } from "@/context/ExtensionContext";
 
 interface CardRendererProps {
   data: Card;
@@ -27,7 +28,14 @@ export default function CardRenderer({
   isDownloadPage,
   favorite,
 }: CardRendererProps) {
+  const { filteredExtensions } = useExtensionContext();
   if (isExtensionsPage) {
+    if (filteredExtensions.length === 0)
+      return (
+        <div className='text-center py-12 text-muted-foreground flex items-center w-full justify-center col-span-3'>
+          No extensions match the selected filter.
+        </div>
+      );
     return isListView ? (
       <ExtensionCard
         setFavoriteExe={setFavoriteExe}
