@@ -4,11 +4,15 @@ import { usePageContext } from "@/context/PageContext";
 import SearchIcon from "../svgs/SearchIcon";
 import { useBookmarks } from "@/context/BookmarkContext";
 import { useCallback, useEffect, useRef } from "react";
+import { X } from "lucide-react";
 
 const Searchbar = () => {
   const { page } = usePageContext();
   const { searchTerm, setSearchTerm } = useBookmarks();
   const inputRef = useRef<HTMLInputElement>(null);
+  const handleClearInput = () => {
+    setSearchTerm("");
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -48,7 +52,13 @@ const Searchbar = () => {
             onChange={handleSearch}
             className='bg-transparent border-none outline-none pl-2 w-full h-full text-foreground '
           />
-          <span className='ml-auto inline-block'>Ctrl + K</span>
+          {searchTerm === "" ? (
+            <span className='ml-auto inline-block'>Ctrl + K</span>
+          ) : (
+            <span className='cursor-pointer' onClick={handleClearInput}>
+              <X size={20} />
+            </span>
+          )}
         </div>
         {page === "bookmarks" ? <AddNewCardBtn /> : null}
       </div>

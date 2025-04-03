@@ -13,6 +13,7 @@ const SearchBar = () => {
       <SearchInput
         className='border bg-input rounded-md h-[40px] flex items-center text-text'
         value={searchTerm}
+        setValue={setSearchTerm}
         onChange={handleChange}
         placeholder='Search...'
       />
