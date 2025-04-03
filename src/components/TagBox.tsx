@@ -10,7 +10,7 @@ import {
   useRef,
   type KeyboardEvent,
 } from "react";
-import { TagNotification } from "../modals/TagAddedNotification";
+
 import { TagButton } from "./AddTagBtn";
 import { PlusIcon } from "./svgs/PlusIcon";
 import type { Tag } from "@/types/tag";
@@ -31,10 +31,7 @@ export default function TagBox({
   const [tagInputValue, setTagInputValue] = useState("");
   const { updateFormData } = useFormContext();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [notification, setNotification] = useState({
-    text: "",
-    visible: false,
-  });
+
   const { categories, setCategories } = useBookmarks();
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -49,18 +46,6 @@ export default function TagBox({
       debouncedFormUpdate(initialTags);
     }
   }, [tag]);
-
-  const showNotification = useCallback((text: string) => {
-    if (notificationTimeoutRef.current) {
-      clearTimeout(notificationTimeoutRef.current);
-    }
-
-    setNotification({ text, visible: true });
-
-    notificationTimeoutRef.current = setTimeout(() => {
-      setNotification((prev) => ({ ...prev, visible: false }));
-    }, 1000);
-  }, []);
 
   const debouncedFormUpdate = useCallback(
     (tags: string[]) => {
@@ -97,7 +82,6 @@ export default function TagBox({
     if (!trimmedValue) return;
 
     if (selectedTags.includes(trimmedValue)) {
-      showNotification(`Tag '${trimmedValue}' already selected!`);
       setTagInputValue("");
       setSearchTerm("");
       return;
@@ -109,7 +93,6 @@ export default function TagBox({
 
     if (existingTag) {
       setSelectedTags((prev) => [...prev, existingTag.name]);
-      showNotification(`Added: Tag '${existingTag.name}'`);
     } else {
       const newTag: Tag = {
         name: trimmedValue,
@@ -119,18 +102,11 @@ export default function TagBox({
 
       setCategories([...categories, newTag]);
       setSelectedTags((prev) => [...prev, trimmedValue]);
-      showNotification(`New Tag Added: '${trimmedValue}'`);
     }
 
     setTagInputValue("");
     setSearchTerm("");
-  }, [
-    tagInputValue,
-    showNotification,
-    selectedTags,
-    categories,
-    setCategories,
-  ]);
+  }, [tagInputValue, selectedTags, categories, setCategories]);
 
   const toggleTag = useCallback(
     (tagName: string) => {
@@ -143,16 +119,10 @@ export default function TagBox({
         // Update form data with the new tags
         debouncedFormUpdate(newTags);
 
-        if (isSelected) {
-          showNotification(`Removed: Tag "${tagName}"`);
-        } else {
-          showNotification(`Added: Tag "${tagName}"`);
-        }
-
         return newTags;
       });
     },
-    [showNotification, debouncedFormUpdate]
+    [debouncedFormUpdate]
   );
 
   const handleKeyDown = useCallback(
@@ -201,11 +171,6 @@ export default function TagBox({
             Tags
           </label>
         )}
-
-        <TagNotification
-          text={notification.text}
-          visible={notification.visible}
-        />
       </div>
 
       <div className='flex rounded mb-6'>

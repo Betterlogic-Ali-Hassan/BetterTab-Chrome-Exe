@@ -5,6 +5,7 @@ import type { Card } from "@/types/TabCardType";
 import { cn } from "@/lib/utils";
 import { useThumbnailToggler } from "@/context/ThumbnailTogglerContext";
 import { usePageContext } from "@/context/PageContext";
+import { useExtensionContext } from "@/context/ExtensionContext";
 
 import CardGroup from "./thumbnails/CardGroup";
 import InfiniteScrollSentinel from "../InfiniteScrollSentinel";
@@ -17,6 +18,7 @@ interface TabsCardsProps {
 const TabsCards = ({ cards }: TabsCardsProps) => {
   const { isListView } = useThumbnailToggler();
   const [favoriteExe, setFavoriteExe] = useState<Card[]>([]);
+  const { activeFilter } = useExtensionContext();
 
   const { page } = usePageContext();
   const { setCurrentHeader } = useHeaderContext();
@@ -34,7 +36,6 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
     );
   }, [cards.length]);
 
-  // Filter out cards that are in favorites from the normal list
   const filteredCards = useMemo(() => {
     if (isExtensionsPage) {
       const favoriteIds = new Set(favoriteExe.map((card) => card.id));
@@ -44,7 +45,7 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
   }, [cards, favoriteExe, isExtensionsPage]);
 
   const visibleCards = useMemo(() => {
-    return cards.slice(0, visibleCardsCount);
+    return filteredCards.slice(0, visibleCardsCount);
   }, [filteredCards, visibleCardsCount]);
 
   const cardGroups = useMemo(() => {
@@ -52,12 +53,10 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
       return [visibleCards];
     }
 
-    // Create a map to group cards by time only (not date-time)
     const groups: Record<string, Card[]> = {};
 
     visibleCards.forEach((card) => {
       if (card.time) {
-        // Use only time as the key to group all cards with the same time together
         const key = card.time;
         if (!groups[key]) {
           groups[key] = [];
@@ -76,12 +75,9 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
       if (!a[0].time) return 1;
       if (!b[0].time) return -1;
 
-      // Parse times for comparison (assuming format like "9:30PM")
       const timeA = a[0].time;
       const timeB = b[0].time;
 
-      // Simple string comparison for time (works for standard time formats)
-      // For more complex time comparison, you might need a proper time parser
       return timeB.localeCompare(timeA);
     });
   }, [visibleCards, isShowHourlyLog]);
@@ -97,37 +93,38 @@ const TabsCards = ({ cards }: TabsCardsProps) => {
 
   const hasMoreCards = visibleCardsCount < filteredCards.length;
 
+  const shouldShowFavorites = activeFilter !== "pinned";
+
   return (
     <div className={cn(isListView && "max-w-[970px]")}>
-      {isExtensionsPage && favoriteExe.length > 0 && (
-        <div className='mb-12'>
-          <CardGroup
-            favorite
-            cards={favoriteExe}
-            isListView={isListView}
-            isExtensionsPage={isExtensionsPage}
-            isShowHourlyLog={false}
-            showHourlyLogAfter={false}
-            favoriteExe={favoriteExe}
-            setFavoriteExe={setFavoriteExe}
-            isDownloadPage={isDownloadPage}
-          />
-        </div>
-      )}
-
-      {cardGroups.map((group, index) => (
+      <div className={cn("mb-12", favoriteExe.length === 0 && "hidden")}>
         <CardGroup
-          key={`group-${index}`}
-          cards={group}
+          favorite
+          cards={favoriteExe}
           isListView={isListView}
           isExtensionsPage={isExtensionsPage}
-          isDownloadPage={isDownloadPage}
-          isShowHourlyLog={isShowHourlyLog}
-          showHourlyLogAfter={index < cardGroups.length - 1}
+          isShowHourlyLog={false}
+          showHourlyLogAfter={false}
           favoriteExe={favoriteExe}
           setFavoriteExe={setFavoriteExe}
+          isDownloadPage={isDownloadPage}
         />
-      ))}
+      </div>
+
+      {shouldShowFavorites &&
+        cardGroups.map((group, index) => (
+          <CardGroup
+            key={`group-${index}`}
+            cards={group}
+            isListView={isListView}
+            isExtensionsPage={isExtensionsPage}
+            isDownloadPage={isDownloadPage}
+            isShowHourlyLog={isShowHourlyLog}
+            showHourlyLogAfter={index < cardGroups.length - 1}
+            favoriteExe={favoriteExe}
+            setFavoriteExe={setFavoriteExe}
+          />
+        ))}
 
       <InfiniteScrollSentinel
         onLoadMore={loadMoreCards}

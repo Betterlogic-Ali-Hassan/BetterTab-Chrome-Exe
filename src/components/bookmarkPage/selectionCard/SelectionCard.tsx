@@ -2,9 +2,8 @@ import AlertDialogBox from "@/modals/AlertDialogBox";
 import CopytoClipboard from "@/components/svgs/CopytoClipboard";
 import CrossIcon from "@/components/svgs/CrossIcon";
 import OpenIcon from "@/components/svgs/OpenIcon";
-import TagAlertBox from "@/components/TagAlertBox";
+
 import { useBookmarks } from "@/context/BookmarkContext";
-import { usePageContext } from "@/context/PageContext";
 
 import { cn, useHandleDelete } from "@/lib/utils";
 import { toast } from "react-toastify";
@@ -19,7 +18,6 @@ const SelectionCard = () => {
     setSelectedCards,
     showSelectionCard,
   } = useBookmarks();
-  const { page } = usePageContext();
   const handleCopy = () => {
     if ((selectedCardUrls?.length || 0) > 0) {
       const urlsToCopy = selectedCardUrls && selectedCardUrls.join("\n");
@@ -44,7 +42,6 @@ const SelectionCard = () => {
   }, [clearSelection, setShowSelectionCard]);
 
   const isDisabled = selectedCards.length === 0;
-  const notShowEditBtn = page === "history";
   const handleDelete = useHandleDelete();
 
   const onDelete = () => {
@@ -71,7 +68,6 @@ const SelectionCard = () => {
                 <CrossIcon />
               </button>
             </div>
-            {!notShowEditBtn && <TagAlertBox disabled={isDisabled} />}
 
             <button
               className='hover:bg-hover  w-full py-3 px-4 text-left whitespace-nowrap flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-50'

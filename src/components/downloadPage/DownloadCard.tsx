@@ -4,12 +4,15 @@ import type { Card } from "@/types/TabCardType";
 import DeleteEntry from "../DeleteEntry";
 import { copyToClipboard } from "@/lib/handle-copy";
 import { toast } from "react-toastify";
+import { useBookmarkItem } from "@/hooks/use-bookmark-item";
+import { cn } from "@/lib/utils";
 interface DownloadCardProps {
   data: Card;
 }
 
 const DownloadCard = ({ data }: DownloadCardProps) => {
-  const { title, icon, path, id } = data;
+  const { title, id, handleToggle, icon, selected, path } =
+    useBookmarkItem(data);
   const handleCopy = () => {
     copyToClipboard(
       path ?? "",
@@ -18,7 +21,14 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
     );
   };
   return (
-    <div className='p-6 border-border border group rounded-lg bg-card flex gap-5 mb-4 relative cursor-pointer'>
+    <div
+      className={cn(
+        "p-6 border-border border group rounded-lg bg-card flex gap-5 mb-4 relative cursor-pointer",
+        selected &&
+          "hover:bg-selected-hover border-selected-border bg-selected-bg"
+      )}
+      onClick={handleToggle}
+    >
       <div className='h-[32px] w-[32px]'>
         <img src={icon} alt={title} className='h-[32px] w-[32px] dark:invert' />
       </div>

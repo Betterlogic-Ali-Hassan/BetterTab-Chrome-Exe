@@ -11,7 +11,13 @@ import {
 
 import { useBookmarks } from "./BookmarkContext";
 
-export type FilterType = "all" | "enabled" | "disabled" | "pinned" | string;
+export type FilterType =
+  | "all"
+  | "enabled"
+  | "disabled"
+  | "pinned"
+  | "recent"
+  | string;
 type ExtensionContextType = {
   activeFilter: FilterType;
   filteredExtensions: Card[];
@@ -76,11 +82,30 @@ export function ExtensionProvider({ children }: { children: ReactNode }) {
     } else if (activeFilter === "pinned") {
       // Show pinned extensions regardless of enabled/disabled status
       filtered = cards.filter((ext) => pinnedExtensions.has(ext.id));
+    } else if (activeFilter === "recent") {
+      // Filter to only show extensions installed today
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Set to beginning of today
+
+      filtered = cards.filter((ext) => {
+        if (!ext.installDate) return false;
+        const installDate = new Date(ext.installDate);
+        return installDate >= today;
+      });
     }
 
     // For all filters except "pinned", we should still show pinned items at the top
-    if (activeFilter !== "pinned") {
+    if (activeFilter !== "pinned" && activeFilter !== "recent") {
       const pinnedItems = cards.filter((ext) => pinnedExtensions.has(ext.id));
+      const nonPinnedItems = filtered.filter(
+        (ext) => !pinnedExtensions.has(ext.id)
+      );
+      filtered = [...pinnedItems, ...nonPinnedItems];
+    } else if (activeFilter === "recent") {
+      // For recent filter, we still want to respect the date sorting but show pinned at top
+      const pinnedItems = filtered.filter((ext) =>
+        pinnedExtensions.has(ext.id)
+      );
       const nonPinnedItems = filtered.filter(
         (ext) => !pinnedExtensions.has(ext.id)
       );

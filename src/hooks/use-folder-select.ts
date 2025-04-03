@@ -1,6 +1,7 @@
 "use client"
 
-import { SelectFolderData } from "@/constant/selectFoloderData"
+import { SelectExtensionGroups, SelectFolderData } from "@/constant/selectFoloderData"
+import { usePageContext } from "@/context/PageContext"
 import type React from "react"
 
 import { useState } from "react"
@@ -8,10 +9,13 @@ import { useState } from "react"
 
 export function useFolderSelect() {
   const [searchTerm, setSearchTerm] = useState("")
-  const [selected, setSelected] = useState<string>("Bookmark bar")
-  const [openPopover, setOpenPopover] = useState(false)
+  const {page} = usePageContext()
+  const isExtensionPage = page === 'extensions'
 
-  const filteredFolders = SelectFolderData.filter((folder) => folder.toLowerCase().includes(searchTerm.toLowerCase()))
+  const [selected, setSelected] = useState<string>(isExtensionPage ? 'Extension Groups' : 'Bookmarks')
+  const [openPopover, setOpenPopover] = useState(false)
+const data = isExtensionPage ? SelectExtensionGroups : SelectFolderData
+  const filteredFolders = data.filter((folder) => folder.toLowerCase().includes(searchTerm.toLowerCase()))
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value)

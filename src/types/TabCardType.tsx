@@ -10,4 +10,5 @@ export type Card = {
   des: string;
   date?: string;
   time?: string;
+  installDate?: string;
 };

@@ -9,6 +9,7 @@ export const extensions = [
       { id: "ai", name: "AI" },
       { id: "audio", name: "Audio" },
     ],
+    installDate: "2025/04/03",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const extensions = [
       { id: "automation", name: "Automation" },
       { id: "book", name: "Book" },
     ],
+    installDate: "2025-04-03",
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ export const extensions = [
       { id: "buy", name: "Buy" },
       { id: "community", name: "Community" },
     ],
+    installDate: "2024-12-10",
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ export const extensions = [
       { id: "design", name: "Design" },
       { id: "directory", name: "Directory" },
     ],
+    installDate: "2025-03-02",
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ export const extensions = [
       { id: "documentation", name: "Documentation" },
       { id: "engineering", name: "Engineering" },
     ],
+    installDate: "2024-01-02",
   },
   {
     id: 6,
@@ -64,6 +69,7 @@ export const extensions = [
       { id: "documentation", name: "Documentation" },
       { id: "engineering", name: "Engineering" },
     ],
+    installDate: "2024-01-06",
   },
   {
     id: 7,
@@ -75,6 +81,7 @@ export const extensions = [
       { id: "buy", name: "Buy" },
       { id: "community", name: "Community" },
     ],
+    installDate: "2023-01-02",
   },
   {
     id: 8,
@@ -86,6 +93,7 @@ export const extensions = [
       { id: "buy", name: "Buy" },
       { id: "community", name: "Community" },
     ],
+    installDate: "2024-11-02",
   },
   {
     id: 9,
@@ -97,6 +105,7 @@ export const extensions = [
       { id: "ai", name: "AI" },
       { id: "audio", name: "Audio" },
     ],
+    installDate: "2020-01-02",
   },
   {
     id: 10,
@@ -108,6 +117,7 @@ export const extensions = [
       { id: "ai", name: "AI" },
       { id: "audio", name: "Audio" },
     ],
+    installDate: "2024-08-04",
   },
   {
     id: 11,
@@ -119,6 +129,7 @@ export const extensions = [
       { id: "game", name: "Game" },
       { id: "health", name: "Health" },
     ],
+    installDate: "2022-05-01",
   },
   {
     id: 12,
@@ -130,6 +141,7 @@ export const extensions = [
       { id: "game", name: "Game" },
       { id: "health", name: "Health" },
     ],
+    installDate: "2021-09-12",
   },
   {
     id: 13,
@@ -141,6 +153,7 @@ export const extensions = [
       { id: "game", name: "Game" },
       { id: "health", name: "Health" },
     ],
+    installDate: "2024-01-02",
   },
   {
     id: 14,
@@ -152,6 +165,7 @@ export const extensions = [
       { id: "podcast", name: "Podcast" },
       { id: "research", name: "Research" },
     ],
+    installDate: "2022-05-02",
   },
   {
     id: 15,
@@ -163,6 +177,7 @@ export const extensions = [
       { id: "podcast", name: "Podcast" },
       { id: "research", name: "Research" },
     ],
+    installDate: "2022-07-12",
   },
   {
     id: 16,
@@ -174,6 +189,7 @@ export const extensions = [
       { id: "podcast", name: "Podcast" },
       { id: "research", name: "Research" },
     ],
+    installDate: "2024-01-10",
   },
   {
     id: 17,
@@ -185,6 +201,7 @@ export const extensions = [
       { id: "podcast", name: "Podcast" },
       { id: "research", name: "Research" },
     ],
+    installDate: "2024-01-02",
   },
   {
     id: 18,
@@ -196,6 +213,7 @@ export const extensions = [
       { id: "tutorial", name: "Tutorial" },
       { id: "video", name: "Video" },
     ],
+    installDate: "2024-01-15",
   },
   {
     id: 19,
@@ -207,6 +225,7 @@ export const extensions = [
       { id: "tutorial", name: "Tutorial" },
       { id: "video", name: "Video" },
     ],
+    installDate: "2022-12-12",
   },
   {
     id: 20,
@@ -218,5 +237,6 @@ export const extensions = [
       { id: "tutorial", name: "Tutorial" },
       { id: "video", name: "Video" },
     ],
+    installDate: "2022-11-02",
   },
 ];

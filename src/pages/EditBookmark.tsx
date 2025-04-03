@@ -20,6 +20,9 @@ interface EditBookmarkProps {
 
 const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
   const { resetForm, setIsLoading, formData } = useFormContext();
+  formData.title = activeTabData?.title || formData.title;
+  formData.description = activeTabData?.des || formData.description;
+  formData.url = activeTabData?.path || formData.url;
   const { updateCard } = useBookmarks();
   const { page } = usePageContext();
   const handleSaveBtn = () => {

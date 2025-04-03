@@ -44,20 +44,24 @@ const ActionsBtns = ({ activeTabData }: Props) => {
       >
         <EditBookmark activeTabData={activeTabData} />
       </DialogBox>
-
-      <button
-        onClick={handleCopy}
-        className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center '
-      >
-        {page === "extensions" ? <SettingIcon /> : <Copy />}
-      </button>
-      {page === "extensions" && (
+      {page !== "extensions" && (
         <button
           onClick={handleCopy}
           className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center '
         >
-          <MdOutlineHome size={24} />
+          <Copy />
         </button>
+      )}
+
+      {page === "extensions" && (
+        <>
+          <button className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center '>
+            <SettingIcon />
+          </button>
+          <button className='px-3  py-3 text-sm text-foreground rounded-[14px]  hover:text-text bg-badge flex items-center '>
+            <MdOutlineHome size={24} />
+          </button>
+        </>
       )}
 
       <AlertDialogBox
