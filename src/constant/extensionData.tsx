@@ -10,6 +10,7 @@ export const extensions = [
       { id: "audio", name: "Audio" },
     ],
     installDate: "2025/04/03",
+    developerMode: true,
   },
   {
     id: 2,
@@ -22,6 +23,7 @@ export const extensions = [
       { id: "book", name: "Book" },
     ],
     installDate: "2025-04-03",
+    developerMode: true,
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ export const extensions = [
       { id: "community", name: "Community" },
     ],
     installDate: "2024-12-10",
+    developerMode: true,
   },
   {
     id: 4,
@@ -46,6 +49,7 @@ export const extensions = [
       { id: "directory", name: "Directory" },
     ],
     installDate: "2025-03-02",
+    developerMode: true,
   },
   {
     id: 5,
@@ -58,6 +62,7 @@ export const extensions = [
       { id: "engineering", name: "Engineering" },
     ],
     installDate: "2024-01-02",
+    developerMode: true,
   },
   {
     id: 6,
@@ -70,6 +75,7 @@ export const extensions = [
       { id: "engineering", name: "Engineering" },
     ],
     installDate: "2024-01-06",
+    developerMode: true,
   },
   {
     id: 7,
@@ -82,6 +88,7 @@ export const extensions = [
       { id: "community", name: "Community" },
     ],
     installDate: "2023-01-02",
+    developerMode: false,
   },
   {
     id: 8,
@@ -94,6 +101,7 @@ export const extensions = [
       { id: "community", name: "Community" },
     ],
     installDate: "2024-11-02",
+    developerMode: false,
   },
   {
     id: 9,
@@ -106,6 +114,7 @@ export const extensions = [
       { id: "audio", name: "Audio" },
     ],
     installDate: "2020-01-02",
+    developerMode: false,
   },
   {
     id: 10,
@@ -118,6 +127,7 @@ export const extensions = [
       { id: "audio", name: "Audio" },
     ],
     installDate: "2024-08-04",
+    developerMode: false,
   },
   {
     id: 11,
@@ -130,6 +140,7 @@ export const extensions = [
       { id: "health", name: "Health" },
     ],
     installDate: "2022-05-01",
+    developerMode: false,
   },
   {
     id: 12,
@@ -142,6 +153,7 @@ export const extensions = [
       { id: "health", name: "Health" },
     ],
     installDate: "2021-09-12",
+    developerMode: false,
   },
   {
     id: 13,
@@ -154,6 +166,7 @@ export const extensions = [
       { id: "health", name: "Health" },
     ],
     installDate: "2024-01-02",
+    developerMode: false,
   },
   {
     id: 14,
@@ -166,6 +179,7 @@ export const extensions = [
       { id: "research", name: "Research" },
     ],
     installDate: "2022-05-02",
+    developerMode: false,
   },
   {
     id: 15,
@@ -178,6 +192,7 @@ export const extensions = [
       { id: "research", name: "Research" },
     ],
     installDate: "2022-07-12",
+    developerMode: false,
   },
   {
     id: 16,
@@ -190,6 +205,7 @@ export const extensions = [
       { id: "research", name: "Research" },
     ],
     installDate: "2024-01-10",
+    developerMode: false,
   },
   {
     id: 17,
@@ -202,6 +218,7 @@ export const extensions = [
       { id: "research", name: "Research" },
     ],
     installDate: "2024-01-02",
+    developerMode: false,
   },
   {
     id: 18,
@@ -214,6 +231,7 @@ export const extensions = [
       { id: "video", name: "Video" },
     ],
     installDate: "2024-01-15",
+    developerMode: false,
   },
   {
     id: 19,
@@ -226,6 +244,7 @@ export const extensions = [
       { id: "video", name: "Video" },
     ],
     installDate: "2022-12-12",
+    developerMode: false,
   },
   {
     id: 20,
@@ -238,5 +257,6 @@ export const extensions = [
       { id: "video", name: "Video" },
     ],
     installDate: "2022-11-02",
+    developerMode: false,
   },
 ];

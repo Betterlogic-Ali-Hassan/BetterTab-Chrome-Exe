@@ -17,6 +17,7 @@ export type FilterType =
   | "disabled"
   | "pinned"
   | "recent"
+  | "developer-mode"
   | string;
 type ExtensionContextType = {
   activeFilter: FilterType;
@@ -92,11 +93,16 @@ export function ExtensionProvider({ children }: { children: ReactNode }) {
         const installDate = new Date(ext.installDate);
         return installDate >= today;
       });
+    } else if (activeFilter === "developer-mode") {
+      // Show only extensions with developerMode set to true
+      filtered = cards.filter((ext) => ext.developerMode === true);
     }
 
     // For all filters except "pinned", we should still show pinned items at the top
     if (activeFilter !== "pinned" && activeFilter !== "recent") {
-      const pinnedItems = cards.filter((ext) => pinnedExtensions.has(ext.id));
+      const pinnedItems = filtered.filter((ext) =>
+        pinnedExtensions.has(ext.id)
+      );
       const nonPinnedItems = filtered.filter(
         (ext) => !pinnedExtensions.has(ext.id)
       );
