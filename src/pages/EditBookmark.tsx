@@ -86,7 +86,7 @@ const EditBookmark = ({ activeTabData }: EditBookmarkProps) => {
             <SelectFolder
               triggerClassName='!font-normal w-full rounded-none rounded focus:ring-brand focus:ring-2 text-sm text-text font-medium border-border border w py-1.5 px-3 outline-none bg-searchbar'
               className='mx-0'
-              popoverClassName='max-w-[550px] bg-white'
+              popoverClassName='max-w-[500px] bg-searchbar'
             />
           </TabsContent>
 
