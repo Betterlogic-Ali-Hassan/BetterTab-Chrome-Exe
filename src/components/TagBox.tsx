@@ -196,7 +196,7 @@ export default function TagBox({
         </button>
       </div>
 
-      <div className='flex flex-wrap gap-2 py-1 justify-center'>
+      <div className='flex flex-wrap gap-2 py-1  pt-4 justify-center'>
         {tagButtons}
       </div>
     </div>

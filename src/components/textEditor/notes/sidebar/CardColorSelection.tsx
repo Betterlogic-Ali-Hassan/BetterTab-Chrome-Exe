@@ -30,11 +30,11 @@ const CardColorSelection = ({ selectedColor, setSelectedColor }: Props) => {
         />
       </PopoverTrigger>
       <PopoverContent className=' shadow-md bg-background max-w-[250px] p-3'>
-        <div className='flex flex-wrap  gap-4  rounded-md'>
+        <div className='flex flex-wrap  gap-3  rounded-md'>
           {colors.map((color) => (
             <button
               key={color.value}
-              className='relative w-8 h-8 rounded-md border-2 border-border flex items-center justify-center focus:outline-none '
+              className='relative w-[26px] h-[26px] rounded-md border-2 border-border flex items-center justify-center focus:outline-none '
               style={{ backgroundColor: color.value }}
               onClick={() => handleColorChange(color.value)}
               aria-label={`Select ${color.label} color`}

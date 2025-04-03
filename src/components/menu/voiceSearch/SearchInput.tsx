@@ -52,7 +52,7 @@ const SearchInput = ({
         placeholder='Search'
         autoFocus
         ref={inputRef}
-        className='pl-[36px] shadow-none w-full text-sm outline-brand  border bg-input rounded-md h-[40px] flex items-center text-text'
+        className='pl-[36px] shadow-none w-full text-sm outline-brand  border bg-searchbar rounded-md h-[40px] flex items-center text-text'
       />
     </div>
   );
