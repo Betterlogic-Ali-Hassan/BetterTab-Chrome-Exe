@@ -191,7 +191,7 @@ export default function TagBox({
           onClick={handleAddTag}
           aria-label='Add tag'
         >
-          <PlusIcon className='h-5 w-5 text-neutral-400 ' />
+          <PlusIcon className='h-5 w-5  ' />
           Add
         </button>
       </div>
