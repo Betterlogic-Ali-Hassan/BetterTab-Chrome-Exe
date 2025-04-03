@@ -3,4 +3,5 @@ export const exeFilter = [
   { label: "Disabled", value: "disabled" },
   { label: "Pinned", value: "pinned" },
   { label: "Recently Installed", value: "recent" },
+  { label: "Developer Mode", value: "developer-mode" },
 ];

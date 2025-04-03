@@ -11,4 +11,5 @@ export type Card = {
   date?: string;
   time?: string;
   installDate?: string;
+  developerMode?: boolean;
 };

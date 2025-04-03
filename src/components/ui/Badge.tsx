@@ -12,10 +12,9 @@ interface Props {
   onClick?: () => void;
   className?: string;
   active?: boolean;
-  filterType?: string;
 }
 
-const Badge = ({ text, onClick, className, active, filterType }: Props) => {
+const Badge = ({ text, onClick, className, active }: Props) => {
   const { page } = usePageContext();
   const { cards } = useBookmarks();
   const { enabledExtensions, pinnedExtensions, setActiveFilter } =
@@ -23,18 +22,16 @@ const Badge = ({ text, onClick, className, active, filterType }: Props) => {
 
   const getCount = () => {
     if (page === "extensions") {
-      if (text === "Enabled" || filterType === "enabled") {
+      if (text === "Enabled") {
         return enabledExtensions.size;
-      } else if (text === "Disabled" || filterType === "disabled") {
+      } else if (text === "Disabled") {
         return cards.length - enabledExtensions.size;
-      } else if (text === "Pinned" || filterType === "pinned") {
+      } else if (text === "Pinned") {
         return pinnedExtensions.size;
-      } else if (text === "Recently Installed" || filterType === "recent") {
-        // Count only extensions installed today
+      } else if (text === "Recently Installed") {
         const today = new Date();
-        today.setHours(0, 0, 0, 0); // Set to beginning of today
+        today.setHours(0, 0, 0, 0);
 
-        // Get today's date in YYYY/MM/DD format for comparison
         const todayFormatted = `${today.getFullYear()}/${String(
           today.getMonth() + 1
         ).padStart(2, "0")}/${String(today.getDate()).padStart(2, "0")}`;
@@ -42,11 +39,8 @@ const Badge = ({ text, onClick, className, active, filterType }: Props) => {
         return extensions.filter((ext) => {
           if (!ext.installDate) return false;
 
-          // Compare the date part only (assuming installDate is in YYYY/MM/DD format)
           return ext.installDate.startsWith(todayFormatted);
         }).length;
-      } else if (text === "All" || filterType === "all") {
-        return extensions.length;
       }
     }
     return null;

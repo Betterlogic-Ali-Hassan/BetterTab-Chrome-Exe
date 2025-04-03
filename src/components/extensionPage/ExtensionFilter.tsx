@@ -18,11 +18,6 @@ const ExtensionFilter = () => {
           className='text-sm font-semibold  disabled:cursor-not-allowed whitespace-nowrap flex items-center h-8 px-4 py-0.5 mr-2 rounded-[20px]   relative  '
         />
       ))}
-
-      <Badge
-        text='Developer Mode '
-        className='text-sm font-semibold  disabled:cursor-not-allowed whitespace-nowrap flex items-center h-8 px-4 py-0.5 mr-2 rounded-[20px]  relative  '
-      />
     </div>
   );
 };
