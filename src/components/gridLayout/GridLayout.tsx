@@ -38,42 +38,42 @@ export default function GridLayout() {
       <div className='grid-stack overflow-auto max-h-[80vh]' ref={gridRef}>
         {/* Item 1 - Large center item */}
         <div className='grid-stack-item' gs-x='0' gs-y='2' gs-w='8' gs-h='4'>
-          <div className='grid-stack-item-content flex items-center justify-center bg-white rounded-md shadow-sm border border-gray-200'>
+          <div className='grid-stack-item-content flex items-center justify-center bg-card rounded-md shadow-sm border border-border'>
             <span className='text-3xl font-semibold'>1</span>
           </div>
         </div>
 
         {/* Item 2 - Top left */}
         <div className='grid-stack-item' gs-x='0' gs-y='0' gs-w='4' gs-h='2'>
-          <div className='grid-stack-item-content flex items-center justify-center bg-white rounded-md shadow-sm border border-gray-200'>
+          <div className='grid-stack-item-content flex items-center justify-center bg-card rounded-md shadow-sm border border-border'>
             <span className='text-3xl font-semibold'>2</span>
           </div>
         </div>
 
         {/* Item 7 - Bottom large item */}
         <div className='grid-stack-item' gs-x='0' gs-y='6' gs-w='8' gs-h='5'>
-          <div className='grid-stack-item-content flex items-center justify-center bg-white rounded-md shadow-sm border border-gray-200'>
+          <div className='grid-stack-item-content flex items-center justify-center bg-card rounded-md shadow-sm border border-border'>
             <span className='text-3xl font-semibold'>7</span>
           </div>
         </div>
 
         {/* Item 9 - Top right small */}
         <div className='grid-stack-item' gs-x='4' gs-y='0' gs-w='4' gs-h='1'>
-          <div className='grid-stack-item-content flex items-center justify-center bg-white rounded-md shadow-sm border border-gray-200'>
+          <div className='grid-stack-item-content flex items-center justify-center bg-card rounded-md shadow-sm border border-border'>
             <span className='text-3xl font-semibold'>9</span>
           </div>
         </div>
 
         {/* Item 10 - Middle right small */}
         <div className='grid-stack-item' gs-x='4' gs-y='1' gs-w='4' gs-h='1'>
-          <div className='grid-stack-item-content flex items-center justify-center bg-white rounded-md shadow-sm border border-gray-200'>
+          <div className='grid-stack-item-content flex items-center justify-center bg-card rounded-md shadow-sm border border-border'>
             <span className='text-3xl font-semibold'>10</span>
           </div>
         </div>
 
         {/* Drag me item */}
         <div className='grid-stack-item' gs-x='8' gs-y='0' gs-w='4' gs-h='2'>
-          <div className='grid-stack-item-content flex flex-col items-center justify-center bg-white rounded-md shadow-sm border border-gray-200'>
+          <div className='grid-stack-item-content flex flex-col items-center justify-center bg-card rounded-md shadow-sm border border-border'>
             <Hand className='h-10 w-10 text-indigo-600 mb-2' />
             <span className='text-xl font-medium text-indigo-600'>
               Drag me!
