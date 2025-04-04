@@ -16,7 +16,7 @@ const RightClickMenu = ({ children }: RightClickMenuProps) => {
   return (
     <ContextMenu>
       <ContextMenuTrigger>{children}</ContextMenuTrigger>
-      <ContextMenuContent className='bg-white w-[200px]'>
+      <ContextMenuContent className='bg-background border border-border rounded-[20px] w-[200px] p-3'>
         <ContextMenuItem>Profile</ContextMenuItem>
         <ContextMenuItem>Billing</ContextMenuItem>
         <ContextMenuItem>Team</ContextMenuItem>

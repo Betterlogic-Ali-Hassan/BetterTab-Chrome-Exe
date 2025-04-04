@@ -41,7 +41,7 @@ const Menu = () => {
           />
         </button>
 
-        <div className=' ml-[52px]  flex '>
+        <div className=' ml-[52px]  flex  relative'>
           <div
             className={cn(
               "bg-background border border-border shadow-sm p-4 py-8 max-w-[415px] max-h-[850px]",

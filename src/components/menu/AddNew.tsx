@@ -14,10 +14,10 @@ const AddNew = () => {
   } = useMenu();
   return (
     <>
-      <div className='absolute top-0 left-0 h-full w-full bg-black/15'></div>
+      <div className='fixed top-0 left-0 h-full w-full bg-black/40'></div>
       <form
         onSubmit={handleFormSubmit}
-        className='flex p-5 py-6 shadow-sm border border-border rounded-md flex-col gap-4 bg-text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px]'
+        className='flex rounded-[32px] p-6 py-8 shadow-sm  border border-border flex-col gap-4 bg-background absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px]'
       >
         <div className='flex flex-col gap-2'>
           <label htmlFor='url' className='text-sm font-medium'>
@@ -60,7 +60,7 @@ const AddNew = () => {
         </Button>
 
         <span
-          className='absolute top-2 right-2 opacity-80 hover:opacity-100 cursor-pointer'
+          className='absolute top-3 right-4 h-7 w-7  cursor-pointer flex items-center justify-center bg-badge hover:bg-hover border border-border rounded-full  transition focus:outline-none focus:ring-2 focus:ring-ring  focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-card data-[state=open]:text-muted-foreground'
           onClick={handleCloseDropdown}
         >
           <CrossIcon />
