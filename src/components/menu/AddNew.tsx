@@ -1,9 +1,10 @@
 "use client";
 
-import { Globe } from "lucide-react";
+import { Globe, Loader2 } from "lucide-react";
 import CrossIcon from "../svgs/CrossIcon";
 import { Button } from "@/components/ui/button";
 import { useMenu } from "@/context/MenuContext";
+
 const AddNew = () => {
   const {
     formValues,
@@ -11,7 +12,9 @@ const AddNew = () => {
     handleFormChange,
     addFavorite,
     handleCloseDropdown,
+    loading
   } = useMenu();
+
   return (
     <>
       <div className='fixed top-0 left-0 h-full w-full bg-black/40'></div>
@@ -23,8 +26,9 @@ const AddNew = () => {
           <label htmlFor='url' className='text-sm font-medium'>
             URL
           </label>
-          <div className='input flex items-center gap-2 rounded-sm'>
-            <Globe />
+          <div className='input flex items-center gap-2 justify-between rounded-sm'>
+          <div className="flex items-center gap-2 w-full">
+          <Globe />
             <input
               type='text'
               name='url'
@@ -34,6 +38,9 @@ const AddNew = () => {
               placeholder='www...'
               className='bg-transparent w-full outline-none ml-2'
             />
+          </div>
+          {loading && <span className="animate-spin"><Loader2 size={20}/></span>}
+        
           </div>
         </div>
         <div className='flex flex-col gap-2'>

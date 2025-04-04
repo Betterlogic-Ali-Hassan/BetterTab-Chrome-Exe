@@ -1,69 +1,84 @@
-"use client";
+"use client"
 
-import type React from "react";
-import { createContext, useContext, useState } from "react";
+import type React from "react"
+import { createContext, useContext, useState } from "react"
 
 type Favorite = {
-  url: string;
-  caption: string;
-};
+  url: string
+  caption: string
+}
 
 type FormValues = {
-  url: string;
-  caption: string;
-};
+  url: string
+  caption: string
+}
 
 type MenuContextType = {
-  open: boolean;
-  setOpen: (open: boolean) => void;
-  showDropdown: boolean;
-  setShowDropdown: (show: boolean) => void;
-  formValues: FormValues;
-  setFormValues: React.Dispatch<React.SetStateAction<FormValues>>;
-  favorites: Favorite[];
-  setFavorites: React.Dispatch<React.SetStateAction<Favorite[]>>;
-  addFavorite: () => void;
-  handleFormChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleFormSubmit: (e: React.FormEvent) => void;
-  handleCloseDropdown: () => void;
-  toggleMenu: () => void;
-};
+  open: boolean
+  setOpen: (open: boolean) => void
+  showDropdown: boolean
+  setShowDropdown: (show: boolean) => void
+  formValues: FormValues
+  setFormValues: React.Dispatch<React.SetStateAction<FormValues>>
+  favorites: Favorite[]
+  setFavorites: React.Dispatch<React.SetStateAction<Favorite[]>>
+  addFavorite: () => void
+  handleFormChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleFormSubmit: (e: React.FormEvent) => void
+  handleCloseDropdown: () => void
+  toggleMenu: () => void
+  loading: boolean
+}
 
-const MenuContext = createContext<MenuContextType | undefined>(undefined);
+const MenuContext = createContext<MenuContextType | undefined>(undefined)
 
 export function MenuProvider({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [formValues, setFormValues] = useState<FormValues>({
     url: "",
     caption: "",
-  });
-  const [favorites, setFavorites] = useState<Favorite[]>([]);
+  })
+  const [favorites, setFavorites] = useState<Favorite[]>([])
 
   const addFavorite = () => {
-    const { url, caption } = formValues;
-    if (!url.trim() || !caption.trim()) return;
+    const { url, caption } = formValues
+    if (!url.trim() || !caption.trim()) return
 
-    setFavorites((prev) => [...prev, { url, caption }]);
-    handleCloseDropdown();
-  };
+    setFavorites((prev) => [...prev, { url, caption }])
+    handleCloseDropdown()
+  }
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormValues((prev) => ({ ...prev, [name]: value }));
-  };
+    const { name, value } = e.target
+    setFormValues((prev) => ({ ...prev, [name]: value }))
+
+    if (name === "url") {
+      const urlRegex =
+        /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)$/
+
+      setLoading(urlRegex.test(value))
+    }
+    setTimeout(() => {
+      setLoading(false)
+      formValues.caption = 'Google'
+    }, 2000);
+  }
 
   const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    addFavorite();
-  };
+    e.preventDefault()
+    addFavorite()
+    setLoading(false)
+  }
 
   const handleCloseDropdown = () => {
-    setFormValues({ url: "", caption: "" });
-    setShowDropdown(false);
-  };
+    setFormValues({ url: "", caption: "" })
+    setShowDropdown(false)
+    setLoading(false)
+  }
 
-  const toggleMenu = () => setOpen(!open);
+  const toggleMenu = () => setOpen(!open)
 
   const value = {
     open,
@@ -79,15 +94,17 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
     handleFormSubmit,
     handleCloseDropdown,
     toggleMenu,
-  };
+    loading,
+  }
 
-  return <MenuContext.Provider value={value}>{children}</MenuContext.Provider>;
+  return <MenuContext.Provider value={value}>{children}</MenuContext.Provider>
 }
 
 export function useMenu() {
-  const context = useContext(MenuContext);
+  const context = useContext(MenuContext)
   if (context === undefined) {
-    throw new Error("useMenu must be used within a MenuProvider");
+    throw new Error("useMenu must be used within a MenuProvider")
   }
-  return context;
+  return context
 }
+
