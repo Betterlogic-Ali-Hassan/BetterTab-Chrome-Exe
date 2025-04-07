@@ -16,6 +16,7 @@ const GridStackComponent = () => {
       {
         float: true,
         column: 12,
+        marginLeft: 10,
         cellHeight: "auto",
         animate: true,
       },
@@ -31,7 +32,7 @@ const GridStackComponent = () => {
   return (
     <div className='ml-[65px] w-full h-screen overflow-y-auto mb-6'>
       <GridStackBtns grid={grid} />
-      <div className='grid-stack' ref={gridRef}></div>
+      <div className='grid-stack gap-2' ref={gridRef}></div>
     </div>
   );
 };
