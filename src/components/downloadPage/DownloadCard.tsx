@@ -23,7 +23,7 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
   return (
     <div
       className={cn(
-        "p-6 border-border border group rounded-lg bg-card flex gap-5 mb-4 relative cursor-pointer",
+        "p-6 border-border border group rounded-lg bg-card flex gap-5 mb-4 relative cursor-pointer max-sm:flex-col",
         selected &&
           "hover:bg-selected-hover border-selected-border bg-selected-bg"
       )}
@@ -32,7 +32,7 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
       <div className='h-[32px] w-[32px]'>
         <img src={icon} alt={title} className='h-[32px] w-[32px] dark:invert' />
       </div>
-      <div className='grow flex items-center justify-between'>
+      <div className='grow flex sm:items-center justify-between max-sm:flex-col'>
         <div>
           <h3 className='font-semibold text-text'>{title}</h3>
           <a
@@ -45,7 +45,7 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
             {path}
           </a>
         </div>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 flex-wrap'>
           <button className='btn rounded mt-4' onClick={handleCopy}>
             Copy link
           </button>
@@ -55,7 +55,7 @@ const DownloadCard = ({ data }: DownloadCardProps) => {
       <DeleteEntry
         id={id}
         text='Download Successfully Deleted'
-        className='absolute top-1.5 right-2  transition duration-200'
+        className='absolute top-1.5 right-2   transition duration-200'
       />
     </div>
   );

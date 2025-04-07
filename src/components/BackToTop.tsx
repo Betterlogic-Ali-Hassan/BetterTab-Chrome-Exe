@@ -56,7 +56,7 @@ export function BackToTopContainer({
       <div
         ref={containerRef}
         className={cn(
-          "  no-scrollbar block lg:grid lg:col-span-2 lg:grid-cols-subgrid   overflow-y-auto no-scrollbar lg:overflow-y-scroll overflow-x-hidden grow pb-4 lg:pb-6 max-lg:pl-[100px] max-sm:pl-[80px] max-lg:pt-2",
+          "  no-scrollbar block lg:grid lg:col-span-2 lg:grid-cols-subgrid   overflow-y-auto no-scrollbar lg:overflow-y-scroll overflow-x-hidden grow pb-4 lg:pb-6 max-lg:pl-0 max-sm:pl-0 max-lg:pt-2",
           containerClassName
         )}
         style={{ height }}

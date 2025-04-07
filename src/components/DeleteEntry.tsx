@@ -14,7 +14,7 @@ const DeleteEntry = ({ id, text, className }: Props) => {
   return (
     <span
       className={cn(
-        "opacity-0 h cursor-pointer  group-hover:opacity-100",
+        "sm:opacity-0 opacity-100 cursor-pointer  group-hover:opacity-100",
         className
       )}
       onClick={onDelete}
