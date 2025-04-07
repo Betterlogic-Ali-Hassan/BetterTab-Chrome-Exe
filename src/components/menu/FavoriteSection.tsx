@@ -23,7 +23,7 @@ const FavoriteSection = () => {
       <p className='text-sm text-foreground mt-1'>
         Add websites to access them in on click
       </p>
-      <div className='grid grid-cols-5 gap-3  mt-2'>
+      <div className='grid grid-cols-5 gap-3 max-[550px]:grid-cols-2  mt-2'>
         {favorites.map((value, index) => (
           <ShortcutBox text={value.caption} key={index} />
         ))}

@@ -10,8 +10,11 @@ const MobileCardDetail = () => {
       <SheetTrigger className='lg:hidden block px-4'>
         <MoreIcon />
       </SheetTrigger>
-      <SheetContent side='bottom'>
-        <TabCardDetail cards={cards} />
+      <SheetContent side='bottom' className=' h-[328px] p-0'>
+        <TabCardDetail
+          cards={cards}
+          className='opacity-100 block max-lg:translate-x-0'
+        />
       </SheetContent>
     </Sheet>
   );

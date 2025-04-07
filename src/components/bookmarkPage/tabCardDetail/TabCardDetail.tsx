@@ -9,21 +9,23 @@ import { Card } from "@/types/TabCardType";
 
 interface Props {
   cards: Card[];
+  className?: string;
 }
-const TabCardDetail = ({ cards }: Props) => {
+const TabCardDetail = ({ cards, className }: Props) => {
   const { showCardDetail, activeTab } = useBookmarks();
   const activeTabData = cards.find((tab) => tab.id === activeTab);
   return (
     <>
       <div
         className={cn(
-          "hidden max-[1600px]:fixed  max-[1600px]:right-6  opacity-0 translate-x-[50%] transition-all duration-300 ",
-          showCardDetail && "opacity-100 lg:block translate-x-0"
+          "hidden max-[1600px]:fixed  max-[1600px]:right-6 max-lg:right-0 max-lg:w-full opacity-0   transition-all duration-300 ",
+          showCardDetail && "opacity-100 lg:block translate-x-0",
+          className
         )}
       >
-        <div className='sticky top-0  left-0 w-full  lg:max-w-[280px] min-w-72  min-h-[328px]   min-[1600px]:ml-2'>
+        <div className='sticky top-0  left-0 w-full  lg:max-w-[280px] lg:min-w-72   min-h-[328px]   min-[1600px]:ml-2'>
           <div>
-            <div className='py-5 p-6 bg-card  rounded-[14px]  min-h-[328px]'>
+            <div className='py-5 p-6 bg-card  rounded-[14px] w-full  min-h-[328px]'>
               <div className='relative flex flex-col gap-[18px]'>
                 <TabCardHeading
                   title={activeTabData?.title}
@@ -64,6 +66,7 @@ const TabCardDetail = ({ cards }: Props) => {
           </div>
         </div>
       </div>
+
       <SelectionCard />
     </>
   );

@@ -12,12 +12,12 @@ const NotesSidebar = () => {
   const [cardView, setCardView] = useState(false);
 
   return (
-    <div className='w-[358px] min-w-[280px] max-w-[358px]  h-screen bg-transparent ml-[64px] '>
+    <div className='sm:w-[358px] sm:min-w-[280px] max-w-[358px]  lg:h-screen h-full bg-transparent  '>
       <NotesSidebarHeader setCardView={setCardView} />
 
       <div
         className={cn(
-          "flex flex-col  py-1 px-4 gap-2 overflow-y-auto max-h-[calc(100vh-100px)] pb-6 pt-1 no-scrollbar",
+          "flex flex-col  py-1 px-4 gap-2 overflow-y-auto max-h-[290px] lg:max-h-[calc(100vh-100px)] pb-6 pt-1 no-scrollbar",
           cardView && "grid grid-cols-2"
         )}
       >

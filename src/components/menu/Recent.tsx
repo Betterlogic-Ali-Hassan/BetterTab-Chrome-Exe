@@ -10,7 +10,7 @@ const Recent = () => {
         <h2 className='text-base text-text font-medium'>Recent Docs</h2>
         <DocDropdown />
       </div>
-      <div className='mt-2 flex items-center gap-3'>
+      <div className='mt-2 flex items-center gap-3 max-[600px]:flex-wrap'>
         <ShortcutBox text='Untitled' />
       </div>
     </Card>

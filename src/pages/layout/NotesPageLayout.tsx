@@ -14,11 +14,11 @@ export default function NotesPageLayout({
 }: NotesPageLayoutProps) {
   return (
     <div className={cn("flex ", className)}>
-      <div>
-        <HomeSidebar />
+      <HomeSidebar />
+      <div className='flex ml-[64px] h-screen max-sm:flex-col pr-4'>
         <NotesPage />
+        {children}
       </div>
-      {children}
     </div>
   );
 }

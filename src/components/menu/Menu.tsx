@@ -42,7 +42,7 @@ const Menu = () => {
       <div className=' ml-[52px]  flex  relative'>
         <div
           className={cn(
-            "bg-background border border-border shadow-sm p-4 py-8 max-w-[415px] max-h-[850px]",
+            "bg-background border border-border shadow-sm p-4 py-8 max-w-[250px]  min-[550px]:max-w-[415px] max-h-[850px]",
             "w-full h-full overflow-y-auto no-scrollbar fixed top-0 rounded-r-md",
             "opacity-0 pointer-events-none  transition duration-300 ease-in-out z-[1200]",
             open && "opacity-100 pointer-events-auto "
@@ -63,7 +63,7 @@ const Menu = () => {
         </div>
         <span
           className={cn(
-            "fixed top-3 z-[1600] ml-[435px] bg-card  items-center justify-center rounded-full h-[40px] w-[40px]  hidden hover:bg-hover cursor-pointer",
+            "fixed top-3 z-[1600] ml-[435px] bg-card  items-center justify-center rounded-full h-[40px] w-[40px] max-[550px]:ml-[255px]  hidden hover:bg-hover cursor-pointer",
             open && "flex"
           )}
           onClick={() => setOpen(false)}

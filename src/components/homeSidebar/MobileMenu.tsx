@@ -12,12 +12,23 @@ import SelectIcon from "../svgs/SelectIcon";
 import ExistIcon from "../svgs/ExistIcon";
 import AddNewCard from "../addNewCard/AddNewCard";
 import DialogBox from "@/modals/DialogBox";
+import { useBookmarks } from "@/context/BookmarkContext";
 
 const MobileMenu = () => {
+  const { setShowSelectionCard, selectAll, setShowCardDetail, clearSelection } =
+    useBookmarks();
+
+  const toggleSelectionCard = (show: boolean) => {
+    setShowSelectionCard(show);
+    setShowCardDetail(false);
+
+    if (!show) clearSelection();
+  };
   const { setPage } = usePageContext();
   const goAddNew = () => {
     setPage("new");
   };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -39,11 +50,21 @@ const MobileMenu = () => {
         </DialogBox>
 
         <DropdownMenuSeparator className='bg-border' />
-        <DropdownMenuItem className='flex items-center gap-3 py-3 px-4'>
+        <DropdownMenuItem
+          className='flex items-center gap-3 py-3 px-4'
+          onClick={() => toggleSelectionCard(true)}
+        >
           <SelectIcon />
           Select Multiple
         </DropdownMenuItem>
-        <DropdownMenuItem className='flex items-center gap-3 py-3 px-4'>
+
+        <DropdownMenuItem
+          className='flex items-center gap-3 py-3 px-4'
+          onClick={() => {
+            toggleSelectionCard(true);
+            selectAll();
+          }}
+        >
           <SelectIcon />
           Select All
         </DropdownMenuItem>
