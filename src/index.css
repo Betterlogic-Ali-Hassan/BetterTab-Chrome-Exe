@@ -7,7 +7,7 @@
 @import "./styles/components/tooltips.css";
 @import "./styles/components/progress.css";
 @import "./styles/components/swiper.css";
-
+@import "./styles/components/grid-stack.css";
 
 @layer base {
   * {

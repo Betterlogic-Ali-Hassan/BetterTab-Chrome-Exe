@@ -1,0 +1,13 @@
+.grid-stack {
+  background-color: var(--background-color);
+}
+.grid-stack-item-content {
+  background-color: var(--card-color);
+  padding: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

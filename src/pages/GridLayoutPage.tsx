@@ -1,12 +1,11 @@
-import GridLayout from "@/components/gridLayout/GridLayout";
-
+import GridStackComponent from "@/components/gridLayout/GridStack";
 import HomeSidebar from "@/components/homeSidebar/HomeSidebar";
 
 const GridLayoutPage = () => {
   return (
     <div className='flex'>
       <HomeSidebar />
-      <GridLayout />
+      <GridStackComponent />
     </div>
   );
 };
